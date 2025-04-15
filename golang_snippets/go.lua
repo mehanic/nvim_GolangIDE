@@ -7,28 +7,28 @@ local rep = require("luasnip.extras").rep  -- Подключаем функци�
 
 return {
   -- Variable Snippet 
-  s("w1var-1ᚠ", {
+  s("w1var-1", {
     t("var "), i(1, "varName"), t(" "), i(2, "varType"), t(" = "), i(3, "value"),
   }),
  -- Variable declaration (short declaration)
- s("w1var-2ᚢ", {
+ s("w1var-2", {
   i(1, "varName"), t(" := "), i(2, "value"),
 }),
 
 --Variable Declaration with Later Initialization
 
-s("w1var-3ᚦ", {
+s("w1var-3", {
   t("var "), i(1, "varName"), t(" "), i(2, "varType"), t("\n"), 
   i(3, "varName"), t(" = "), i(4, "value"),
 }),
 
 --Variable Short Declaration with Later Initialization
-s("w1var-4ᚨ", {
+s("w1var-4", {
   i(1, "varName"), t(" := "), i(2, "value"),
 }),
 
 -- Variable Declaration with Later Initialization for Multiple Variables
-s("w1var-5ᚱ", {
+s("w1var-5", {
   t("var "), i(1, "varName1"), t(", "), i(2, "varName2"), t(", "), i(3, "varName3"), t(" "), i(4, "varType"), t("\n"),
   i(1, "varName1"), t(" = "), i(5, "value1"), t("\n"),
   i(2, "varName2"), t(" = "), i(6, "value2"), t("\n"),
@@ -37,7 +37,7 @@ s("w1var-5ᚱ", {
 
 --declaring multiple variables of the same data type
 
-s("w1var-6ᚲ", {
+s("w1var-6", {
   t("var "), i(1, "a"), t(", "), i(2, "b"), t(", "), i(3, "c"), t(" "), i(4, "type"), t({ "", "" }),
   i(1), t(" = "), i(5, "val1"), t({ "", "" }),
   i(2), t(" = "), i(6, "val2"), t({ "", "" }),
@@ -45,7 +45,7 @@ s("w1var-6ᚲ", {
 }),
 
 --grouping variables together might indicate some relationship
-s("w1var-7ᚷ", {
+s("w1var-7", {
   t("var ("), t({ "", "\t" }),
   i(1, "var1"), t(" = "), i(2, "\"value1\""), t({ "", "\t" }),
   i(3, "var2"), t(" = "), i(4, "\"value2\""), t({ "", ")" }),
@@ -53,43 +53,43 @@ s("w1var-7ᚷ", {
 
 --another way of creating 
 
-s("w1var-8ᚹ", {
+s("w1var-8", {
   i(1, "varName"), t(" := "), i(2, "type"), t("("), i(3, "value"), t(")"),
 }),
 
 --creating new aliases for existing data types
-s("w1var-9ᚻ", {
+s("w1var-9", {
   t("type "), i(1, "aliasName"), t(" "), i(2, "existingType"),
 }),
 
 
  -- Alias Snippet
- s("w1var-10ᚾ", {
+ s("w1var-10", {
   t("type "), i(1, "AliasName"), t(" "), i(2, "UnderlyingType"),
 }),
 
 -- Method Snippet
-s("w2method-1ᛟ", {
+s("w2method-1", {
   t("func ("), i(1, "receiver"), t(" *"), i(2, "TypeName"), t(") "),
   i(3, "MethodName"), t("("), i(4, "argName"), t(" "), i(5, "argType"), t(") "),
   i(6, "returnType"), t({ "", "\t" }), i(7, "// method body"), t({ "", "}" }),
 }),
 
 -- Method with no arguments and no return value
-s("w2method-2ᛞ", {
+s("w2method-2", {
   t("func ("), i(1, "receiver"), t(" *"), i(2, "TypeName"), t(") "),
   i(3, "MethodName"), t("() {"), t({ "", "\t" }), i(4, "// method body"), t({ "", "}" }),
 }),
 
 -- Method with arguments but no return value
-s("w2method-3ᛝ", {
+s("w2method-3", {
   t("func ("), i(1, "receiver"), t(" *"), i(2, "TypeName"), t(") "),
   i(3, "MethodName"), t("("), i(4, "argName"), t(" "), i(5, "argType"), t(") {"),
   t({ "", "\t" }), i(6, "// method body"), t({ "", "}" }),
 }),
 
 -- Method with multiple arguments but no return value
-s("w2mehod-4ᛚ", {
+s("w2mehod-4", {
   t("func ("), i(1, "receiver"), t(" *"), i(2, "TypeName"), t(") "),
   i(3, "MethodName"), t("("), i(4, "arg1Name"), t(" "), i(5, "arg1Type"), t(", "),
   i(6, "arg2Name"), t(" "), i(7, "arg2Type"), t(") {"),
@@ -97,14 +97,14 @@ s("w2mehod-4ᛚ", {
 }),
 
 -- Method with no arguments but a return value
-s("w2method-5ᛗ", {
+s("w2method-5", {
   t("func ("), i(1, "receiver"), t(" *"), i(2, "TypeName"), t(") "),
   i(3, "MethodName"), t("() "), i(4, "returnType"), t(" {"),
   t({ "", "\t" }), i(5, "// method body"), t({ "", "}" }),
 }),
 
 -- Method with multiple arguments and return value
-s("w2method-6ᛖ", {
+s("w2method-6", {
   t("func ("), i(1, "receiver"), t(" *"), i(2, "TypeName"), t(") "),
   i(3, "MethodName"), t("("), i(4, "arg1Name"), t(" "), i(5, "arg1Type"), t(", "),
   i(6, "arg2Name"), t(" "), i(7, "arg2Type"), t(") "),
@@ -113,14 +113,14 @@ s("w2method-6ᛖ", {
 }),
 
 -- Method with a pointer receiver
-s("w2method-7ᛒ", {
+s("w2method-7", {
   t("func ("), i(1, "receiver"), t(" *"), i(2, "TypeName"), t(") "),
   i(3, "MethodName"), t("() "), i(4, "returnType"), t(" {"),
   t({ "", "\t" }), i(5, "// method body"), t({ "", "}" }),
 }),
 
 -- Method with named return value
-s("w2method-8ᛏ", {
+s("w2method-8", {
   t("func ("), i(1, "receiver"), t(" *"), i(2, "TypeName"), t(") "),
   i(3, "MethodName"), t("("), i(4, "argName"), t(" "), i(5, "argType"), t(") "),
   t("("), i(6, "returnName"), t(" "), i(7, "returnType"), t(") {"),
@@ -128,7 +128,7 @@ s("w2method-8ᛏ", {
 }),
 
 -- Method with multiple return values
-s("w2method-9ᛈ", {
+s("w2method-9", {
     t("func ("), i(1, "receiver"), t(" *"), i(2, "TypeName"), t(") "),
     i(3, "MethodName"), t("("), i(4, "argName"), t(" "), i(5, "argType"), t(") "),
     t("("), i(6, "return1Type"), t(", "), i(7, "return2Type"), t(") {"),
@@ -136,7 +136,7 @@ s("w2method-9ᛈ", {
   }),
 
     -- Method with context
-    s("w2method-10ᛋ", {
+    s("w2method-10", {
       t("func ("), i(1, "receiver"), t(" *"), i(2, "TypeName"), t(") "), 
       i(3, "MethodName"), t("(ctx context.Context, "), i(4, "argName"), 
       t(" "), i(5, "argType"), t(") "), i(6, "returnType"), t("{"), 
@@ -144,7 +144,7 @@ s("w2method-9ᛈ", {
     }),
   
     -- Method with error return
-    s("w2method-11ᛉ", {
+    s("w2method-11", {
       t("func ("), i(1, "receiver"), t(" *"), i(2, "TypeName"), t(") "), 
       i(3, "MethodName"), t("("), i(4, "argName"), t(" "), i(5, "argType"), 
       t(") "), t("error"), t("{"), t({ "", "\t" }), i(6, "// method body"), 
@@ -154,59 +154,59 @@ s("w2method-9ᛈ", {
  
 
     -- Defines a new struct type with a name and fields
-    s("w3struct-1ᚠ", {
+    s("w3struct-1", {
       t("type "), i(1, "StructName"), t(" struct {"), t({ "", "\t" }), 
       i(2, "FieldName"), t(" "), i(3, "FieldType"), t({ "", "\t" }), 
       i(4, "AnotherFieldName"), t(" "), i(5, "AnotherFieldType"), t({ "", "}" }),
     }),
   
     -- Struct Initialization (Inline)
-    s("w3struct-2ᚢ", {
+    s("w3struct-2", {
       i(1, "varName"), t(" := "), i(2, "StructName"), t("{ "), 
       i(3, "Field1"), t(": "), i(4, "value1"), t(", "), 
       i(5, "Field2"), t(": "), i(6, "value2"), t(" }"),
     }),
   
     -- Struct with JSON Tags
-    s("w3struct-3ᚦ", {
+    s("w3struct-3", {
       t("type "), i(1, "StructName"), t(" struct {"), t({ "", "\t" }),
       i(2, "FieldName"), t(" "), i(3, "FieldType"), t(" `json:\""), 
       i(4, "jsonName"), t("\"`"), t({ "", "}" }),
     }),
   
     -- Struct Method with Value Receiver
-    s("w3struct-4ᚨ", {
+    s("w3struct-4", {
       t("func ("), i(1, "s"), t(" "), i(2, "StructName"), t(") "), 
       i(3, "MethodName"), t("("), i(4), t(") "), i(5), t(" {"), 
       t({ "", "\t" }), i(0), t({ "", "}" }),
     }),
   
     -- Struct Method with Pointer Receiver
-    s("w3struct-5ᛈ", {
+    s("w3struct-5", {
       t("func ("), i(1, "s"), t(" *"), i(2, "StructName"), t(") "), 
       i(3, "MethodName"), t("("), i(4), t(") "), i(5), t(" {"), 
       t({ "", "\t" }), i(0), t({ "", "}" }),
     }),
   
     -- Copy a struct instance (Shallow Copy)
-    s("w3struct-6ᚱ", {
+    s("w3struct-6", {
       i(1, "copyName"), t(" := "), i(2, "originalStruct"), t(" // shallow copy"),
     }),
   
     -- Initializes a struct with specific values
-    s("w3struct-7ᚲ", {
+    s("w3struct-7", {
       t("{"), t({ "", "\t" }), i(1, "Field1"), t(": "), i(2, "value1"), 
       t({ "", "\t" }), i(3, "Field2"), t(": "), i(4, "value2"), t({ "", "}" }),
     }),
   
  -- New Type Snippet 
- s("w3struct-8ᚷ", {
+ s("w3struct-8", {
   t("type "), i(1, "MyType"), t(" struct {"), t({ "", "\t" }), i(2, "// fields"), t({ "", "}" }),
   t({ "", "", "func (m *" }), i(1), t(") "), i(3, "Method"), t("() "), i(4, "returnType"), t(" {"), t({ "", "\t" }), i(0), t({ "", "}" }),
 }),
 
 -- Table-driven test skeleton
-s("w3struct-9ᚹ", {
+s("w3struct-9", {
   t("tests := []struct {"), t({ "", "\tName string" }), t({ "", "\tInput " }), t({ "", "\tExpected " }), t({ "", "}{" }),
   t({ "", "\t{Name: \"Test1\", Input: ..., Expected: ...}," }), t({ "", "}"}),
   t({ "", "\tfor _, tt := range tests { " }),
