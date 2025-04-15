@@ -1,0 +1,29 @@
+ignoreGeneratedHeader = false
+
+[rule.blank-imports]
+enabled = true
+
+[rule.context-as-argument]
+enabled = true
+
+[rule.dot-imports]
+enabled = true
+
+[rule.error-naming]
+enabled = true
+
+[rule.error-strings]
+enabled = true
+
+[rule.exported]
+enabled = true
+
+[rule.if-return]
+enabled = true
+
+[rule.increment-decrement]
+enabled = true
+
+[rule.var-declaration]
+enabled = true
+

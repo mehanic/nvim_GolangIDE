@@ -1,0 +1,40 @@
+run:
+  timeout: 2m
+  tests: true
+
+linters:
+  enable:
+    - errcheck
+    - staticcheck
+    - govet
+    - gosimple
+    - unused
+    - gocritic
+    - gofmt
+    - revive
+    - gosec
+    - bodyclose
+    - depguard
+    - nakedret
+    - noctx
+    - unparam
+
+linters-settings:
+  revive:
+    config: ~/.config/revive/revive.toml
+  depguard:
+    list-type: blacklist
+    packages:
+      - fmt
+    packages-with-error-message:
+      fmt: "Don't use fmt in production code"
+
+issues:
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - errcheck
+
+output:
+  format: colored-line-number
+

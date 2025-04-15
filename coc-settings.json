@@ -1,0 +1,39 @@
+{
+    "languageserver": {
+      "python": {
+        "command": "pyright-langserver",
+        "args": ["--stdio"],
+        "filetypes": ["python"]
+      },
+      "golang": {
+        "command": "gopls",
+        "rootPatterns": ["go.mod", ".git/"],
+        "filetypes": ["go"]
+      },
+      "bash": {
+        "command": "bash-language-server",
+        "args": ["start"],
+        "filetypes": ["sh", "bash"],
+        "rootPatterns": [".git/"],
+        "initializationOptions": {
+          "shell": "bash"
+        }
+      }
+    },
+  
+    "python.formatting.provider": "black",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.autoComplete.addBrackets": true,
+  
+    "go.formatTool": "gopls",
+    "go.lintTool": "golangci-lint",
+  
+    "suggest.noselect": false,
+    "suggest.enablePreview": true,
+  
+    "bash.formatter": "shfmt"
+  }
+  
+  
