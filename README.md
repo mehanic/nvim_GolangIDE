@@ -1,5 +1,11 @@
 # nvim_GolangIDE
 
+
+
+# plugins.vim 
+plugins.vim is main file for provision neovim components
+
+
 ~/.config/nvim
  $ ls
 autoload  coc-settings.json  init.vim  lua  plugin_config  snippets  vim-plug
