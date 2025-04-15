@@ -55,3 +55,27 @@ require("plugin_config.gh")
 ```
 
 ---
+
+![working with autocomplite code](screenshot_1.png)
+
+![Working with autocomplite code](screenshot_2.png)
+
+![show tree of project](screenshot_3.png)
+
+![golang-lint and other tools show problems](screenshot_4.png)
+
+![get snippets slice code golang](screenshot_5.png)
+
+![snippets wfrom directory golang2_snippets and golang_snippets](screenshot_6.png)
+
+![working with Telescope in nvim](screenshot_7.png)
+
+![working with modules](screenshot_8.png)
+
+![automatically show with lines suitable borders of code](screenshot_9.png)
+
+![working with modules](screenshot_10.png)
+
+![dinamical lines and autoshow](screenshot_11.png)
+
+![dinamical lines and autoshow ](screenshot_12.png)
