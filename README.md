@@ -22,14 +22,7 @@ autoload  coc-settings.json  init.vim  lua  plugin_config  snippets  vim-plug
     └── init.lua
 
 ```
-~/.config/golangci-lint
 
-
-
-
-```
-autoload/  coc-settings.json  init.vim  lua/  plugin_config/  snippets/  vim-plug/
-```
 
 Here’s what each folder or file is for:
 
