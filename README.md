@@ -2,6 +2,52 @@
 
 
 
+This Neovim configuration is specifically crafted for efficient development in Golang, with a focus on utilizing the latest plugins and modern tooling.
+
+The setup includes:
+
+Code autocompletion, syntax highlighting, integrated snippets, and testing frameworks.
+
+Intelligent hints and automation for Golang programming, along with full support for Golang templates.
+
+Integration of Neovim extensions and Visual Studio Code enhancements for an improved development experience.
+
+Built-in support for interaction with Kubernetes and Helm, enabling seamless infrastructure and DevOps workflows.
+
+Custom configurations tailored for editing various DevOps-related files, such as Jenkinsfiles, GitLab CI/CD pipelines, and Ansible playbooks and roles.
+
+Key features:
+
+Seamless integration with Codewars, HackerRank, and LeetCode for deepening knowledge in algorithms and data structures.
+
+Optimized for use with the i3 Tiling Window Manager to maximize productivity and streamline the development environment.
+
+# -----
+
+
+Ця версія конфігурації Neovim спеціально створена для ефективної роботи з мовою Golang, з акцентом на використання найновіших плагінів та сучасних інструментів.
+
+Конфігурація включає:
+
+Автодоповнення коду, підсвічування синтаксису, інтеграцію сніпетів та системи тестування.
+
+Підказки та автоматизацію для програмування на Golang, а також роботу з Golang templates.
+
+Інтеграцію доповнень Neovim і розширень із Visual Studio Code для ще кращого середовища розробки.
+
+Підтримку взаємодії з Kubernetes та Helm, що дозволяє ефективно працювати з інфраструктурними проєктами.
+
+Спеціальні налаштування для роботи з файлами DevOps-спрямування, такими як Jenkinsfiles,  GitLab CI/CD, а також плейбуки та ролі Ansible.
+
+Особливості:
+
+Підготовлено інтеграцію з платформами Codewars, HackerRank та LeetCode — для поглибленого вивчення алгоритмів і структур даних.
+
+Конфігурація оптимізована для роботи в середовищі з використанням i3 Tiling Window Manager для максимальної продуктивності та зручності.
+
+# ---
+
+
 
 plugins.vim is main file for provision neovim components
 
@@ -79,3 +125,43 @@ require("plugin_config.gh")
 ![dinamical lines and autoshow](screenshot_11.png)
 
 ![dinamical lines and autoshow ](screenshot_12.png)
+
+![show config plugin in nvim ](screenshot_13.png)
+
+![open K9s  ](screenshot_14.png)
+
+![search file in different ways  ](screenshot_15.png)
+
+![git files  ](screenshot_16.png)
+
+![git branch  ](screenshot_17.png)
+
+![1 step to see log in pods  ](screenshot_18.png)
+
+![2 step to see log in pods  ](screenshot_19.png)
+
+![3 step to see log in pods  ](screenshot_20.png)
+
+![4 step to see log in pods  ](screenshot_21.png)
+
+![to see the commits change   ](screenshot_22.png)
+
+![buffer   ](screenshot_23.png)
+
+![configuration for golang autocomplite and tests  ](screenshot_24.png)
+
+![example of work with kubernetes controllers in nvim  ](screenshot_25.png)
+
+![makefile  ](screenshot_26.png)
+
+![helm charts and helpers   ](screenshot_27.png)
+
+
+![helm charts in buffers   ](screenshot_28.png)
+
+![helm charts in two terminals with configuration i3    ](screenshot_29.png)
+
+![golang templates   ](screenshot_30.png)
+
+
+

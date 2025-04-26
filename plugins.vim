@@ -13,7 +13,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 				Plug 'scrooloose/syntastic'
 				Plug 'davidhalter/jedi-vim'
 				Plug 'bling/vim-airline'
-				Plug 'vim-airline/vim-airline-themes'
+"				Plug 'vim-airline/vim-airdevelop/misc/line-themes'
 				Plug 'gennaro-tedesco/nvim-jqx'
 				Plug 'tpope/vim-surround'
 				Plug 'mattn/emmet-vim'
@@ -58,6 +58,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
         Plug 'junegunn/fzf.vim'
         Plug 'nvim-telescope/telescope.nvim'
         Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+        Plug 'venc0r/telescope-k8s.nvim'  " Расширение для Kubernetes
         Plug 'kyazdani42/nvim-web-devicons'
 
         Plug 'ryanoasis/vim-devicons'
@@ -121,15 +122,15 @@ call plug#begin('~/.config/nvim/autoload/plugged')
         Plug 'someone-stole-my-name/yaml-companion.nvim'
         Plug 'beargruug/skipper.nvim'
         Plug 'chomosuke/typst-preview.nvim', {'tag': 'v1.*'}
-        " Для использования с mini.snippets
+        " for mini.snippets
         Plug 'echasnovski/mini.snippets'
         Plug 'abeldekat/cmp-mini-snippets'
 
-        " Для использования с ultisnips
+        " for ultisnips
        Plug 'SirVer/ultisnips'
        Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 
-       " Для использования с snippy
+       " for snippy
        Plug 'dcampos/nvim-snippy'
        Plug 'dcampos/cmp-snippy'
        Plug 'leoluz/nvim-dap-go'
@@ -142,19 +143,19 @@ call plug#begin('~/.config/nvim/autoload/plugged')
        Plug 'lewis6991/gitsigns.nvim'
        Plug 'kevinhwang91/nvim-hlslens'
        Plug 'nvimtools/none-ls.nvim'
-       " Плагины для тестирования
+       " plagins for test code
        Plug 'vim-test/vim-test'
        Plug 'nvim-neotest/neotest'
        Plug 'nvim-telescope/telescope.nvim'
        Plug 'stevearc/aerial.nvim'
-        " Генерация тестов
+        " test generation
        Plug 'cweill/gotests'
         Plug 'nvim-neotest/neotest-go'
-        " Интеграция с Go Playground
-        Plug 'tpope/vim-dispatch' " Используем vim-dispatch для отправки Go-кода в Go Playground
-        "позволяет удобно отображать все доступные клавиши и их комбинации.
+        "  Go Playground
+        Plug 'tpope/vim-dispatch' "  vim-dispatch for send Go-кода to Go Playground
+        "Allows convenient display of all available keys and their combinations..
         Plug 'folke/which-key.nvim'
-        "выделяет важные комментарии, такие как TODO, FIXME и другие.
+        "Highlights important comments, such as TODO, FIXME, and others.
         Plug 'folke/todo-comments.nvim'
         Plug 'natecraddock/workspaces.nvim'
         Plug 'akinsho/toggleterm.nvim'
@@ -170,10 +171,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
          Plug 'nvim-lualine/lualine.nvim'
          Plug 'arcticicestudio/nord-vim'  " Устанавливаем тему nord
          Plug 'liuchengxu/vista.vim'
-         " обязательно для diffview
+         " must have for diffview
          Plug 'nvim-lua/plenary.nvim'
          Plug 'sindrets/diffview.nvim'
-         " Плагин для работы с SQL базами данных
+         " for work with  SQL databases
          Plug 'tpope/vim-dadbod'
          "UI для работы с vim-dadbod-ui 
          Plug 'kristijanhusak/vim-dadbod-ui'
@@ -193,6 +194,21 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
          Plug 'ldelossa/gh.nvim'
          Plug 'ldelossa/gh.nvim'
+         Plug 'gennaro-tedesco/nvim-jqx'
+         "edit your filesystem like a buffer
+         Plug 'stevearc/oil.nvim'
+         Plug 'towolf/vim-helm'
+         Plug 'cespare/vim-toml'
+         Plug 'ibhagwan/fzf-lua'
+         Plug 'sbulav/validate-gitlab-ci.nvim'
+         Plug 'b0o/schemastore.nvim'
+         Plug 'joshzcold/cmp-jenkinsfile'
+         Plug 'ckipp01/nvim-jenkinsfile-linter'
+         Plug 'hashivim/vim-terraform'
+        " Plug 'Saghen/kubectl.nvim'
+         Plug 'edwardtheharris/kube-utils-nvim'
+         Plug 'Ramilito/kubectl.nvim'
+
          "posibility to work with tekst
     "     Plug 'andymass/vim-matchup'
         " Source additional plugin configuration file  ---- not work
@@ -217,6 +233,7 @@ highlight PmenuSel guibg=blue guifg=white  " Selected item in menu
 
 let mapleader = ";"
 set mouse=a
+set filetype=helm
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -233,7 +250,7 @@ let g:goplements_lint_on_save = 1    " Enable linting on save
 let g:goplements_gopls_path = '/home/mehanic/.gvm/pkgsets/go1.23.0/global/bin/gopls'
 
 
-" Переназначаем Alt + w для сохранения текущего файла
+"Remap Alt + w to save the current file.
 nnoremap <A-w> :w<CR>
 
 " Show documentation with K
@@ -260,7 +277,7 @@ autocmd TermOpen * setlocal modifiable
 
 "set statusline +=%1*\ %n\ %*            "buffer number
 
-" Устанавливаем lualine в pluginvim.vim
+" install lualine в pluginvim.vim  runes from scandinafic culture
 lua << EOF
 -- РУНЫ ДЛЯ COMPONENT_SEPARATORS
 local component_runes = {
@@ -272,7 +289,7 @@ local section_runes = {
   "ᛁ", "ᛇ", "ᛉ", "ᛏ", "ᛒ", "ᛖ", "ᛗ", "ᛚ", "ᛟ"
 }
 
--- СЛУЧАЙНЫЙ ВЫБОР РУН
+-- СЛУЧАЙНЫЙ ВЫБОР РУН  
 math.randomseed(os.time())
 local sep_component = component_runes[math.random(#component_runes)]
 local sep_section = section_runes[math.random(#section_runes)]
@@ -733,60 +750,6 @@ EOF
 
 
 
-
-lua << EOF
-require('kubectl').setup({
-  log_level = vim.log.levels.INFO,
-  auto_refresh = {
-    enabled = true,
-    interval = 300, -- milliseconds
-  },
-  diff = {
-    bin = "kubediff", -- specify kubediff or another binary
-  },
-  kubectl_cmd = {
-    cmd = "kubectl",
-    env = {},
-    args = {},
-    persist_context_change = false,
-  },
-  terminal_cmd = nil, -- Launch in terminal if set
-  namespace = "All", -- Default namespace
-  namespace_fallback = {}, -- List namespaces if you have limited access
-  hints = true,
-  context = true,
-  heartbeat = true,
-  lineage = {
-    enabled = false, -- This feature is in beta
-  },
-  logs = {
-    prefix = true,
-    timestamps = true,
-    since = "5m",
-  },
-  alias = {
-    apply_on_select_from_history = true,
-    max_history = 5,
-  },
-  filter = {
-    apply_on_select_from_history = true,
-    max_history = 10,
-  },
-  float_size = {
-    width = 0.9,
-    height = 0.8,
-    col = 10,
-    row = 5,
-  },
-  obj_fresh = 5, -- Highlight if object is newer than 5 minutes
-  skew = {
-    enabled = true,
-    log_level = vim.log.levels.INFO,
-  }
-})
-EOF
-
-
 lua << EOF
 local dap = require('dap')
 -- DAP (Debug Adapter Protocol) for Go, a Delve debugger
@@ -843,7 +806,7 @@ require("telescope").load_extension("notify")
 vim.notify("помилка", "error")
 vim.notify("застереження", "warn")
 vim.notify("Інформація", "info")
-vim.notify("Alle Plugins wurden erfolgreich geladen", "info")
+vim.notify("All plugins are downloaded and updated", "info")
 EOF
 
 
@@ -881,7 +844,7 @@ vim.notify("This is your custom  HYDRA", "info", {
 })
 EOF
 
-"commented
+"commented show in terminal
 "lua << EOF
 "-- Displaying the ASCII art in the Vim message area
 "vim.api.nvim_echo({{vim.fn.join(vim.g.ascii, "\n")}}, false, {})
@@ -956,7 +919,7 @@ local nvim_lsp = require'lspconfig'
 
 nvim_lsp.ansiblels.setup {
   cmd = { "ansible-language-server", "--stdio" },
-  filetypes = { "yaml", "yml" },
+  filetypes = { "yml" },
   root_dir = nvim_lsp.util.root_pattern('.git', 'ansible.cfg', 'requirements.yml', 'hosts'),
 
   -- Additional LSP settings
@@ -1390,7 +1353,8 @@ require'nvim-treesitter.configs'.setup {
     "css",       -- CSS
     "typescript",-- TypeScript
     "bash",      -- Bash
-    "gotmpl",  -- 👈 добавляем Go templates
+    "yaml",       -- yaml 
+    "gotmpl",    --  Go templates
   },
 
   sync_install = false,  -- Асинхронная установка парсеров
@@ -1481,8 +1445,9 @@ require'lspconfig'.sqls.setup{
     }
   }
 }
-EOF
 
+
+EOF
 
 lua << EOF
 require("gopher").setup {
@@ -1731,6 +1696,63 @@ null_ls.setup({
 EOF
 
 
+"for helm charts
+lua << EOF
+local null_ls = require("null-ls")
+local h = require("null-ls.helpers")
+
+local helm_lint = {
+  name = "helm_lint",
+  method = null_ls.methods.DIAGNOSTICS,
+  filetypes = { "helm", "yaml" },
+  generator = h.generator_factory({
+    command = "helm",
+    args = function(params)
+      return { "lint", params.bufname }
+    end,
+    to_stdin = false,
+    from_stderr = true,
+    format = "line",
+    check_exit_code = function(code)
+      return code <= 1  -- helm lint может возвращать 1 при предупреждениях
+    end,
+    on_output = function(line)
+      return {
+        row = 1,
+        col = 1,
+        message = line,
+        severity = vim.diagnostic.severity.WARN,
+      }
+    end,
+  }),
+}
+
+null_ls.setup({
+  sources = {
+    null_ls.builtins.diagnostics.yamllint,
+    helm_lint,
+  },
+})
+
+EOF
+"for clear differnce between helm .yaml  and ansible .yaml
+lua << EOF
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.yml",
+  callback = function()
+    local lines = vim.api.nvim_buf_get_lines(0, 0, 50, false)
+    for _, line in ipairs(lines) do
+      if line:match("hosts:") or line:match("tasks:") or line:match("roles:") or line:match("gather_facts:") or line:match("ansible_") then
+        vim.bo.filetype = "ansible"
+        return
+      end
+    end
+    vim.bo.filetype = "yaml"
+  end,
+})
+EOF
+
+
 " Настройка для vim-test
 let g:test#strategy = 'neovim'
 
@@ -1975,3 +1997,466 @@ autocmd FileType sql setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 " Настройки для поиска по базе данных с помощью Telescope
 nnoremap <Leader>db :Telescope db<CR> " Команда для поиска в базе данных через Telescope
 
+
+lua << EOF
+require("oil").setup({
+  default_file_explorer = true,
+  delete_to_trash = true,
+  skip_confirm_for_simple_edits = true,
+  prompt_save_on_select_new_entry = true,
+
+  columns = {
+    "icon",
+    "permissions",
+    "size",
+    "mtime",
+  },
+
+  view_options = {
+    show_hidden = true,
+    is_hidden_file = function(name)
+      return vim.startswith(name, ".")
+    end,
+    natural_order = true,
+  },
+
+  float = {
+    padding = 2,
+    max_width = 80,
+    max_height = 20,
+    border = "rounded",
+    win_options = {
+      winblend = 0,
+    },
+  },
+
+})
+EOF
+
+
+lua << EOF
+-- YAML Language Server Configuration (без дополнительных схем)
+--local schemastore = require("schemastore")
+--local schemas = schemastore.yaml.schemas()
+
+-- Выводим схемы
+--print(vim.inspect(schemas))
+local lspconfig = require("lspconfig")
+
+local combined_schemas = {
+  -- Manually adding the Helm Chart schema
+  ["https://json.schemastore.org/helm-chart.json"] = { "charts/**/Chart.yaml" },
+  ["https://json.schemastore.org/helm-values.json"] = { "charts/**/values.yaml" },
+
+  -- Manually adding the Kustomization schema
+  ["https://json.schemastore.org/kustomization.json"] = { "kustomization.yaml", "kustomization.yml" },
+  
+  -- Manually adding the Cilium schema
+  ["https://json.schemastore.org/cilium.json"] = { "cilium.yaml", "cilium.yml" },
+
+  -- Manually adding the Kyverno schema
+  ["https://json.schemastore.org/kyverno.json"] = { "kyverno.yaml", "kyverno.yml" },
+
+  -- Manually adding the GitHub Actions schema
+  ["https://json.schemastore.org/github-workflow.json"] = { ".github/workflows/*.yml", ".github/workflows/*.yaml" },
+
+  ["https://json.schemastore.org/kubernetes.json"] = {"*.yaml"},
+}
+
+lspconfig.yamlls.setup({
+  settings = {
+    yaml = {
+      schemas = combined_schemas,
+      validate = true,
+      hover = true,
+      completion = true,
+    },
+  },
+})
+
+local null_ls = require("null-ls")
+local h = require("null-ls.helpers")
+
+null_ls.setup({
+  sources = {
+    -- Helm lint
+    {
+      name = "helm_lint",
+      method = null_ls.methods.DIAGNOSTICS,
+      filetypes = { "yaml" },
+      generator = h.generator_factory({
+        command = "helm",
+        args = { "lint", "$FILENAME" },
+        format = "line",
+        to_stdin = false,
+        on_output = function(line, params)
+          return {
+            message = line,
+            row = 1,
+            col = 1,
+            source = "helm lint",
+            severity = vim.diagnostic.severity.WARN,
+          }
+        end,
+      }),
+    },
+
+    -- kubeval
+    {
+      name = "kubeval",
+      method = null_ls.methods.DIAGNOSTICS,
+      filetypes = { "yaml" },
+      generator = h.generator_factory({
+        command = "kubeval",
+        args = { "--output", "json", "$FILENAME" },
+        format = "json_raw",
+        to_stdin = false,
+        on_output = function(params, done)
+          local diagnostics = {}
+          for _, msg in ipairs(params.output or {}) do
+            if msg.errors then
+              for _, err in ipairs(msg.errors) do
+                table.insert(diagnostics, {
+                  message = err,
+                  row = 1,
+                  col = 1,
+                  severity = vim.diagnostic.severity.ERROR,
+                  source = "kubeval",
+                })
+              end
+            end
+          end
+          return diagnostics
+        end,
+      }),
+    },
+  },
+})
+
+EOF
+
+
+lua << EOF
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = {
+    "*/templates/*.yaml",
+    "*/templates/*.tpl",
+    "*/charts/**/templates/*.yaml",
+    "*/charts/**/templates/*.tpl",
+    "*/charts/**/Chart.yaml",
+    "*/charts/**/*.yaml",  -- This will match all YAML files inside charts/
+    "*/charts/**/*.tpl",   -- This will match all tpl files inside charts/
+    "*/charts/**/Chart.yaml",
+    "*/charts/**/values.yaml",
+  },
+  callback = function()
+    vim.bo.filetype = "helm"
+  end,
+})
+EOF
+
+lua << EOF
+local null_ls = require("null-ls")
+
+null_ls.setup({
+  sources = {
+    null_ls.builtins.formatting.prettier.with({
+      filetypes = { "helm" },
+      args = { "--parser", "yaml" },
+    }),
+  },
+})
+
+EOF
+
+
+lua << EOF
+require('fzf-lua').setup({
+  winopts = {
+    border = 'rounded',
+    preview = {
+      layout = 'vertical', -- горизонтально: 'horizontal' или 'flex'
+      scrollbar = 'float',
+      delay = 100,
+    },
+  },
+  files = {
+    prompt = '   Files❯ ',
+    git_icons = true,
+    file_icons = true,
+  },
+  grep = {
+    prompt = ' 🔍 Grep❯ ',
+    rg_opts = "--hidden --column --line-number --no-heading --color=always --smart-case -g '!{.git,node_modules}/*'",
+  },
+  git = {
+    commits = {
+      prompt = ' Git commits❯ ',
+      preview = 'git show --color=always --format=fuller --stat {1}',
+    },
+  },
+})
+EOF
+
+
+lua << EOF
+vim.api.nvim_create_augroup("ValidateGitlabCIfiles", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", {
+  callback = function()
+    require("validate-gitlab-ci.validate-gitlab-ci").validate()
+  end,
+  group = "ValidateGitlabCIfiles",
+  desc = "Validate Gitlab CI file on save",
+  pattern = ".gitlab-ci.yml",
+})
+EOF
+
+lua << EOF
+local null_ls = require("null-ls")
+local h = require("null-ls.helpers")
+
+-- Линтер
+local groovy_diagnostics = {
+  name = "npm-groovy-lint",
+  method = null_ls.methods.DIAGNOSTICS,
+  filetypes = { "groovy", "jenkinsfile" },
+  generator = h.generator_factory({
+    command = "npm-groovy-lint",
+    args = {
+      "--ext", "groovy,jenkinsfile",
+      "-c", "/home/mehanic/.config/nvim/lua/groovy",
+      "$FILENAME",
+      "--format", "json",
+    },
+    to_stdin = false,
+    from_stderr = true,
+    format = "json",
+    check_exit_code = function(code)
+      return code == 0 or code == 1
+    end,
+    on_output = function(params)
+      local diagnostics = {}
+      local result = vim.fn.json_decode(params.output)
+
+      if result and type(result) == "table" then
+        for _, issue in ipairs(result) do
+          table.insert(diagnostics, {
+            row = issue.line or 1,
+            col = issue.column or 1,
+            message = issue.message or "Unknown issue",
+            severity = vim.diagnostic.severity[(issue.severity or "error"):upper()] or vim.diagnostic.severity.ERROR,
+          })
+        end
+      end
+
+      return diagnostics
+    end,
+  }),
+}
+
+-- Форматтер (автофикс)
+local groovy_formatter = {
+  name = "npm-groovy-lint-fix",
+  method = null_ls.methods.FORMATTING,
+  filetypes = { "groovy", "jenkinsfile" },
+  generator = {
+    fn = function(params)
+      return {
+        command = "npm-groovy-lint",
+        args = {
+          "--ext", "groovy,jenkinsfile",
+          "-c", "/home/mehanic/.config/nvim/lua/groovy",
+          params.bufname,
+          "--fix",
+        },
+        to_stdin = false,
+      }
+    end,
+  },
+}
+
+-- Подключение
+null_ls.setup({
+  sources = {
+    groovy_diagnostics,
+    groovy_formatter,
+  },
+})
+
+-- Подключение сниппетов для Jenkinsfile
+require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/snippets" })
+
+EOF
+
+lua << EOF
+local lspconfig = require("lspconfig")
+
+lspconfig.groovyls.setup({
+  cmd = {
+    "java",
+    "-jar",
+    "/home/mehanic/.config/nvim/lua/groovy/groovy-language-server-all.jar"
+  },
+  filetypes = { "groovy", "jenkinsfile" },
+  root_dir = lspconfig.util.root_pattern(".git", "settings.gradle", "Jenkinsfile"),
+})
+
+EOF
+
+lua << EOF
+vim.cmd [[
+  augroup FormatOnSave
+    autocmd!
+    autocmd BufWritePre *.groovy,*.jenkinsfile lua vim.lsp.buf.format()
+  augroup END
+]]
+EOF
+
+
+lua << EOF
+local cmp = require("cmp")
+--подтверждала автодополнение только если меню открыто
+--а иначе — просто делала новый абзац
+cmp.setup({
+  mapping = {
+    ["<CR>"] = cmp.mapping(function(fallback)
+      if cmp.visible() and cmp.get_selected_entry() then
+        cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+      else
+        fallback() -- обычный Enter
+      end
+    end, { "i", "s" }),
+  },
+})
+
+EOF
+
+
+lua << EOF
+-- Инициализация плагина kube-utils-nvim
+require("kube-utils-nvim.init").setup {
+  -- Настройка для kubectl
+  kubectl = {
+    command = 'kubectl',  -- Убедись, что kubectl установлен
+    context_display = true,  -- Показывать контексты Kubernetes
+  },
+
+  -- Управление контекстами и namespaces
+  context_and_namespace = {
+    enable = true,  -- Включить возможность переключаться между контекстами и namespaces
+  },
+
+  -- Просмотр CRD (Custom Resource Definitions)
+  crd_viewer = {
+    enable = true,  -- Включить просмотр CRD
+  },
+
+  -- Интеграция с Helm
+  helm = {
+    enable = true,  -- Включить поддержку Helm
+    command = 'helm',  -- Команда Helm
+  },
+
+  -- Просмотр логов Kubernetes
+  log_viewer = {
+    enable = true,  -- Включить просмотр логов
+    format = 'json',  -- Форматирование логов в JSON
+  },
+
+  -- Интеграция с Telescope для выбора контекста и namespaces
+  telescope_integration = {
+    enable = true,  -- Включить интеграцию с Telescope
+  },
+
+  -- Интеграция с LSP для работы с YAML и Helm
+  lsp_integration = {
+    enable = true,  -- Включить LSP для YAML и Helm
+  },
+
+  -- Интеграция с K9s
+  k9s_integration = {
+    enable = true,  -- Включить запуск K9s из Neovim
+  },
+}
+
+require('telescope').setup{
+  defaults = {
+    extensions = {
+      telescope_k8s = {  -- Используем правильное имя расширения
+        context_display = true,  -- Показывать контексты в Telescope
+        namespace_display = true,  -- Показывать namespaces
+        helm_releases_display = true,  -- Показывать релизы Helm
+      },
+    },
+  },
+}
+
+-- Загружаем расширение для Kubernetes
+require('telescope').load_extension('telescope_k8s')  -- Загрузка правильного расширения
+-- This will create the K9s command in Neovim
+vim.cmd('command! K9s :terminal k9s')
+vim.cmd('command! KubeCtl :terminal kubectl')
+vim.cmd('command! Helm :terminal helm')
+-- Команда для просмотра всех CRD
+vim.cmd('command! K8sCRD :terminal kubectl get crds')
+
+-- Команда для просмотра подробной информации о конкретном CRD
+vim.cmd('command! K8sCRDDetails :terminal kubectl describe crd <name_of_crd>')
+vim.cmd('command! K8sOperators :terminal kubectl get operators')
+
+-- Создаем пользовательскую команду "KubectlApplyFromBuffer" для Neovim с использованием vim.cmd
+vim.cmd([[
+  command! KubectlApplyFromBuffer execute '!kubectl apply -f ' . expand('%:p')
+]])
+
+
+
+EOF
+
+lua << EOF
+require('kubectl').setup({
+  log_level = vim.log.levels.INFO,
+  auto_refresh = {
+    enabled = true,
+    interval = 300, -- milliseconds
+  },
+  diff = {
+    bin = "kubediff" -- or any other binary
+  },
+  kubectl_cmd = { cmd = "kubectl", env = {}, args = {}, persist_context_change = false },
+  terminal_cmd = nil, -- Exec will launch in a terminal if set, i.e. "ghostty -e"
+  namespace = "All",
+  namespace_fallback = {}, -- If you have limited access, you can list all the namespaces here
+  hints = true,
+  context = true,
+  heartbeat = true,
+  lineage = {
+    enabled = false, -- This feature is in beta at the moment
+  },
+  logs = {
+    prefix = true,
+    timestamps = true,
+    since = "5m"
+  },
+  alias = {
+    apply_on_select_from_history = true,
+    max_history = 5,
+  },
+  filter = {
+    apply_on_select_from_history = true,
+    max_history = 10,
+  },
+  float_size = {
+    width = 0.9,
+    height = 0.8,
+    col = 10,
+    row = 5,
+  },
+  obj_fresh = 5, -- highlight if creation newer than number (in minutes)
+  skew = {
+    enabled = true,
+    log_level = vim.log.levels.INFO,
+  }
+})
+
+EOF
