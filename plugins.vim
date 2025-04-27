@@ -7,124 +7,119 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
-
-    " Better Syntax Support
-        Plug 'sheerun/vim-polyglot'
-				Plug 'scrooloose/syntastic'
-				Plug 'davidhalter/jedi-vim'
-				Plug 'bling/vim-airline'
-"				Plug 'vim-airline/vim-airdevelop/misc/line-themes'
-				Plug 'gennaro-tedesco/nvim-jqx'
-				Plug 'tpope/vim-surround'
-				Plug 'mattn/emmet-vim'
-				Plug 'honza/vim-snippets'
-				Plug 'brooth/far.vim'
-				Plug 'hashivim/vim-terraform'
-        Plug 'vim-syntastic/syntastic'
-				Plug 'akinsho/git-conflict.nvim'
-				Plug 'ardanlabs/ardango.nvim'
-				Plug 'koenverburg/peepsight.nvim'
-				Plug 'cuducos/yaml.nvim'
-        Plug 'fisadev/fisa-vim-colorscheme'
-        Plug 'mhinz/vim-signify'
-				Plug 'preservim/nerdtree'
-        Plug 'nvim-treesitter/nvim-treesitter'
-
-			  Plug 'ray-x/go.nvim'
-        " Установка bufferline с помощью vim-plug
-        Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
-
-			  " Плагины для автокомплита и LSP
-        Plug 'neovim/nvim-lspconfig'
-        Plug 'hrsh7th/nvim-cmp'
-        Plug 'hrsh7th/cmp-nvim-lsp'
-        Plug 'hrsh7th/cmp-buffer'
-        Plug 'hrsh7th/cmp-path'
-        Plug 'hrsh7th/cmp-cmdline'
-        Plug 'hrsh7th/cmp-nvim-lua'
-        Plug 'L3MON4D3/LuaSnip'
-        Plug 'saadparwaiz1/cmp_luasnip'
-        Plug 'rafamadriz/friendly-snippets'
-        Plug 'neoclide/coc.nvim', {'branch': 'release'}
-        Plug 'neoclide/coc-snippets'
-        Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
-
+       " Better Syntax Support
+       Plug 'sheerun/vim-polyglot'
+			 Plug 'scrooloose/syntastic'
+			 Plug 'davidhalter/jedi-vim'
+			 Plug 'bling/vim-airline'
+       "Plug 'vim-airline/vim-airdevelop/misc/line-themes'
+			 Plug 'gennaro-tedesco/nvim-jqx'
+			 Plug 'tpope/vim-surround'
+			 Plug 'mattn/emmet-vim'
+			 Plug 'honza/vim-snippets'
+			 Plug 'brooth/far.vim'
+			 Plug 'hashivim/vim-terraform'
+       Plug 'vim-syntastic/syntastic'
+			 Plug 'akinsho/git-conflict.nvim'
+			 Plug 'ardanlabs/ardango.nvim'
+			 Plug 'koenverburg/peepsight.nvim'
+			 Plug 'cuducos/yaml.nvim'
+       Plug 'fisadev/fisa-vim-colorscheme'
+       Plug 'mhinz/vim-signify'
+			 Plug 'preservim/nerdtree'
+       Plug 'nvim-treesitter/nvim-treesitter'
+			 Plug 'ray-x/go.nvim'
+       " Установка bufferline с помощью vim-plug
+       Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
+       " Плагины для автокомплита и LSP
+       Plug 'neovim/nvim-lspconfig'
+       Plug 'hrsh7th/nvim-cmp'
+       Plug 'hrsh7th/cmp-nvim-lsp'
+       Plug 'hrsh7th/cmp-buffer'
+       Plug 'hrsh7th/cmp-path'
+       Plug 'hrsh7th/cmp-cmdline'
+       Plug 'hrsh7th/cmp-nvim-lua'
+       Plug 'L3MON4D3/LuaSnip'
+       Plug 'saadparwaiz1/cmp_luasnip'
+       Plug 'rafamadriz/friendly-snippets'
+       Plug 'neoclide/coc.nvim', {'branch': 'release'}
+       Plug 'neoclide/coc-snippets'
+       Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
         "for fzf
-        Plug 'nvim-lua/plenary.nvim'
-        Plug 'nvim-lua/popup.nvim'
-        Plug 'junegunn/fzf', { 'do': './install --all' }
+       Plug 'nvim-lua/plenary.nvim'
+       Plug 'nvim-lua/popup.nvim'
+       Plug 'junegunn/fzf', { 'do': './install --all' }
          " Use with SSH-based file search 
-        Plug 'junegunn/fzf.vim'
-        Plug 'nvim-telescope/telescope.nvim'
-        Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-        Plug 'venc0r/telescope-k8s.nvim'  " Расширение для Kubernetes
-        Plug 'kyazdani42/nvim-web-devicons'
+       Plug 'junegunn/fzf.vim'
+       Plug 'nvim-telescope/telescope.nvim'
+       Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+       Plug 'venc0r/telescope-k8s.nvim'  " Розширення для Kubernetes
+       Plug 'kyazdani42/nvim-web-devicons'
 
-        Plug 'ryanoasis/vim-devicons'
-        Plug 'nvim-tree/nvim-web-devicons'
-        Plug 'windwp/nvim-autopairs'
+       Plug 'ryanoasis/vim-devicons'
+       Plug 'nvim-tree/nvim-web-devicons'
+       Plug 'windwp/nvim-autopairs'
         "Plug 'nvimdev/lspsaga.nvim'
-        Plug 'nvim-neo-tree/neo-tree.nvim', { 'branch': 'v2.x' }
-        Plug 'MunifTanjim/nui.nvim'
+       Plug 'nvim-neo-tree/neo-tree.nvim', { 'branch': 'v2.x' }
+       Plug 'MunifTanjim/nui.nvim'
 
-        Plug 'Ramilito/kubectl.nvim'
-        Plug 'mfussenegger/nvim-dap'
-        Plug 'rcarriga/nvim-notify'
+       Plug 'Ramilito/kubectl.nvim'
+       Plug 'mfussenegger/nvim-dap'
+       Plug 'rcarriga/nvim-notify'
 
-        Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+       Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 
         " Markdown syntax and folding
-        Plug 'preservim/vim-markdown'
+       Plug 'preservim/vim-markdown'
         " Markdown preview in browser
-        Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install' }
+       Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install' }
         " Table mode for markdown tables
-        Plug 'dhruvasagar/vim-table-mode'
+       Plug 'dhruvasagar/vim-table-mode'
         " Optional: improved UI (for checkboxes etc.)
-        Plug 'plasticboy/vim-markdown'
-        Plug 'akinsho/toggleterm.nvim'
+       Plug 'plasticboy/vim-markdown'
+       Plug 'akinsho/toggleterm.nvim'
 
         " Ansible and YAML Support
-        Plug 'pearofducks/ansible-vim'
-        Plug 'stephpy/vim-yaml'
-        Plug 'petertriho/nvim-scrollbar'
+       Plug 'pearofducks/ansible-vim'
+       Plug 'stephpy/vim-yaml'
+       Plug 'petertriho/nvim-scrollbar'
 
-        Plug 'lukas-reineke/indent-blankline.nvim'
+       Plug 'lukas-reineke/indent-blankline.nvim'
         "rest 
-        Plug 'rest-nvim/rest.nvim'
-        Plug 'j-hui/fidget.nvim'
+       Plug 'rest-nvim/rest.nvim'
+       Plug 'j-hui/fidget.nvim'
 
-        Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-        Plug 'tpope/vim-dadbod'
-        Plug 'kristijanhusak/vim-dadbod-ui'
-        Plug 'kristijanhusak/vim-dadbod-completion'
-        Plug 'stevearc/conform.nvim'
+       Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+       Plug 'tpope/vim-dadbod'
+       Plug 'kristijanhusak/vim-dadbod-ui'
+       Plug 'kristijanhusak/vim-dadbod-completion'
+       Plug 'stevearc/conform.nvim'
          " Git over SSH-based
-        Plug 'tpope/vim-fugitive'               
+       Plug 'tpope/vim-fugitive'               
         " For searching on remote systems with ripgrep support.
-        Plug 'jremmen/vim-ripgrep'  " For searching on remote systems with ripgrep support.
+       Plug 'jremmen/vim-ripgrep'  " For searching on remote systems with ripgrep support.
 
-       " Mount remote files over SSH
-        Plug 'DanielWeidinger/nvim-sshfs'
+        " Mount remote files over SSH
+       Plug 'DanielWeidinger/nvim-sshfs'
          " Git over SSH-based
-        Plug 'tpope/vim-fugitive'               
+       Plug 'tpope/vim-fugitive'               
         " For searching on remote systems with ripgrep support.
-        Plug 'jremmen/vim-ripgrep'  " For searching on remote systems with ripgrep support.
+       Plug 'jremmen/vim-ripgrep'  " For searching on remote systems with ripgrep support.
 				 " Sync files  over rsync and OpenSSH.
-        Plug 'coffebar/transfer.nvim'
-        Plug 'shellRaining/hlchunk.nvim'
-        Plug 'edolphin-ydf/goimpl.nvim' ":GoImpl  И выбираешь: Тип: MyBot , Интерфейс: mypkg.Greeter ,Плагин автоматически вставит в буфер нужные методы:
+       Plug 'coffebar/transfer.nvim'
+       Plug 'shellRaining/hlchunk.nvim'
+       Plug 'edolphin-ydf/goimpl.nvim' ":GoImpl  И выбираешь: Тип: MyBot , Интерфейс: mypkg.Greeter ,Плагин автоматически вставит в буфер нужные методы:
         " Установка плагина gopher.nvim
-        Plug 'olexsmir/gopher.nvim'
-        Plug 'maxandron/goplements.nvim'
-        Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }  "Ui 
-        Plug 'rcarriga/nvim-dap-ui'  "Ui 
-        Plug 'someone-stole-my-name/yaml-companion.nvim'
-        Plug 'beargruug/skipper.nvim'
-        Plug 'chomosuke/typst-preview.nvim', {'tag': 'v1.*'}
+       Plug 'olexsmir/gopher.nvim'
+       Plug 'maxandron/goplements.nvim'
+       Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }  "Ui 
+       Plug 'rcarriga/nvim-dap-ui'  "Ui 
+       Plug 'someone-stole-my-name/yaml-companion.nvim'
+       Plug 'beargruug/skipper.nvim'
+       Plug 'chomosuke/typst-preview.nvim', {'tag': 'v1.*'}
         " for mini.snippets
-        Plug 'echasnovski/mini.snippets'
-        Plug 'abeldekat/cmp-mini-snippets'
+       Plug 'echasnovski/mini.snippets'
+       Plug 'abeldekat/cmp-mini-snippets'
 
         " for ultisnips
        Plug 'SirVer/ultisnips'
