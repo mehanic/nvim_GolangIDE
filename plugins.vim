@@ -20,17 +20,17 @@ call plug#begin('~/.config/nvim/autoload/plugged')
        Plug 'brooth/far.vim'
        Plug 'hashivim/vim-terraform'
        Plug 'vim-syntastic/syntastic'
-    Plug 'akinsho/git-conflict.nvim'
-     Plug 'ardanlabs/ardango.nvim'
-     Plug 'koenverburg/peepsight.nvim'
-     Plug 'cuducos/yaml.nvim'
-     Plug 'fisadev/fisa-vim-colorscheme'
-     Plug 'mhinz/vim-signify'
-     Plug 'preservim/nerdtree'
-     Plug 'nvim-treesitter/nvim-treesitter'
-     Plug 'ray-x/go.nvim'
-     " Установка bufferline с помощью vim-plug
-     Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
+       Plug 'akinsho/git-conflict.nvim'
+       Plug 'ardanlabs/ardango.nvim'
+       Plug 'koenverburg/peepsight.nvim'
+       Plug 'cuducos/yaml.nvim'
+       Plug 'fisadev/fisa-vim-colorscheme'
+       Plug 'mhinz/vim-signify'
+       Plug 'preservim/nerdtree'
+       Plug 'nvim-treesitter/nvim-treesitter'
+       Plug 'ray-x/go.nvim'
+       " Установка bufferline с помощью vim-plug
+       Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
        " Плагины для автокомплита и LSP
        Plug 'neovim/nvim-lspconfig'
        Plug 'hrsh7th/nvim-cmp'
@@ -69,11 +69,11 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
        Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 
-        " Markdown syntax and folding
+       " Markdown syntax and folding
        Plug 'preservim/vim-markdown'
-        " Markdown preview in browser
+       " Markdown preview in browser
        Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install' }
-        " Table mode for markdown tables
+       " Table mode for markdown tables
        Plug 'dhruvasagar/vim-table-mode'
         " Optional: improved UI (for checkboxes etc.)
        Plug 'plasticboy/vim-markdown'
@@ -145,27 +145,26 @@ call plug#begin('~/.config/nvim/autoload/plugged')
        Plug 'stevearc/aerial.nvim'
         " test generation
        Plug 'cweill/gotests'
-        Plug 'nvim-neotest/neotest-go'
-        "  Go Playground
-        Plug 'tpope/vim-dispatch' "  vim-dispatch for send Go-кода to Go Playground
-        "Allows convenient display of all available keys and their combinations..
-        Plug 'folke/which-key.nvim'
-        "Highlights important comments, such as TODO, FIXME, and others.
-        Plug 'folke/todo-comments.nvim'
-        Plug 'natecraddock/workspaces.nvim'
-        Plug 'akinsho/toggleterm.nvim'
-         "Для асинхронного билда:
-        Plug 'tpope/vim-dispatch'
-         "Еще один вариант для асинхронных команд
-         Plug 'kassio/neoterm'
-          " Для структуры файла (Code Outline)
-
-         Plug 'stevearc/aerial.nvim'                " Для структуры файла (Code Outline)
-         Plug 'SmiteshP/nvim-navic'                 " Для breadcrumbs/навигации
-         Plug 'glepnir/lspsaga.nvim'                " Для Hover Docs и Signature Help видалення конфыгу через відзеркалення тексту
-         Plug 'nvim-lualine/lualine.nvim'
-         Plug 'arcticicestudio/nord-vim'  " Устанавливаем тему nord
-         Plug 'liuchengxu/vista.vim'
+       Plug 'nvim-neotest/neotest-go'
+       "  Go Playground
+       Plug 'tpope/vim-dispatch' "  vim-dispatch for send Go-кода to Go Playground
+       "Allows convenient display of all available keys and their combinations..
+       Plug 'folke/which-key.nvim'
+       "Highlights important comments, such as TODO, FIXME, and others.
+       Plug 'folke/todo-comments.nvim'
+       Plug 'natecraddock/workspaces.nvim'
+       Plug 'akinsho/toggleterm.nvim'
+       "Для асинхронного билда:
+       Plug 'tpope/vim-dispatch'
+         "варіант для асинхронних команд
+       Plug 'kassio/neoterm'
+          " Для структури файла (Code Outline)
+       Plug 'stevearc/aerial.nvim'
+       Plug 'SmiteshP/nvim-navic'                 " Для breadcrumbs/навигации
+       Plug 'glepnir/lspsaga.nvim'                " Для Hover Docs и Signature Help видалення конфыгу через відзеркалення тексту
+       Plug 'nvim-lualine/lualine.nvim'
+       Plug 'arcticicestudio/nord-vim'  " Устанавливаем тему nord
+       Plug 'liuchengxu/vista.vim'
          " must have for diffview
          Plug 'nvim-lua/plenary.nvim'
          Plug 'sindrets/diffview.nvim'
