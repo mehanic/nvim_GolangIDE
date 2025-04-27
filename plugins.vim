@@ -9,9 +9,9 @@ endif
 call plug#begin('~/.config/nvim/autoload/plugged')
        " Better Syntax Support
        Plug 'sheerun/vim-polyglot'
-			 Plug 'scrooloose/syntastic'
-			 Plug 'davidhalter/jedi-vim'
-			 Plug 'bling/vim-airline'
+     Plug 'scrooloose/syntastic'
+     Plug 'davidhalter/jedi-vim'
+     Plug 'bling/vim-airline'
        "Plug 'vim-airline/vim-airdevelop/misc/line-themes'
 			 Plug 'gennaro-tedesco/nvim-jqx'
 			 Plug 'tpope/vim-surround'
