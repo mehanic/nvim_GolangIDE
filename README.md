@@ -22,6 +22,8 @@ Seamless integration with Codewars, HackerRank, and LeetCode for deepening knowl
 
 Optimized for use with the i3 Tiling Window Manager to maximize productivity and streamline the development environment.
 
+The idea of ​​creating it emerged based on making your own custom version that would be extremely easy, adaptable to changes at will regarding situations and technologies, and provide something new in open source.
+
 # -----
 
 
@@ -44,6 +46,8 @@ Optimized for use with the i3 Tiling Window Manager to maximize productivity and
 Підготовлено інтеграцію з платформами Codewars, HackerRank та LeetCode — для поглибленого вивчення алгоритмів і структур даних.
 
 Конфігурація оптимізована для роботи в середовищі з використанням i3 Tiling Window Manager для максимальної продуктивності та зручності.
+
+ідея створення   появилася на основі  зробити свій кастомний варіант який був би надзвичайно легким , піддавався змінам по бажанню відносно ситуацій та технологій , та надати щось нове в опенсорс. 
 
 # ---
 
@@ -162,6 +166,10 @@ require("plugin_config.gh")
 ![helm charts in two terminals with configuration i3    ](screenshot_29.png)
 
 ![golang templates   ](screenshot_30.png)
+
+![combine I3 with coding, K9s and search file as example ](screenshot_31.png)
+
+![combine I3 with git commits and K9s  as example ](screenshot_30.png)
 
 
 
