@@ -7,202 +7,205 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
-       " Better Syntax Support
-       Plug 'sheerun/vim-polyglot'
-       Plug 'scrooloose/syntastic'
-       Plug 'davidhalter/jedi-vim'
-       Plug 'bling/vim-airline'
-       "Plug 'vim-airline/vim-airdevelop/misc/line-themes'
-       Plug 'gennaro-tedesco/nvim-jqx'
-       Plug 'tpope/vim-surround'
-       Plug 'mattn/emmet-vim'
-       Plug 'honza/vim-snippets'
-       Plug 'brooth/far.vim'
-       Plug 'hashivim/vim-terraform'
-       Plug 'vim-syntastic/syntastic'
-       Plug 'akinsho/git-conflict.nvim'
-       Plug 'ardanlabs/ardango.nvim'
-       Plug 'koenverburg/peepsight.nvim'
-       Plug 'cuducos/yaml.nvim'
-       Plug 'fisadev/fisa-vim-colorscheme'
-       Plug 'mhinz/vim-signify'
-       Plug 'preservim/nerdtree'
-       Plug 'nvim-treesitter/nvim-treesitter'
-       Plug 'ray-x/go.nvim'
-       " Установка bufferline с помощью vim-plug
-       Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
-       " Плагины для автокомплита и LSP
-       Plug 'neovim/nvim-lspconfig'
-       Plug 'hrsh7th/nvim-cmp'
-       Plug 'hrsh7th/cmp-nvim-lsp'
-       Plug 'hrsh7th/cmp-buffer'
-       Plug 'hrsh7th/cmp-path'
-       Plug 'hrsh7th/cmp-cmdline'
-       Plug 'hrsh7th/cmp-nvim-lua'
-       Plug 'L3MON4D3/LuaSnip'
-       Plug 'saadparwaiz1/cmp_luasnip'
-       Plug 'rafamadriz/friendly-snippets'
-       Plug 'neoclide/coc.nvim', {'branch': 'release'}
-       Plug 'neoclide/coc-snippets'
-       Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-        "for fzf
-       Plug 'nvim-lua/plenary.nvim'
-       Plug 'nvim-lua/popup.nvim'
-       Plug 'junegunn/fzf', { 'do': './install --all' }
-         " Use with SSH-based file search 
-       Plug 'junegunn/fzf.vim'
-       Plug 'nvim-telescope/telescope.nvim'
-       Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-       Plug 'venc0r/telescope-k8s.nvim'  " Розширення для Kubernetes
-       Plug 'kyazdani42/nvim-web-devicons'
 
-       Plug 'ryanoasis/vim-devicons'
-       Plug 'nvim-tree/nvim-web-devicons'
-       Plug 'windwp/nvim-autopairs'
-        "Plug 'nvimdev/lspsaga.nvim'
-       Plug 'nvim-neo-tree/neo-tree.nvim', { 'branch': 'v2.x' }
-       Plug 'MunifTanjim/nui.nvim'
+    " Better Syntax Support
+Plug 'sheerun/vim-polyglot'
+Plug 'scrooloose/syntastic'
+Plug 'davidhalter/jedi-vim'
+Plug 'bling/vim-airline'
+"Plug 'vim-airline/vim-airdevelop/misc/line-themes'
+Plug 'gennaro-tedesco/nvim-jqx'
+Plug 'tpope/vim-surround'
+Plug 'mattn/emmet-vim'
+Plug 'honza/vim-snippets'
+Plug 'brooth/far.vim'
+Plug 'hashivim/vim-terraform'
+Plug 'vim-syntastic/syntastic'
+Plug 'akinsho/git-conflict.nvim'
+Plug 'ardanlabs/ardango.nvim'
+Plug 'koenverburg/peepsight.nvim'
+Plug 'cuducos/yaml.nvim'
+Plug 'fisadev/fisa-vim-colorscheme'
+Plug 'mhinz/vim-signify'
+Plug 'preservim/nerdtree'
+Plug 'nvim-treesitter/nvim-treesitter'
 
-       Plug 'Ramilito/kubectl.nvim'
-       Plug 'mfussenegger/nvim-dap'
-       Plug 'rcarriga/nvim-notify'
+Plug 'ray-x/go.nvim'
+" Установка bufferline с помощью vim-plug
+Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
 
-       Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+" Плагины для автокомплита и LSP
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/cmp-nvim-lua'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'rafamadriz/friendly-snippets'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-snippets'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
-       " Markdown syntax and folding
-       Plug 'preservim/vim-markdown'
-       " Markdown preview in browser
-       Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install' }
-       " Table mode for markdown tables
-       Plug 'dhruvasagar/vim-table-mode'
-        " Optional: improved UI (for checkboxes etc.)
-       Plug 'plasticboy/vim-markdown'
-       Plug 'akinsho/toggleterm.nvim'
+"for fzf
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'junegunn/fzf', { 'do': './install --all' }
+" Use with SSH-based file search 
+Plug 'junegunn/fzf.vim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'venc0r/telescope-k8s.nvim'  " Расширение для Kubernetes
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'ryanoasis/vim-devicons'
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'windwp/nvim-autopairs'
+"Plug 'nvimdev/lspsaga.nvim'
+Plug 'nvim-neo-tree/neo-tree.nvim', { 'branch': 'v2.x' }
+Plug 'MunifTanjim/nui.nvim'
+Plug 'Ramilito/kubectl.nvim'
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-notify'
 
-        " Ansible and YAML Support
-       Plug 'pearofducks/ansible-vim'
-       Plug 'stephpy/vim-yaml'
-       Plug 'petertriho/nvim-scrollbar'
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 
-       Plug 'lukas-reineke/indent-blankline.nvim'
-        "rest 
-       Plug 'rest-nvim/rest.nvim'
-       Plug 'j-hui/fidget.nvim'
+" Markdown syntax and folding
+Plug 'preservim/vim-markdown'
+" Markdown preview in browser
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install' }
+" Table mode for markdown tables
+Plug 'dhruvasagar/vim-table-mode'
+" Optional: improved UI (for checkboxes etc.)
+Plug 'plasticboy/vim-markdown'
+Plug 'akinsho/toggleterm.nvim'
 
-       Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-       Plug 'tpope/vim-dadbod'
-       Plug 'kristijanhusak/vim-dadbod-ui'
-       Plug 'kristijanhusak/vim-dadbod-completion'
-       Plug 'stevearc/conform.nvim'
-         " Git over SSH-based
-       Plug 'tpope/vim-fugitive'               
-        " For searching on remote systems with ripgrep support.
-       Plug 'jremmen/vim-ripgrep'  " For searching on remote systems with ripgrep support.
+" Ansible and YAML Support
+Plug 'pearofducks/ansible-vim'
+Plug 'stephpy/vim-yaml'
+Plug 'petertriho/nvim-scrollbar'
+Plug 'lukas-reineke/indent-blankline.nvim'
+"rest 
+Plug 'rest-nvim/rest.nvim'
+Plug 'j-hui/fidget.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
+Plug 'kristijanhusak/vim-dadbod-completion'
+Plug 'stevearc/conform.nvim'
+ " Git over SSH-based
+Plug 'tpope/vim-fugitive'               
+" For searching on remote systems with ripgrep support.
+Plug 'jremmen/vim-ripgrep'  " For searching on remote systems with ripgrep support.
+" Mount remote files over SSH
+Plug 'DanielWeidinger/nvim-sshfs'
+" Git over SSH-based
+Plug 'tpope/vim-fugitive'               
+" For searching on remote systems with ripgrep support.
+Plug 'jremmen/vim-ripgrep'  " For searching on remote systems with ripgrep support.
+" Sync files  over rsync and OpenSSH.
+Plug 'coffebar/transfer.nvim'
+Plug 'shellRaining/hlchunk.nvim'
+Plug 'edolphin-ydf/goimpl.nvim' ":GoImpl  И выбираешь: Тип: MyBot , Интерфейс: mypkg.Greeter ,Плагин автоматически вставит в буфер нужные методы:
+" Установка плагина gopher.nvim
+Plug 'olexsmir/gopher.nvim'
+Plug 'maxandron/goplements.nvim'
+Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }  "Ui 
+Plug 'rcarriga/nvim-dap-ui'  "Ui 
+Plug 'someone-stole-my-name/yaml-companion.nvim'
+Plug 'beargruug/skipper.nvim'
+Plug 'chomosuke/typst-preview.nvim', {'tag': 'v1.*'}
+" Для использования с mini.snippets
+Plug 'echasnovski/mini.snippets'
+Plug 'abeldekat/cmp-mini-snippets'
 
-        " Mount remote files over SSH
-       Plug 'DanielWeidinger/nvim-sshfs'
-         " Git over SSH-based
-       Plug 'tpope/vim-fugitive'               
-        " For searching on remote systems with ripgrep support.
-       Plug 'jremmen/vim-ripgrep'  " For searching on remote systems with ripgrep support.
-				 " Sync files  over rsync and OpenSSH.
-       Plug 'coffebar/transfer.nvim'
-       Plug 'shellRaining/hlchunk.nvim'
-       Plug 'edolphin-ydf/goimpl.nvim' ":GoImpl  И выбираешь: Тип: MyBot , Интерфейс: mypkg.Greeter ,Плагин автоматически вставит в буфер нужные методы:
-        " Установка плагина gopher.nvim
-       Plug 'olexsmir/gopher.nvim'
-       Plug 'maxandron/goplements.nvim'
-       Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }  "Ui 
-       Plug 'rcarriga/nvim-dap-ui'  "Ui 
-       Plug 'someone-stole-my-name/yaml-companion.nvim'
-       Plug 'beargruug/skipper.nvim'
-       Plug 'chomosuke/typst-preview.nvim', {'tag': 'v1.*'}
-        " for mini.snippets
-       Plug 'echasnovski/mini.snippets'
-       Plug 'abeldekat/cmp-mini-snippets'
+" Для использования с ultisnips
+Plug 'SirVer/ultisnips'
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 
-        " for ultisnips
-       Plug 'SirVer/ultisnips'
-       Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+" Для использования с snippy
+Plug 'dcampos/nvim-snippy'
+Plug 'dcampos/cmp-snippy'
+Plug 'leoluz/nvim-dap-go'
+Plug 'nvim-neotest/nvim-nio'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'kndndrj/nvim-dbee'
+Plug 'nvim-treesitter/nvim-treesitter-context'
+Plug 'chrisbra/csv.vim'
+Plug 'crusj/structrue-go.nvim'
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'kevinhwang91/nvim-hlslens'
+Plug 'nvimtools/none-ls.nvim'
+" Плагины для тестирования
+Plug 'vim-test/vim-test'
+Plug 'nvim-neotest/neotest'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'stevearc/aerial.nvim'
+" Генерация тестов
+Plug 'cweill/gotests'
+Plug 'nvim-neotest/neotest-go'
+" Интеграция с Go Playground
+Plug 'tpope/vim-dispatch' " Используем vim-dispatch для отправки Go-кода в Go Playground
+"позволяет удобно отображать все доступные клавиши и их комбинации.
+Plug 'folke/which-key.nvim'
+"выделяет важные комментарии, такие как TODO, FIXME и другие.
+Plug 'folke/todo-comments.nvim'
+Plug 'natecraddock/workspaces.nvim'
+Plug 'akinsho/toggleterm.nvim'
+"Для асинхронного билда:
+Plug 'tpope/vim-dispatch'
+"Еще один вариант для асинхронных команд
+Plug 'kassio/neoterm'
+" Для структуры файла (Code Outline)
+Plug 'stevearc/aerial.nvim'                " Для структуры файла (Code Outline)
+Plug 'SmiteshP/nvim-navic'                 " Для breadcrumbs/навигации
+Plug 'glepnir/lspsaga.nvim'                " Для Hover Docs и Signature Help видалення конфыгу через відзеркалення тексту
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'arcticicestudio/nord-vim'  " Устанавливаем тему nord
+Plug 'liuchengxu/vista.vim'
+" обязательно для diffview
+Plug 'nvim-lua/plenary.nvim'
+Plug 'sindrets/diffview.nvim'
+" Плагин для работы с SQL базами данных
+Plug 'tpope/vim-dadbod'
+"UI для работы с vim-dadbod-ui 
+Plug 'kristijanhusak/vim-dadbod-ui'
+Plug 'golang/vscode-go'
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'windwp/nvim-ts-autotag'
+Plug 'ldelossa/litee.nvim'
+Plug 'ldelossa/litee-calltree.nvim'
+Plug 'folke/neodev.nvim'
+"Plug 'vidocqh/data-viewer.nvim'
+Plug 'sindrets/gitsigns.nvim'
+Plug 'ldelossa/litee.nvim'
+Plug 'ldelossa/litee-calltree.nvim'
+Plug 'lewis6991/gitsigns.nvim'
+" Визуализация дерева
+Plug 'ldelossa/gh.nvim'
+Plug 'ldelossa/gh.nvim'
+Plug 'gennaro-tedesco/nvim-jqx'
+"edit your filesystem like a buffer
+Plug 'stevearc/oil.nvim'
+Plug 'towolf/vim-helm'
+Plug 'cespare/vim-toml'
+Plug 'ibhagwan/fzf-lua'
+Plug 'sbulav/validate-gitlab-ci.nvim'
+Plug 'b0o/schemastore.nvim'
+Plug 'joshzcold/cmp-jenkinsfile'
+Plug 'ckipp01/nvim-jenkinsfile-linter'
+Plug 'hashivim/vim-terraform'
+" Plug 'Saghen/kubectl.nvim'
+Plug 'edwardtheharris/kube-utils-nvim'
+Plug 'Ramilito/kubectl.nvim'
+Plug 'Bekaboo/dropbar.nvim'
 
-       " for snippy
-       Plug 'dcampos/nvim-snippy'
-       Plug 'dcampos/cmp-snippy'
-       Plug 'leoluz/nvim-dap-go'
-       Plug 'nvim-neotest/nvim-nio'
-       Plug 'rcarriga/nvim-dap-ui'
-       Plug 'kndndrj/nvim-dbee'
-       Plug 'nvim-treesitter/nvim-treesitter-context'
-       Plug 'chrisbra/csv.vim'
-       Plug 'crusj/structrue-go.nvim'
-       Plug 'lewis6991/gitsigns.nvim'
-       Plug 'kevinhwang91/nvim-hlslens'
-       Plug 'nvimtools/none-ls.nvim'
-       " plagins for test code
-       Plug 'vim-test/vim-test'
-       Plug 'nvim-neotest/neotest'
-       Plug 'nvim-telescope/telescope.nvim'
-       Plug 'stevearc/aerial.nvim'
-        " test generation
-       Plug 'cweill/gotests'
-       Plug 'nvim-neotest/neotest-go'
-       "  Go Playground
-       Plug 'tpope/vim-dispatch' "  vim-dispatch for send Go-кода to Go Playground
-       "Allows convenient display of all available keys and their combinations..
-       Plug 'folke/which-key.nvim'
-       "Highlights important comments, such as TODO, FIXME, and others.
-       Plug 'folke/todo-comments.nvim'
-       Plug 'natecraddock/workspaces.nvim'
-       Plug 'akinsho/toggleterm.nvim'
-       "Для асинхронного билда:
-       Plug 'tpope/vim-dispatch'
-         "варіант для асинхронних команд
-       Plug 'kassio/neoterm'
-          " Для структури файла (Code Outline)
-       Plug 'stevearc/aerial.nvim'
-       Plug 'SmiteshP/nvim-navic'                 " Для breadcrumbs/навигации
-       Plug 'glepnir/lspsaga.nvim'                " Для Hover Docs и Signature Help видалення конфыгу через відзеркалення тексту
-       Plug 'nvim-lualine/lualine.nvim'
-       Plug 'arcticicestudio/nord-vim'  " Устанавливаем тему nord
-       Plug 'liuchengxu/vista.vim'
-         " must have for diffview
-         Plug 'nvim-lua/plenary.nvim'
-         Plug 'sindrets/diffview.nvim'
-         " for work with  SQL databases
-         Plug 'tpope/vim-dadbod'
-         "UI для работы с vim-dadbod-ui 
-         Plug 'kristijanhusak/vim-dadbod-ui'
-         Plug 'golang/vscode-go'
-         Plug 'williamboman/mason.nvim'
-         Plug 'williamboman/mason-lspconfig.nvim'
-         Plug 'windwp/nvim-ts-autotag'
-         Plug 'ldelossa/litee.nvim'
-         Plug 'ldelossa/litee-calltree.nvim'
-         Plug 'folke/neodev.nvim'
-         "Plug 'vidocqh/data-viewer.nvim'
-         Plug 'sindrets/gitsigns.nvim'
-         Plug 'ldelossa/litee.nvim'
-         Plug 'ldelossa/litee-calltree.nvim'
-         Plug 'lewis6991/gitsigns.nvim'
-          " Визуализация дерева
-
-         Plug 'ldelossa/gh.nvim'
-         Plug 'ldelossa/gh.nvim'
-         Plug 'gennaro-tedesco/nvim-jqx'
-         "edit your filesystem like a buffer
-         Plug 'stevearc/oil.nvim'
-         Plug 'towolf/vim-helm'
-         Plug 'cespare/vim-toml'
-         Plug 'ibhagwan/fzf-lua'
-         Plug 'sbulav/validate-gitlab-ci.nvim'
-         Plug 'b0o/schemastore.nvim'
-         Plug 'joshzcold/cmp-jenkinsfile'
-         Plug 'ckipp01/nvim-jenkinsfile-linter'
-         Plug 'hashivim/vim-terraform'
-        " Plug 'Saghen/kubectl.nvim'
-         Plug 'edwardtheharris/kube-utils-nvim'
-         Plug 'Ramilito/kubectl.nvim'
-
+" Встановлення плагіна для автоматичного форматування через black
+Plug 'psf/black', { 'branch': 'stable' }
+         " Встановлення flake8 для аналізу коду, Плагін для аналізу помилок
+         "Plug 'dense-analysis/ale'
          "posibility to work with tekst
     "     Plug 'andymass/vim-matchup'
         " Source additional plugin configuration file  ---- not work
@@ -223,16 +226,33 @@ highlight CommandLine guibg=black guifg=white
 highlight Pmenu guibg=black guifg=white  " Menu background and foreground
 highlight PmenuSel guibg=blue guifg=white  " Selected item in menu
 
-"change of the default colorscheme
 
 let mapleader = ";"
 set mouse=a
 set filetype=helm
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+" Отключаем использование временных меток Syntastic
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_show_signs = 0
+let g:syntastic_quiet = 1
+
+" Отключаем автоматическое создание списка локаций
+let g:syntastic_always_populate_loc_list = 0
+
+" Проверка при открытии файла
 let g:syntastic_check_on_open = 1
+" Отключаем проверку при сохранении
 let g:syntastic_check_on_wq = 0
+
+" Отключаем проверку для некоторых типов файлов
+let g:syntastic_check_on_filetype = 0
+
+" Другое полезное:
+let g:syntastic_enable_signs = 0
+let g:syntastic_use_local_files = 1
+let g:syntastic_save_on_check = 1
+
+
 
 " Go Language Settings
 let g:goplements_enabled = 1    " Enable the plugin
@@ -244,7 +264,7 @@ let g:goplements_lint_on_save = 1    " Enable linting on save
 let g:goplements_gopls_path = '/home/mehanic/.gvm/pkgsets/go1.23.0/global/bin/gopls'
 
 
-"Remap Alt + w to save the current file.
+" Переназначаем Alt + w для сохранения текущего файла
 nnoremap <A-w> :w<CR>
 
 " Show documentation with K
@@ -258,6 +278,8 @@ nmap <silent> gd <Plug>(coc-definition)
 autocmd BufWritePre *.go :silent! CocCommand editor.action.formatDocument
 autocmd TermOpen * setlocal modifiable
 
+" Для автоматичного форматування при збереженні
+autocmd BufWritePre *.py execute ':Black'
 "statusline 
 
 "set statusline=%f                            " filename (relative)
@@ -271,7 +293,7 @@ autocmd TermOpen * setlocal modifiable
 
 "set statusline +=%1*\ %n\ %*            "buffer number
 
-" install lualine в pluginvim.vim  runes from scandinafic culture
+" Устанавливаем lualine в pluginvim.vim
 lua << EOF
 -- РУНЫ ДЛЯ COMPONENT_SEPARATORS
 local component_runes = {
@@ -283,7 +305,7 @@ local section_runes = {
   "ᛁ", "ᛇ", "ᛉ", "ᛏ", "ᛒ", "ᛖ", "ᛗ", "ᛚ", "ᛟ"
 }
 
--- СЛУЧАЙНЫЙ ВЫБОР РУН  
+-- СЛУЧАЙНЫЙ ВЫБОР РУН
 math.randomseed(os.time())
 local sep_component = component_runes[math.random(#component_runes)]
 local sep_section = section_runes[math.random(#section_runes)]
@@ -572,6 +594,7 @@ local lspconfig = require('lspconfig')
 -- Расширение возможностей LSP (например, для nvim-cmp)
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+-- for Golang 
 lspconfig.gopls.setup({
   on_attach = function(client, bufnr)
     -- Выводим сообщение, когда LSP успешно подключается
@@ -589,6 +612,25 @@ lspconfig.gopls.setup({
     },
   },
 })
+
+
+-- Для Python
+lspconfig.pyright.setup({
+  on_attach = function(client, bufnr)
+    vim.notify("pyright attached", vim.log.levels.INFO)
+  end,
+  capabilities = capabilities,
+  filetypes = { "python", "pyproject.toml", "setup.py", "requirements.txt", "tox.ini", "mypy.ini", "pylintrc" },
+  root_dir = require('lspconfig.util').root_pattern("pyproject.toml", "setup.py", ".git"),
+  settings = {
+    python = {
+      analysis = {
+        typeCheckingMode = "basic",
+      },
+    },
+  },
+})
+
 
 -- Загрузка сниппетов Go
 require("luasnip.loaders.from_vscode").load({
@@ -746,27 +788,51 @@ EOF
 
 lua << EOF
 local dap = require('dap')
--- DAP (Debug Adapter Protocol) for Go, a Delve debugger
--- Go debug configuration using Delve
+
+-- Basic Delve adapter for Go
 dap.adapters.go = {
   type = 'server',
-  port = 38697,  -- Default port for delve
+  port = 38697,
   executable = {
-    command = 'dlv',  -- This is the Delve command
+    command = 'dlv',
     args = { 'dap', '--listen=:38697', '--headless=true', '--api-version=2' },
+
   },
 }
 
+-- Debug configurations
 dap.configurations.go = {
   {
-    name = 'Launch file',  -- Configuration name
-    type = 'go',           -- Type of debugger
-    request = 'launch',    -- Launch the program
-    program = '${file}',   -- Current file to debug
+    name = "Debug current file",
+    type = "go",
+    request = "launch",
+    program = "${file}",
+  },
+  {
+    name = "Debug test file",
+    type = "go",
+    request = "launch",
+    mode = "test",
+    program = "${file}",
+  },
+  {
+    name = "Attach to running process",
+    type = "go",
+    request = "attach",
+    processId = require('dap.utils').pick_process,
+    -- You can also use port if attaching to :38697
+  },
+  {
+    name = "Debug with CPU profiling",
+    type = "go",
+    request = "launch",
+    program = "${file}",
+    args = {"-test.cpuprofile", "cpu.out"}, -- for tests
+    buildFlags = "-gcflags=all=-N -l",
   },
 }
 
--- Key mappings for DAP (adjust as needed)
+-- Standard key mappings for DAP
 vim.api.nvim_set_keymap('n', '<F5>', ':lua require"dap".continue()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<F10>', ':lua require"dap".step_over()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<F11>', ':lua require"dap".step_into()<CR>', { noremap = true })
@@ -774,6 +840,12 @@ vim.api.nvim_set_keymap('n', '<F12>', ':lua require"dap".step_out()<CR>', { nore
 vim.api.nvim_set_keymap('n', '<Leader>b', ':lua require"dap".toggle_breakpoint()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>dr', ':lua require"dap".repl.open()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>dl', ':lua require"dap".run_last()<CR>', { noremap = true })
+
+-- New hotkey: run test file
+vim.api.nvim_set_keymap('n', '<Leader>dt', ':lua require"dap".run({type = "go", request = "launch", mode = "test", program = "${file}"})<CR>', { noremap = true, silent = true })
+
+-- 🔥 New hotkey: automatically open CPU profile in the browser after debugging
+vim.api.nvim_set_keymap('n', '<Leader>pp', ':!go tool pprof -http=:8080 cpu.out<CR>', { noremap = true, silent = true })
 EOF
 
 
@@ -838,7 +910,7 @@ vim.notify("This is your custom  HYDRA", "info", {
 })
 EOF
 
-"commented show in terminal
+"commented
 "lua << EOF
 "-- Displaying the ASCII art in the Vim message area
 "vim.api.nvim_echo({{vim.fn.join(vim.g.ascii, "\n")}}, false, {})
@@ -2454,3 +2526,147 @@ require('kubectl').setup({
 })
 
 EOF
+" .jet 
+augroup jet_filetype
+  autocmd!
+  autocmd BufRead,BufNewFile *.jet set filetype=gotmpl
+augroup END
+
+
+lua << EOF
+require('dropbar').setup {
+
+  -- Стили отображения
+  style = 'simple',  -- Это может быть изменено на 'minimal' или 'full', в зависимости от предпочтений
+
+  -- Разделитель для отображения путей в dropbar
+  separator = ' | ',  -- Разделитель между различными метками в файле
+
+  -- Конфигурация для отображения файлов Go в dropbar
+  filetypes = {
+    go = {
+      enabled = true,  -- Включаем Go в список поддерживаемых типов файлов
+      icon = '',  -- Добавляем иконку Go-файла
+      color = '#00ADD8',  -- Выбираем цвет для файлов Go (можно настроить под свои предпочтения)
+    },
+    -- Добавляем поддержку Go-шаблонов
+    ['go.tmpl'] = {
+      enabled = true,  -- Включаем поддержку Go-шаблонов
+      icon = '',  -- Иконка для Go-шаблонов (например, иконка для шаблонов или HTML)
+      color = '#FFA500',  -- Цвет для Go-шаблонов (оранжевый, можно настроить)
+    },
+    html = {
+      enabled = true,  -- Включаем поддержку HTML (которые могут использовать Go-шаблоны)
+      icon = '',  -- Иконка для HTML-файлов
+      color = '#E34C26',  -- Цвет для HTML-файлов
+    },
+
+    -- Добавляем поддержку Helm
+    helm = {
+      enabled = true,
+      icon = '⚓',  -- Иконка для Helm 
+      color = '#0000FF',  -- Цвет для Helm
+    },
+    -- Добавляем поддержку GitLab CI
+    ['gitlab-ci.yml'] = {
+      enabled = true,
+      icon = '󰭘',  -- Иконка для GitLab CI файлов
+      color = '#E14E47',  -- Цвет для GitLab CI файлов
+    },
+
+    -- Поддержка Python
+    python = {
+      enabled = true,
+      icon = '',
+      color = '#3572A5',
+    },
+    -- Поддержка JavaScript
+    javascript = {
+      enabled = true,
+      icon = '',
+      color = '#f7df1e',
+    },
+    -- Поддержка Node.js (можно использовать для файлов `.js` или `.ts`)
+    nodejs = {
+      enabled = true,
+      icon = '',  -- Используется иконка для Node.js
+      color = '#8CC84B',  -- Зеленый для Node.js
+    },
+    -- Поддержка Groovy
+    groovy = {
+      enabled = true,
+      icon = '',  -- Иконка для Groovy
+      color = '#4298B8',  -- Голубой цвет для Groovy
+    },
+    -- Поддержка Lua
+    lua = {
+      enabled = true,
+      icon = '',  -- Иконка для Lua
+      color = '#000080',  -- Синий цвет для Lua
+    },
+    -- Поддержка SQL
+    sql = {
+      enabled = true,
+      icon = '',  -- Иконка для SQL
+      color = '#E34F26',  -- Оранжевый для SQL
+    },
+    -- Поддержка MongoDB (например, для `.json` или `.mongo`)
+    mongodb = {
+      enabled = true,
+      icon = '',  -- Иконка для MongoDB
+      color = '#47A248',  -- Зеленый для MongoDB
+    },
+    -- Поддержка PostgreSQL
+    postgresql = {
+      enabled = true,
+      icon = '',  -- Более подходящая иконка для PostgreSQL
+      color = '#336791',  -- Синий для PostgreSQL
+    },
+    -- Поддержка MySQL
+    mysql = {
+      enabled = true,
+      icon = '',  -- Иконка для MySQL
+      color = '#F29111',  -- Оранжевый для MySQL
+    },
+  },
+
+  -- Настройка разделителей в названии для разных частей
+  components = {
+    file_name = {
+      enabled = true,  -- Показывать имя файла
+      truncate = 40,    -- Ограничиваем количество символов в имени файла
+    },
+    lsp_diagnostics = {
+      enabled = true,  -- Включаем отображение диагностики LSP
+    },
+    line_column = {
+      enabled = true,  -- Включаем отображение строки и столбца
+    },
+
+    file_status = {
+      enabled = true,  -- Включаем отображение статуса файла
+      format = function()
+         return vim.bo.modified and '' or (vim.bo.readonly and '' or '')
+      end,
+}
+  },
+
+  -- Выбор поведения при навигации по буферам
+  navigation = {
+    enable = true,  -- Включаем навигацию по буферам через dropbar
+    jump_to_file = true,  -- Позволяет переходить к файлу при клике
+  },
+
+  -- Другие настройки отображения
+  highlight = {
+    enable = true,  -- Включаем подсветку активного элемента
+    active_color = '#FFD700',  -- Выбираем цвет для активных элементов
+  },
+}
+
+-- Пример настройки для других типов файлов или проектов
+-- Можешь добавлять сюда другие настройки для работы с другими языками
+
+
+EOF
+

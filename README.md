@@ -169,7 +169,16 @@ require("plugin_config.gh")
 
 ![combine I3 with coding, K9s and search file as example ](screenshot_31.png)
 
-![combine I3 with git commits and K9s  as example ](screenshot_30.png)
+![combine I3 with git commits and K9s  as example ](screenshot_32.png)
+
+![buffers for working with golang function ](screenshot_33.png)
+
+![buffers for working with golang main function ](screenshot_34.png)
+
+![buffers for search file ](screenshot_35.png)
+
+![describtion file and possibility to open  ](screenshot_36.png)
+
 
 
 
