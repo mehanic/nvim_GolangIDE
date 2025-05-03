@@ -18,7 +18,6 @@ Custom configurations tailored for editing various DevOps-related files, such as
 
 Key features:
 
-Seamless integration with Codewars, HackerRank, and LeetCode for deepening knowledge in algorithms and data structures.
 
 Optimized for use with the i3 Tiling Window Manager to maximize productivity and streamline the development environment.
 
@@ -43,7 +42,6 @@ The idea of ​​creating it emerged based on making your own custom version th
 
 Особливості:
 
-Підготовлено інтеграцію з платформами Codewars, HackerRank та LeetCode — для поглибленого вивчення алгоритмів і структур даних.
 
 Конфігурація оптимізована для роботи в середовищі з використанням i3 Tiling Window Manager для максимальної продуктивності та зручності.
 
