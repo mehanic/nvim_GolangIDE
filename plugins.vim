@@ -4283,6 +4283,8 @@ lua << EOF
       { name = 'nvim_lsp' },
       { name = 'buffer' },
       { name = 'path' },
+      { name = 'luasnip' },   -- Добавьте этот источник для сниппетов
+
     },
     formatting = {
       format = require('lspkind').cmp_format({
