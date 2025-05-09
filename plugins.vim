@@ -29,11 +29,9 @@ Plug 'fisadev/fisa-vim-colorscheme'
 Plug 'mhinz/vim-signify'
 Plug 'preservim/nerdtree'
 Plug 'nvim-treesitter/nvim-treesitter'
-
 Plug 'ray-x/go.nvim'
 " Установка bufferline с помощью vim-plug
 Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
-
 " Плагины для автокомплита и LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
@@ -48,7 +46,6 @@ Plug 'rafamadriz/friendly-snippets'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-snippets'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
 "for fzf
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
@@ -65,12 +62,9 @@ Plug 'windwp/nvim-autopairs'
 "Plug 'nvimdev/lspsaga.nvim'
 Plug 'nvim-neo-tree/neo-tree.nvim', { 'branch': 'v2.x' }
 Plug 'MunifTanjim/nui.nvim'
-Plug 'Ramilito/kubectl.nvim'
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-notify'
-
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
-
 " Markdown syntax and folding
 Plug 'preservim/vim-markdown'
 " Markdown preview in browser
@@ -80,7 +74,6 @@ Plug 'dhruvasagar/vim-table-mode'
 " Optional: improved UI (for checkboxes etc.)
 Plug 'plasticboy/vim-markdown'
 Plug 'akinsho/toggleterm.nvim'
-
 " Ansible and YAML Support
 Plug 'pearofducks/ansible-vim'
 Plug 'stephpy/vim-yaml'
@@ -94,7 +87,7 @@ Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'kristijanhusak/vim-dadbod-completion'
 Plug 'stevearc/conform.nvim'
- " Git over SSH-based
+" Git over SSH-based
 Plug 'tpope/vim-fugitive'               
 " For searching on remote systems with ripgrep support.
 Plug 'jremmen/vim-ripgrep'  " For searching on remote systems with ripgrep support.
@@ -107,7 +100,7 @@ Plug 'jremmen/vim-ripgrep'  " For searching on remote systems with ripgrep suppo
 " Sync files  over rsync and OpenSSH.
 Plug 'coffebar/transfer.nvim'
 Plug 'shellRaining/hlchunk.nvim'
-Plug 'edolphin-ydf/goimpl.nvim' ":GoImpl  И выбираешь: Тип: MyBot , Интерфейс: mypkg.Greeter ,Плагин автоматически вставит в буфер нужные методы:
+Plug 'edolphin-ydf/goimpl.nvim' ":GoImpl  И выбираешь: Тип: MyBot , Интерфейс: mypkg.Greeter, автоматически вставит в буфер нужные методы:
 " Установка плагина gopher.nvim
 Plug 'olexsmir/gopher.nvim'
 Plug 'maxandron/goplements.nvim'
@@ -119,11 +112,9 @@ Plug 'chomosuke/typst-preview.nvim', {'tag': 'v1.*'}
 " Для использования с mini.snippets
 Plug 'echasnovski/mini.snippets'
 Plug 'abeldekat/cmp-mini-snippets'
-
 " Для использования с ultisnips
 Plug 'SirVer/ultisnips'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
-
 " Для использования с snippy
 Plug 'dcampos/nvim-snippy'
 Plug 'dcampos/cmp-snippy'
@@ -197,20 +188,45 @@ Plug 'b0o/schemastore.nvim'
 Plug 'joshzcold/cmp-jenkinsfile'
 Plug 'ckipp01/nvim-jenkinsfile-linter'
 Plug 'hashivim/vim-terraform'
-" Plug 'Saghen/kubectl.nvim'
+"Plug 'Saghen/kubectl.nvim'
 Plug 'edwardtheharris/kube-utils-nvim'
-Plug 'Ramilito/kubectl.nvim'
 Plug 'Bekaboo/dropbar.nvim'
-
 " Встановлення плагіна для автоматичного форматування через black
 Plug 'psf/black', { 'branch': 'stable' }
-         " Встановлення flake8 для аналізу коду, Плагін для аналізу помилок
-         "Plug 'dense-analysis/ale'
-         "posibility to work with tekst
-    "     Plug 'andymass/vim-matchup'
-        " Source additional plugin configuration file  ---- not work
+" Встановлення flake8 для аналізу коду, Плагін для аналізу помилок
+Plug 'dense-analysis/ale'
+" Улучшает quickfix (полезно для логов)
+Plug 'kevinhwang91/nvim-bqf'
+"posibility to work with tekst
+"Plug 'andymass/vim-matchup'
+Plug 'linux-cultist/venv-selector.nvim', { 'branch': 'regexp' }
+" Source additional plugin configuration file  ---- not work
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+Plug 'nvim-telescope/telescope-file-browser.nvim'
+Plug 'folke/snacks.nvim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'vimwiki/vimwiki'
+Plug 'kawre/leetcode.nvim'
+Plug 'onsails/lspkind.nvim'
+" Основной Exercism плагин
+Plug '2kabhishek/exercism.nvim'
+" Зависимости
+Plug '2kabhishek/utils.nvim'
+Plug '2kabhishek/termim.nvim'
+" Синтаксис и выделение
+Plug 'mvaldes14/terraform.nvim'
+Plug 'WhoIsSethDaniel/mason-tool-installer.nvim'
+Plug '2KAbhishek/co-author.nvim'
+Plug 'gorbit99/codewindow.nvim'
+Plug 'pwntester/octo.nvim'
 "source /home/mehanic/.config/nvim/vim-plug/vimplugin2.vim
-
+Plug 'kiyoon/telescope-insert-path.nvim'
+Plug 'zbirenbaum/copilot.lua'
+Plug 'zbirenbaum/copilot-cmp'
+Plug 'ray-x/lsp_signature.nvim'
+Plug  'Wansmer/symbol-usage.nvim'
+Plug  'Yu-Leo/gosigns.nvim'
+Plug  'Yu-Leo/cmp-go-pkgs'
 " Source individual plugin configuration files
 "source ~/.config/nvim/vim-plug/dadbod.vim:
 "source ~/.config/nvim/vim-plug/telescope.vim
@@ -443,7 +459,7 @@ augroup FiletypeSettings
   autocmd FileType go setlocal noexpandtab tabstop=8 shiftwidth=8 softtabstop=8 colorcolumn=100
 augroup END
 autocmd BufWritePre *.go silent! lua vim.lsp.buf.format({ async = false })
-
+highlight ColorColumn ctermbg=236 guibg=#2c2c2c
 
 
 " Highlight non ascii characters
@@ -520,7 +536,48 @@ nnoremap <leader>ga :Gwrite<CR>
 " Reset current file to HEAD
 nnoremap <leader>gr :Gread<CR>
   
-"----------------------------------------------------
+
+
+lua << EOF
+-- Mason: менеджер LSP и внешних инструментов
+require("mason").setup({
+  ui = {
+    icons = {
+      package_installed = "✓",
+      package_pending = "➜",
+      package_uninstalled = "✗",
+    },
+  },
+})
+
+-- Установка LSP через mason-lspconfig
+require("mason-lspconfig").setup({
+  ensure_installed = {
+    "terraformls",
+    "pyright",
+    "gopls",
+    "groovyls",
+    "sqls",
+    "yamlls",
+    "bashls",
+    "jsonls",
+    "lua_ls",
+  },
+  automatic_installation = true,
+})
+
+-- Установка и обновление CLI-инструментов через mason-tool-installer
+require("mason-tool-installer").setup({
+  ensure_installed = {
+    "gofumpt",
+    "golangci-lint",
+    "revive",
+  },
+  auto_update = true,
+  run_on_start = true,
+})
+
+EOF
 
 lua << EOF
 local cmp = require('cmp')
@@ -605,32 +662,174 @@ lspconfig.gopls.setup({
   root_dir = require('lspconfig.util').root_pattern("go.work", "go.mod", ".git"),
   settings = {
     gopls = {
-      analyses = { unusedparams = true },
+      analyses = { 
+        unusedparams = true, -- ругать за неиспользуемые параметры
+        shadow = true,       -- ловить затенение переменных
+        printf = true,       -- проверять неправильное использование форматирования (можешь поставить false если надо)
+
+        assign = true,
+        atomic = true,
+        bools = true,
+        buildtag = true,
+        composites = true,
+        copylocks = true,
+        deepequalerrors = true,
+        errorsas = true,
+        ifaceassert = true,
+        loopclosure = true,
+        nilfunc = true,
+        stdmethods = true,
+        stringintconv = true,
+        structtag = true,
+        testinggoroutine = true,
+        tests = true,
+        unmarshal = true,
+        unreachable = true,
+        unsafeptr = true,
+        unusedwrite = true,
+        },
       staticcheck = true,
+      gofumpt = true,
+      completeUnimported = true,
+      usePlaceholders = true,
+      matcher = "Fuzzy",
+      codelenses = {
+        generate = true,  -- командочка для генерации методов интерфейсов
+        gc_details = true, -- показывать детали сборщика мусора
+        test = true, -- "Run Test" прямо над функцией теста
+        tidy = true, -- "Go mod tidy"
+      },
+
+      hints = {
+      assignVariableTypes = true,
+      compositeLiteralFields = true,
+      constantValues = true,
+      functionTypeParameters = true,
+      parameterNames = true,
+      rangeVariableTypes = true,
+     },
       hoverKind = "FullDocumentation", -- Полная документация при наведении
       completionDocumentation = true,  -- Описание при автодополнении
     },
   },
 })
 
+local lspconfig = require("lspconfig")
+
+-- on_attach: подключение функций при старте LSP
+local on_attach = function(client, bufnr)
+  vim.notify("pyright attached", vim.log.levels.INFO)
+
+  -- Форматирование при сохранении
+  if client.server_capabilities.documentFormattingProvider then
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = vim.api.nvim_create_augroup("LspFormatOnSave", { clear = true }),
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format({ bufnr = bufnr })
+      end,
+    })
+  end
+
+  -- Клавиши для LSP
+  local bufmap = function(mode, lhs, rhs)
+    vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, { noremap = true, silent = true })
+  end
+  bufmap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
+  bufmap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
+  bufmap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
+  bufmap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
+end 
 
 -- Для Python
 lspconfig.pyright.setup({
-  on_attach = function(client, bufnr)
-    vim.notify("pyright attached", vim.log.levels.INFO)
-  end,
-  capabilities = capabilities,
+
+on_attach = on_attach,
+capabilities = capabilities,
   filetypes = { "python", "pyproject.toml", "setup.py", "requirements.txt", "tox.ini", "mypy.ini", "pylintrc" },
   root_dir = require('lspconfig.util').root_pattern("pyproject.toml", "setup.py", ".git"),
   settings = {
     python = {
       analysis = {
         typeCheckingMode = "basic",
+        diagnosticMode = "workspace",  -- Уровень диагностики
+        useLibraryCodeForTypes = true,  -- Использование библиотечного кода для проверки типов
+        autoSearchPaths = true,         -- Автоматический поиск путей для зависимостей
+
+        autoImportCompletions = true,        -- автодополнение импортов
+        reportUnusedImport = "warning",      -- подсветка неиспользуемых импортов
+        reportUnusedVariable = "warning",    -- неиспользуемые переменные
+        reportMissingImports = true,
+        stubPath = "typings",                -- кастомные .pyi файлы, если есть
       },
     },
   },
 })
 
+
+-- Настройка terraform-ls
+require('lspconfig').terraformls.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  filetypes = { "terraform", "tf", "tfvars" },
+  root_dir = require('lspconfig.util').root_pattern(".terraform", ".git", "*.tf"),
+  settings = {
+    terraform = {
+      format = {
+        enable = true, -- включает автоформатирование (через terraform fmt)
+      },
+      languageServer = {
+        externalFormatter = true,
+        diagnostics = {
+          enable = true,
+        },
+      },
+    }
+  }
+})
+
+
+require('lspconfig').sqls.setup({
+  on_attach = function(client, bufnr)
+    vim.notify("SQLs attached", vim.log.levels.INFO)
+    -- Можно добавить keymaps или интеграции с null-ls
+  end,
+  capabilities = capabilities,
+  filetypes = { "sql", "mysql", "plsql" },
+  root_dir = require('lspconfig.util').root_pattern(".git", "*.sql"),
+  settings = {
+    sqls = {
+
+      connections = {
+        {
+          driver = "postgresql",
+          name = "PostgreSQL",
+          host = "localhost",
+          user = "postgres",
+          password = "new_password",
+          database = "postgres",
+          port = 5432
+        },
+        {
+          driver = "mysql",
+          name = "MySQL",
+          host = "localhost",
+          user = "root",
+          password = "new_password",
+          database = "mysql",
+          port = 3306
+        }
+      }
+
+    }
+  }
+})
+
+require("lspconfig").groovyls.setup {
+  cmd = { "groovy-language-server" },
+  filetypes = { "groovy" },
+  root_dir = require("lspconfig.util").root_pattern(".git", "build.gradle", "settings.gradle"),
+}
 
 -- Загрузка сниппетов Go
 require("luasnip.loaders.from_vscode").load({
@@ -711,7 +910,7 @@ function goimports(timeout_ms)
 end
 
 EOF
-
+"----------------------------------
 
 lua << EOF
 -- Load telescope configuration    telescope.nvim is a highly extendable fuzzy finder over lists. Built on the latest awesome features from neovim core. Teles-- cope is centered around modularity, allowing for easy customization.
@@ -773,8 +972,71 @@ telescope.setup({
 -- Load the fzf extension
 require('telescope').load_extension('fzf')
 -- pcall(telescope.load_extension, "fzf")
-EOF
 
+vim.diagnostic.config({
+  virtual_text = {
+    prefix = "●", -- или ">>", "🔥" — по вкусу "❖" "✸" 
+    spacing = 2,
+  },
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+   float = {
+    border = "rounded",
+    source = "always",
+    header = "",
+    prefix = "",
+  },
+})
+
+
+
+-- Цвет фона для всплывающего окна
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1e1e2e" })
+
+-- Явно указываем рамку для LSP ховеров и подсказок
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover,
+  { border = "rounded" }
+)
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+  vim.lsp.handlers.signature_help,
+  { border = "rounded" }
+)
+
+require('bqf').setup({
+  auto_enable = true,
+  preview = {
+    win_height = 15,
+    win_vheight = 15,
+    delay_syntax = 80,
+    border_chars = { '│', '│', '─', '─', '┌', '┐', '┘', '└' },
+  },
+  func_map = {
+    open = 'o',
+    openc = '<CR>',
+    drop = 'O',
+    split = 's',
+    vsplit = 'v',
+    tabdrop = 't',
+    toggle_preview = 'p',
+    prev_file = 'K',
+    next_file = 'J',
+  },
+  filter = {
+    fzf = {
+      action_for = {
+        ['ctrl-s'] = 'split',
+        ['ctrl-v'] = 'vsplit',
+        ['ctrl-t'] = 'tab drop',
+      },
+      extra_opts = {'--bind', 'ctrl-o:toggle-all', '--prompt', '> '}
+    }
+  }
+})
+EOF
 
 
 
@@ -787,64 +1049,58 @@ EOF
 
 
 lua << EOF
-local dap = require('dap')
-
--- Basic Delve adapter for Go
-dap.adapters.go = {
-  type = 'server',
-  port = 38697,
-  executable = {
-    command = 'dlv',
-    args = { 'dap', '--listen=:38697', '--headless=true', '--api-version=2' },
-
+require('dap-go').setup {
+  dap_configurations = {
+    {
+      type = "go",
+      name = "Debug file",
+      request = "launch",
+      program = "${file}",
+    },
+    {
+      type = "go",
+      name = "Debug test",
+      request = "launch",
+      mode = "test",
+      program = "${file}",
+    },
+    {
+      type = "go",
+      name = "Attach to process",
+      request = "attach",
+      processId = require('dap.utils').pick_process,
+    },
+    {
+      type = "go",
+      name = "Debug with CPU profile",
+      request = "launch",
+      mode = "test",
+      program = "${file}",
+      args = { "-test.cpuprofile=cpu.out" },
+      buildFlags = "-gcflags=all=-N -l",
+    },
+  },
+  delve = {
+    path = "dlv",
+    initialize_timeout_sec = 20,
+    port = "${port}",
+    args = {},
+    build_flags = "-gcflags=all=-N -l",
+    detached = vim.fn.has("win32") == 0,
+  },
+  tests = {
+    verbose = true,
   },
 }
 
--- Debug configurations
-dap.configurations.go = {
-  {
-    name = "Debug current file",
-    type = "go",
-    request = "launch",
-    program = "${file}",
-  },
-  {
-    name = "Debug test file",
-    type = "go",
-    request = "launch",
-    mode = "test",
-    program = "${file}",
-  },
-  {
-    name = "Attach to running process",
-    type = "go",
-    request = "attach",
-    processId = require('dap.utils').pick_process,
-    -- You can also use port if attaching to :38697
-  },
-  {
-    name = "Debug with CPU profiling",
-    type = "go",
-    request = "launch",
-    program = "${file}",
-    args = {"-test.cpuprofile", "cpu.out"}, -- for tests
-    buildFlags = "-gcflags=all=-N -l",
-  },
-}
-
--- Standard key mappings for DAP
-vim.api.nvim_set_keymap('n', '<F5>', ':lua require"dap".continue()<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<F10>', ':lua require"dap".step_over()<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<F11>', ':lua require"dap".step_into()<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<F12>', ':lua require"dap".step_out()<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>b', ':lua require"dap".toggle_breakpoint()<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>dr', ':lua require"dap".repl.open()<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>dl', ':lua require"dap".run_last()<CR>', { noremap = true })
-
--- New hotkey: run test file
-vim.api.nvim_set_keymap('n', '<Leader>dt', ':lua require"dap".run({type = "go", request = "launch", mode = "test", program = "${file}"})<CR>', { noremap = true, silent = true })
-
--- 🔥 New hotkey: automatically open CPU profile in the browser after debugging
+-- Клавиши для удобного запуска отладки
+vim.api.nvim_set_keymap('n', '<F5>', ':lua require("dap").continue()<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<F10>', ':lua require("dap").step_over()<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<F11>', ':lua require("dap").step_into()<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<F12>', ':lua require("dap").step_out()<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>b', ':lua require("dap").toggle_breakpoint()<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>dr', ':lua require("dap").repl.open()<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>dt', ':lua require("dap-go").debug_test()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>pp', ':!go tool pprof -http=:8080 cpu.out<CR>', { noremap = true, silent = true })
 EOF
 
@@ -981,35 +1237,66 @@ EOF
 
 " LSP Configuration for Ansible
 lua << EOF
-local nvim_lsp = require'lspconfig'
+local lspconfig = require('lspconfig')
 
-nvim_lsp.ansiblels.setup {
+lspconfig.ansiblels.setup({
   cmd = { "ansible-language-server", "--stdio" },
-  filetypes = { "yml" },
-  root_dir = nvim_lsp.util.root_pattern('.git', 'ansible.cfg', 'requirements.yml', 'hosts'),
+  filetypes = { "yaml", "yml" },
 
-  -- Additional LSP settings
+root_dir = lspconfig.util.root_pattern(
+  "ansible.cfg",
+  "requirements.yml",
+  "inventory.ini",
+  "hosts",
+  "roles",                  -- корень с ролями
+  "meta/main.yml",
+  "tasks/main.yml",
+  "handlers/main.yml",
+  "defaults/main.yml",
+  "vars/main.yml",
+  "test/main.yml",
+  "meta/main.yml",         -- molecule конфиг
+  "molecule/main.yml",
+  "meta",
+  "tasks",
+  "handlers",
+  "defaults",
+  "vars",
+  "test",
+  "molecule"
+),
+
   settings = {
     ansible = {
-      ansibleBin = "ansible",  -- Path to ansible binary (can be customized)
-      ansibleLint = "ansible-lint",  -- Path to ansible-lint (optional)
-    }
+      ansible = {
+        path = "ansible",         -- путь к бинарнику ansible
+      },
+      ansibleLint = {
+        path = "ansible-lint",    -- путь к ansible-lint
+      },
+      python = {
+        interpreterPath = "python3", -- или путь к твоей venv
+      },
+    },
   },
 
-  -- Autocompletion and Hover functionality
   on_attach = function(client, bufnr)
-    -- Key mappings for LSP
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<Cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', { noremap = true, silent = true })
+    local opts = { noremap = true, silent = true, buffer = bufnr }
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
 
-    -- Formatting on save (updated to use `server_capabilities`)
+    -- Автоформат при сохранении
     if client.server_capabilities.documentFormattingProvider then
-      vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = bufnr,
+        callback = function() vim.lsp.buf.format({ async = false }) end,
+      })
     end
   end
-}
+})
 EOF
 
 
@@ -1269,31 +1556,6 @@ vim.cmd("autocmd CursorMoved * lua show_rune_description(0, vim.fn.line('.')-1, 
 
 EOF
 
-lua << EOF
-  -- goplements.nvim configuration
-  require('goplements').setup({
-    -- The prefixes prepended to the type names
-    prefix = {
-      interface = "implemented by: ",
-      struct = "implements: ",
-    },
-    -- Whether to display the package name along with the type name
-    display_package = true,  -- Display full package name (e.g., builtins.error instead of just error)
-    
-    -- The namespace to use for the extmarks (for internal use, usually no need to change this)
-    namespace_name = "goplements",
-    
-    -- The highlight group to use for visualizing implemented structs and interfaces
-    -- You can change this to any highlight group of your choice
-    highlight = "Goplements",
-    
-    -- Optionally use nvim-treesitter for faster experience
-    treesitter = true,  -- Enable Treesitter support for Go if installed
-    
-    -- If you want to disable displaying the interface/struct names, set to false
-    show_names = true,  -- Show the names of interfaces and structs next to the definition
-  })
-EOF
 
 
 "Enable Colored Indentation for Go 
@@ -1408,112 +1670,80 @@ EOF
 " Treesitter config inline nvim-treesitter is being configured to highlight syntax, handle indentation, and provide advanced text object selections based on the syntax tree of various languages.
 lua << EOF
 require'nvim-treesitter.configs'.setup {
-  -- Убедитесь, что установлены парсеры для Go, Python, JavaScript и SQL
   ensure_installed = {
-    "go",        -- Go
-    "python",    -- Python
-    "javascript",-- JavaScript
-    "sql",       -- SQL
-    "lua",       -- Lua (для настройки самого Neovim и работы с Lua кодом)
-    "html",      -- HTML (для работы с веб-технологиями)
-    "css",       -- CSS
-    "typescript",-- TypeScript
-    "bash",      -- Bash
-    "yaml",       -- yaml 
-    "gotmpl",    --  Go templates
+    "go",
+    "python",
+    "javascript",
+    "sql",
+    "lua",
+    "html",
+    "css",
+    "typescript",
+    "bash",
+    "yaml",
+    "gotmpl",
   },
 
-  sync_install = false,  -- Асинхронная установка парсеров
-  auto_install = true,   -- Автоматическая установка парсеров при открытии новых типов файлов
+  sync_install = false,
+  auto_install = true,
 
   highlight = {
-    enable = true,   -- Включение подсветки синтаксиса с использованием Treesitter
-    additional_vim_regex_highlighting = false,  -- Отключаем подсветку на основе регулярных выражений
+    enable = true,
+    additional_vim_regex_highlighting = false,
   },
 
   indent = {
-    enable = true,   -- Включение умного выравнивания с использованием Treesitter
+    enable = true,
   },
 
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = "<CR>",   -- Начать выбор с помощью Enter
-      node_incremental = "<CR>", -- Увеличить выбор на один синтаксический узел
-      node_decremental = "<BS>", -- Уменьшить выбор на один узел
-      scope_incremental = "<TAB>", -- Расширить выбор на область (например, на всю функцию)
+      init_selection = "<C-space>",
+      node_incremental = "<C-space>",
+      node_decremental = "<C-s>",
+      scope_incremental = "<TAB>",
     },
   },
 
   textobjects = {
     select = {
       enable = true,
-      lookahead = true,  -- Сделать выбор более "умным" (выбор будет учитывать контекст)
+      lookahead = true,
       keymaps = {
-        ["af"] = "@function.outer",  -- Выбрать всю функцию
-        ["if"] = "@function.inner",  -- Выбрать только тело функции
-        ["ac"] = "@class.outer",     -- Выбрать весь класс
-        ["ic"] = "@class.inner",     -- Выбрать только тело класса
-        ["aa"] = "@parameter.outer", -- Выбрать весь параметр (например, в функции)
-        ["ia"] = "@parameter.inner", -- Выбрать только имя параметра
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@struct.outer",    -- для Go
+        ["ic"] = "@struct.inner",    -- для Go
+        ["aa"] = "@parameter.outer",
+        ["ia"] = "@parameter.inner",
+      },
+    },
+
+    move = {
+      enable = true,
+      set_jumps = true,
+      goto_next_start = {
+        ["]f"] = "@function.outer",
+        ["]c"] = "@struct.outer",  -- для Go
+      },
+      goto_previous_start = {
+        ["[f"] = "@function.outer",
+        ["[c"] = "@struct.outer",  -- для Go
+      },
+      goto_next_end = {
+        ["]F"] = "@function.outer",
+        ["]C"] = "@struct.outer",
+      },
+      goto_previous_end = {
+        ["[F"] = "@function.outer",
+        ["[C"] = "@struct.outer",
       },
     },
   },
-  -- Дополнительные возможности для улучшенной навигации
-  playground = {
-    enable = true,
-    updatetime = 25,  -- Минимальное время обновления дерева
-    persist_queries = false,  -- Не сохранять запросы между сессиями
-  },
-
-  -- Для взаимодействия с другим кодом
-  textsubjects = {
-    enable = true,
-    keymaps = {
-      ["<leader>c"] = "textsubjects-smart",  -- Умная выборка контекста при использовании <leader>c
-    },
-  },
-
-  -- Для отображения контекста функций
-  context_commentstring = {
-    enable = true,
-    enable_autocmd = false,  -- Отключаем автокоманды (по желанию)
-  },
 }
-
 EOF
 
-
-lua << EOF
-require'lspconfig'.sqls.setup{
-  settings = {
-    sqls = {
-      connections = {
-        {
-          driver = "postgresql",
-          name = "PostgreSQL",
-          host = "localhost",
-          user = "postgres",
-          password = "new_password",
-          database = "postgres",
-          port = 5432
-        },
-        {
-          driver = "mysql",
-          name = "MySQL",
-          host = "localhost",
-          user = "root",
-          password = "new_password",
-          database = "mysql",
-          port = 3306
-        }
-      }
-    }
-  }
-}
-
-
-EOF
 
 lua << EOF
 require("gopher").setup {
@@ -1557,35 +1787,6 @@ EOF
 ":GoIfErr Для вставки обработки ошибок:
 ":GoImpl Для генерации методов для интерфейсов:
 
-lua << EOF
-require("sshfs").setup {
-  mnt_base_dir = vim.fn.expand("$HOME") .. "/mnt",
-  width = 0.6, -- host window width
-  height = 0.5, -- host window height
-  connection_icon = "✓", -- icon for connection indication
-}
-EOF
-
-
-lua << EOF
--- Deployment configuration
-return {
-  ["my_remote"] = {
-    host = "192.168.1.5",  -- Replace with your remote host
-    username = "me",  -- Replace with your username on the remote host
-    mappings = {
-      {
-        ["local"] = "src",  -- Local directory relative to your project root
-        ["remote"] = "/var/www/html/project",  -- Remote directory to upload/download to/from
-      },
-    },
-    excludedPaths = {  -- Optional: Directories or files to exclude from syncing
-      ".git",
-      "node_modules",
-    },
-  },
-}
-EOF
 
 
 lua << EOF
@@ -1598,7 +1799,7 @@ conform.setup({
   formatters_by_ft = {
     sql = { "sql-formatter" },         -- Use sql-formatter for SQL files
     go = { "gofmt", "goimports" },     -- Use gofmt for Go, goimports for imports cleanup
-    python = { "black" },              -- Use black for Python files
+    python = { "black", "isort", "ruff"},              -- Use black for Python files pipx install black flake8 isort ruff
     javascript = { "prettier" },       -- Use prettier for JavaScript files
     lua = { "stylua" },                -- Use stylua for Lua files
     -- Add more file types and formatters as necessary
@@ -1725,12 +1926,6 @@ require'treesitter-context'.setup{
 }
 
 EOF
-"lua << EOF
-"require('mason').setup()
-"require('mason-lspconfig').setup({
-"ensure_installed = { "gopls", "golangci-lint", "gofumpt", "revive" },
-"})
-"EOF
 
 lua << EOF
 local null_ls = require("null-ls")
@@ -1761,7 +1956,7 @@ null_ls.setup({
 })
 EOF
 
-
+"---------------------------------------------------------------------------------
 "for helm charts
 lua << EOF
 local null_ls = require("null-ls")
@@ -2064,40 +2259,6 @@ autocmd FileType sql setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 nnoremap <Leader>db :Telescope db<CR> " Команда для поиска в базе данных через Telescope
 
 
-lua << EOF
-require("oil").setup({
-  default_file_explorer = true,
-  delete_to_trash = true,
-  skip_confirm_for_simple_edits = true,
-  prompt_save_on_select_new_entry = true,
-
-  columns = {
-    "icon",
-    "permissions",
-    "size",
-    "mtime",
-  },
-
-  view_options = {
-    show_hidden = true,
-    is_hidden_file = function(name)
-      return vim.startswith(name, ".")
-    end,
-    natural_order = true,
-  },
-
-  float = {
-    padding = 2,
-    max_width = 80,
-    max_height = 20,
-    border = "rounded",
-    win_options = {
-      winblend = 0,
-    },
-  },
-
-})
-EOF
 
 
 lua << EOF
@@ -2479,53 +2640,6 @@ vim.cmd([[
 
 EOF
 
-lua << EOF
-require('kubectl').setup({
-  log_level = vim.log.levels.INFO,
-  auto_refresh = {
-    enabled = true,
-    interval = 300, -- milliseconds
-  },
-  diff = {
-    bin = "kubediff" -- or any other binary
-  },
-  kubectl_cmd = { cmd = "kubectl", env = {}, args = {}, persist_context_change = false },
-  terminal_cmd = nil, -- Exec will launch in a terminal if set, i.e. "ghostty -e"
-  namespace = "All",
-  namespace_fallback = {}, -- If you have limited access, you can list all the namespaces here
-  hints = true,
-  context = true,
-  heartbeat = true,
-  lineage = {
-    enabled = false, -- This feature is in beta at the moment
-  },
-  logs = {
-    prefix = true,
-    timestamps = true,
-    since = "5m"
-  },
-  alias = {
-    apply_on_select_from_history = true,
-    max_history = 5,
-  },
-  filter = {
-    apply_on_select_from_history = true,
-    max_history = 10,
-  },
-  float_size = {
-    width = 0.9,
-    height = 0.8,
-    col = 10,
-    row = 5,
-  },
-  obj_fresh = 5, -- highlight if creation newer than number (in minutes)
-  skew = {
-    enabled = true,
-    log_level = vim.log.levels.INFO,
-  }
-})
-
-EOF
 " .jet 
 augroup jet_filetype
   autocmd!
@@ -2670,3 +2784,1521 @@ require('dropbar').setup {
 
 EOF
 
+lua << EOF
+require("venv-selector").setup({
+  name = { ".venv", "venv" }, -- имена папок с виртуальным окружением
+  auto_refresh = true,       -- автообновление списка при открытии Neovim
+  search_venv_managers = true, -- ищет также в pipenv, poetry, etc.
+  dap_enabled = true,        -- если ты используешь DAP для Python
+})
+
+-- Пример биндинга (опционально):
+vim.keymap.set("n", "<leader>vs", "<cmd>VenvSelect<cr>")
+
+EOF
+
+lua << EOF
+require("oil").setup({
+  -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
+  -- Set to false if you want some other plugin (e.g. netrw) to open when you edit directories.
+  default_file_explorer = true,
+
+  -- Columns to display in the oil view
+  columns = {
+    "icon",
+    "permissions",
+    "size",
+    "mtime",
+  },
+
+  -- Buffer-local options to use for oil buffers
+  buf_options = {
+    buflisted = false,
+    bufhidden = "hide",
+  },
+
+  -- Window-local options to use for oil buffers
+  win_options = {
+    wrap = false,
+    signcolumn = "no",
+    cursorcolumn = false,
+    foldcolumn = "0",
+    spell = false,
+    list = false,
+    conceallevel = 3,
+    concealcursor = "nvic",
+  },
+
+  -- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
+  delete_to_trash = true,
+
+  -- Skip the confirmation popup for simple operations (:help oil.skip_confirm_for_simple_edits)
+  skip_confirm_for_simple_edits = true,
+
+  -- Selecting a new/moved/renamed file or directory will prompt you to save changes first
+  prompt_save_on_select_new_entry = true,
+
+  -- Oil will automatically delete hidden buffers after this delay
+  cleanup_delay_ms = 2000,
+
+  lsp_file_methods = {
+    -- Enable or disable LSP file operations
+    enabled = true,
+    -- Time to wait for LSP file operations to complete before skipping
+    timeout_ms = 1000,
+    -- Set to true to autosave buffers that are updated with LSP willRenameFiles
+    -- Set to "unmodified" to only save unmodified buffers
+    autosave_changes = false,
+  },
+
+  -- Constrain the cursor to the editable parts of the oil buffer
+  -- Set to `false` to disable, or "name" to keep it on the file names
+  constrain_cursor = "editable",
+
+  -- Set to true to watch the filesystem for changes and reload oil
+  watch_for_changes = false,
+
+  -- Keymaps in oil buffer. Can be any value that `vim.keymap.set` accepts OR a table of keymap
+  -- options with a `callback` (e.g. { callback = function() ... end, desc = "", mode = "n" })
+  -- Additionally, if it is a string that matches "actions.<name>",
+  -- it will use the mapping at require("oil.actions").<name>
+  -- Set to `false` to remove a keymap
+  -- See :help oil-actions for a list of all available actions
+  keymaps = {
+    ["g?"] = { "actions.show_help", mode = "n" },
+    ["<CR>"] = "actions.select",
+    ["<C-s>"] = { "actions.select", opts = { vertical = true } },
+    ["<C-h>"] = { "actions.select", opts = { horizontal = true } },
+    ["<C-t>"] = { "actions.select", opts = { tab = true } },
+    ["<C-p>"] = "actions.preview",
+    ["<C-c>"] = { "actions.close", mode = "n" },
+    ["<C-l>"] = "actions.refresh",
+    ["-"] = { "actions.parent", mode = "n" },
+    ["_"] = { "actions.open_cwd", mode = "n" },
+    ["`"] = { "actions.cd", mode = "n" },
+    ["~"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
+    ["gs"] = { "actions.change_sort", mode = "n" },
+    ["gx"] = "actions.open_external",
+    ["g."] = { "actions.toggle_hidden", mode = "n" },
+    ["g\\"] = { "actions.toggle_trash", mode = "n" },
+  },
+
+  -- Set to false to disable all of the above keymaps
+  use_default_keymaps = true,
+
+  -- View options
+  view_options = {
+    -- Show files and directories that start with "."
+    show_hidden = true,
+    -- This function defines what is considered a "hidden" file
+    is_hidden_file = function(name)
+      return vim.startswith(name, ".")
+    end,
+    -- Sort file names with numbers in a more intuitive order for humans.
+    -- Can be "fast", true, or false. "fast" will turn it off for large directories.
+    natural_order = true,
+    -- Sort file and directory names case insensitive
+    case_insensitive = false,
+    sort = {
+      -- sort order can be "asc" or "desc"
+      { "type", "asc" },
+      { "name", "asc" },
+    },
+    -- Customize the highlight group for the file name
+    highlight_filename = function(entry, is_hidden, is_link_target, is_link_orphan)
+      return nil
+    end,
+  },
+
+  -- Extra arguments to pass to SCP when moving/copying files over SSH
+  extra_scp_args = {},
+
+  -- EXPERIMENTAL support for performing file operations with git
+  git = {
+    -- Return true to automatically git add/mv/rm files
+    add = function(path)
+      return false
+    end,
+    mv = function(src_path, dest_path)
+      return false
+    end,
+    rm = function(path)
+      return false
+    end,
+  },
+
+  -- Configuration for the floating window in oil.open_float
+  float = {
+    -- Padding around the floating window
+    padding = 2,
+    -- max_width and max_height can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
+    max_width = 0.8,
+    max_height = 0.2,
+    border = "rounded",
+    win_options = {
+      winblend = 0,
+    },
+    -- optionally override the oil buffers window title with custom function: fun(winid: integer): string
+    get_win_title = nil,
+    -- preview_split: Split direction: "auto", "left", "right", "above", "below".
+    preview_split = "auto",
+    -- This is the config that will be passed to nvim_open_win.
+    -- Change values here to customize the layout
+    override = function(conf)
+      return conf
+    end,
+  },
+
+  -- Configuration for the file preview window
+  preview_win = {
+    -- Whether the preview window is automatically updated when the cursor is moved
+    update_on_cursor_moved = true,
+    -- How to open the preview window "load"|"scratch"|"fast_scratch"
+    preview_method = "fast_scratch",
+    -- A function that returns true to disable preview on a file e.g. to avoid lag
+    disable_preview = function(filename)
+      return false
+    end,
+    -- Window-local options to use for preview window buffers
+    win_options = {},
+  },
+
+  -- Configuration for the floating action confirmation window
+  confirmation = {
+    -- Width dimensions can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
+    -- min_width and max_width can be a single value or a list of mixed integer/float types.
+    -- max_width = {100, 0.8} means "the lesser of 100 columns or 80% of total"
+    max_width = 0.9,
+    -- min_width = {40, 0.4} means "the greater of 40 columns or 40% of total"
+    min_width = { 40, 0.4 },
+    -- optionally define an integer/float for the exact width of the preview window
+    width = nil,
+    -- Height dimensions can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
+    -- min_height and max_height can be a single value or a list of mixed integer/float types.
+    -- max_height = {80, 0.9} means "the lesser of 80 columns or 90% of total"
+    max_height = 0.9,
+    -- min_height = {5, 0.1} means "the greater of 5 columns or 10% of total"
+    min_height = { 5, 0.1 },
+    -- optionally define an integer/float for the exact height of the preview window
+    height = nil,
+    border = "rounded",
+    win_options = {
+      winblend = 0,
+    },
+  },
+
+  -- Configuration for the floating progress window
+  progress = {
+    max_width = 0.9,
+    min_width = { 40, 0.4 },
+    width = nil,
+    max_height = { 10, 0.9 },
+    min_height = { 5, 0.1 },
+    height = nil,
+    border = "rounded",
+    minimized_border = "none",
+    win_options = {
+      winblend = 0,
+    },
+  },
+
+  -- Configuration for the floating SSH window
+  ssh = {
+    border = "rounded",
+  },
+
+  -- Configuration for the floating keymaps help window
+  keymaps_help = {
+    border = "rounded",
+  },
+})
+
+local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
+local pickers = require("telescope.pickers")
+local finders = require("telescope.finders")
+local conf = require("telescope.config").values
+
+vim.api.nvim_create_user_command("OilCopyDir", function()
+  local function pick_dir(prompt_title, callback)
+    pickers.new({}, {
+      prompt_title = prompt_title,
+      finder = finders.new_oneshot_job({
+        "find", ".", "-type", "d", "-not", "-path", "*/.git/*"
+      }, {
+        cwd = vim.loop.cwd(),
+      }),
+      sorter = conf.generic_sorter({}),
+      attach_mappings = function(prompt_bufnr, _)
+        actions.select_default:replace(function()
+          local selection = action_state.get_selected_entry()
+          if not selection then
+            vim.notify("❌ Ничего не выбрано", vim.log.levels.WARN)
+            return
+          end
+          actions.close(prompt_bufnr)
+          callback(selection[1])
+        end)
+        return true
+      end,
+    }):find()
+  end
+
+  pick_dir("📁 Откуда копировать директорию", function(from_path)
+    pick_dir("📂 Куда скопировать директорию", function(to_path)
+      from_path = vim.fn.expand(from_path)
+      to_path = vim.fn.expand(to_path)
+
+      if from_path == "" or to_path == "" then
+        vim.notify("❌ Путь не указан", vim.log.levels.ERROR)
+        return
+      end
+
+      if from_path == to_path then
+        vim.notify("❌ Нельзя копировать директорию в саму себя", vim.log.levels.ERROR)
+        return
+      end
+
+      local cmd = string.format('cp -r "%s" "%s"', from_path, to_path)
+      vim.fn.jobstart(cmd, {
+        stdout_buffered = true,
+        stderr_buffered = true,
+        on_exit = function(_, code, _)
+          if code == 0 then
+            vim.notify("✅ Копирование завершено!", vim.log.levels.INFO)
+          else
+            vim.notify("❌ Ошибка при копировании", vim.log.levels.ERROR)
+          end
+        end,
+      })
+    end)
+  end)
+end, {})
+
+
+
+--//////
+
+vim.api.nvim_create_user_command("SshRsyncUpload", function()
+  local pickers = require("telescope.pickers")
+  local finders = require("telescope.finders")
+  local conf = require("telescope.config").values
+  local previewers = require("telescope.previewers")
+  local actions = require("telescope.actions")
+  local action_state = require("telescope.actions.state")
+
+  local function pick_host(callback)
+    local ssh_config = os.getenv("HOME") .. "/.ssh/config"
+
+    pickers.new({}, {
+      prompt_title = "🔌 SSH Хост",
+      finder = finders.new_oneshot_job({ "awk", "/^Host / {print $2}", ssh_config }),
+      previewer = previewers.new_buffer_previewer({
+        title = "📄 Конфигурация SSH",
+        define_preview = function(self, entry)
+          local host = entry.value
+          if not host or host == "" then return end
+
+          local ssh_lines = vim.fn.systemlist("ssh -G " .. host)
+          local lines = {}
+          local user, hostname
+
+          if not ssh_lines or #ssh_lines == 0 or ssh_lines[1]:match("unknown") then
+            lines = vim.fn.systemlist(string.format(
+              "awk 'BEGIN{p=0} /^Host %s$/ {p=1; print; next} /^Host /{p=0} p {print}' %s",
+              host, ssh_config
+            ))
+            table.insert(lines, 1, "[⚠️ Не удалось получить ssh -G, показан raw конфиг]")
+          else
+            for _, line in ipairs(ssh_lines) do
+              if line:match("^user ") then
+                user = line:match("^user%s+(.*)")
+              elseif line:match("^hostname ") then
+                hostname = line:match("^hostname%s+(.*)")
+              end
+            end
+            lines = vim.tbl_extend("force", { string.format("[✅ ssh -G: %s@%s]", user or "?", hostname or "?") }, ssh_lines)
+          end
+
+          vim.api.nvim_buf_set_lines(self.state.bufnr, 0, -1, false, lines)
+        end,
+      }),
+      sorter = conf.generic_sorter({}),
+      attach_mappings = function(bufnr, _)
+        actions.select_default:replace(function()
+          local selection = action_state.get_selected_entry()
+          if not selection then
+            vim.notify("❌ Хост не выбран", vim.log.levels.WARN)
+            return
+          end
+
+          actions.close(bufnr)
+
+          local host = selection[1]
+          local ssh_output = vim.fn.systemlist("ssh -G " .. host)
+          local user, hostname
+
+          for _, line in ipairs(ssh_output) do
+            if line:match("^user ") then
+              user = line:match("^user%s+(.*)")
+            elseif line:match("^hostname ") then
+              hostname = line:match("^hostname%s+(.*)")
+            end
+          end
+
+          local full_target = host
+          if user and hostname then
+            full_target = string.format("%s@%s", user, hostname)
+          end
+
+          callback({
+            host = host,
+            target = full_target,
+            ssh_output = ssh_output,
+          })
+        end)
+        return true
+      end,
+    }):find()
+  end
+
+  local function pick_local_dir(callback)
+    pickers.new({}, {
+      prompt_title = "📁 Локальная директория",
+      finder = finders.new_oneshot_job({ "find", ".", "-type", "d", "-not", "-path", "*/.git/*" }),
+      sorter = conf.generic_sorter({}),
+      attach_mappings = function(bufnr, _)
+        actions.select_default:replace(function()
+          local selection = action_state.get_selected_entry()
+          if not selection then
+            vim.notify("❌ Директория не выбрана", vim.log.levels.WARN)
+            return
+          end
+          actions.close(bufnr)
+          callback(vim.fn.fnamemodify(selection[1], ":p"))
+        end)
+        return true
+      end,
+    }):find()
+  end
+
+  -- Выбор протокола для передачи (rsync, scp, ssh)
+  local function pick_transfer_protocol(callback)
+    -- Протестируем с выводом ошибок для диагностики
+    vim.ui.select({ "rsync", "scp", "ssh" }, { prompt = "Выберите протокол передачи: " }, function(protocol)
+      if not protocol then
+        vim.notify("❌ Протокол не выбран", vim.log.levels.WARN)
+        return
+      end
+      vim.notify("Выбран протокол: " .. protocol, vim.log.levels.INFO)  -- Для отладки
+      callback(protocol)
+    end)
+  end
+
+  pick_host(function(info)
+    pick_local_dir(function(local_path)
+      pick_transfer_protocol(function(protocol)
+        vim.ui.input({ prompt = "📂 Удалённый путь на " .. info.target .. ": " }, function(remote_path)
+          if not remote_path or remote_path == "" then
+            vim.notify("❌ Удалённый путь не указан", vim.log.levels.ERROR)
+            return
+          end
+
+          -- Ищем кастомный порт из ssh -G
+          local port
+          for _, line in ipairs(info.ssh_output) do
+            if line:match("^port ") then
+              port = tonumber(line:match("^port%s+(%d+)"))
+            end
+          end
+
+          local ssh_option = (port and port ~= 22) and string.format("-e 'ssh -p %d'", port) or ""
+          
+          local cmd
+          if protocol == "rsync" then
+            cmd = string.format("rsync -avz --progress %s '%s' '%s:%s'", ssh_option, local_path, info.target, remote_path)
+          elseif protocol == "scp" then
+            cmd = string.format("scp -r %s '%s' '%s:%s'", ssh_option, local_path, info.target, remote_path)
+          elseif protocol == "ssh" then
+            cmd = string.format("ssh %s '%s' 'mkdir -p %s'", ssh_option, info.target, remote_path)
+          end
+
+          vim.notify("🚀 Отправка через " .. protocol .. ": " .. cmd, vim.log.levels.INFO)
+
+          vim.fn.jobstart(cmd, {
+            stdout_buffered = true,
+            stderr_buffered = true,
+            on_stdout = function(_, data)
+              if data and #data > 0 then
+                vim.notify(table.concat(data, "\n"), vim.log.levels.INFO, { title = protocol })
+              end
+            end,
+            on_stderr = function(_, data)
+              if data and #data > 0 then
+                vim.notify(table.concat(data, "\n"), vim.log.levels.WARN, { title = protocol .. " error" })
+              end
+            end,
+            on_exit = function(_, code)
+              if code == 0 then
+                vim.notify("✅ Отправлено!", vim.log.levels.INFO)
+              else
+                vim.notify("❌ Ошибка при отправке", vim.log.levels.ERROR)
+              end
+            end,
+          })
+        end)
+      end)
+    end)
+  end)
+end, {})
+
+
+EOF
+
+"----------------------------------------------------------------------------------------------------------
+lua << EOF
+-- ~/.config/nvim/lua/snacks-config.lua (или в init.lua напрямую)
+require("snacks").setup({
+  picker = {
+    enabled = true,
+    sources = {
+      explorer = {
+        auto_close = true,
+        hidden = true,
+        layout = {
+          preset = "default",
+          preview = false,
+        },
+        actions = {
+          copy_file_path = {
+            action = function(_, item)
+              if not item then return end
+              local vals = {
+                ["BASENAME"] = vim.fn.fnamemodify(item.file, ":t:r"),
+                ["EXTENSION"] = vim.fn.fnamemodify(item.file, ":t:e"),
+                ["FILENAME"] = vim.fn.fnamemodify(item.file, ":t"),
+                ["PATH"] = item.file,
+                ["PATH (CWD)"] = vim.fn.fnamemodify(item.file, ":."),
+                ["PATH (HOME)"] = vim.fn.fnamemodify(item.file, ":~"),
+                ["URI"] = vim.uri_from_fname(item.file),
+              }
+              local options = vim.tbl_filter(function(val)
+                return vals[val] ~= ""
+              end, vim.tbl_keys(vals))
+              if vim.tbl_isempty(options) then
+                vim.notify("No values to copy", vim.log.levels.WARN)
+                return
+              end
+              table.sort(options)
+              vim.ui.select(options, {
+                prompt = "Choose to copy to clipboard:",
+                format_item = function(list_item)
+                  return ("%s: %s"):format(list_item, vals[list_item])
+                end,
+              }, function(choice)
+                local result = vals[choice]
+                if result then
+                  vim.fn.setreg("+", result)
+                  require("snacks").notify.info("Yanked `" .. result .. "`")
+                end
+              end)
+            end,
+          },
+          search_in_directory = {
+            action = function(_, item)
+              if not item then return end
+              local dir = vim.fn.fnamemodify(item.file, ":p:h")
+              require("snacks").picker.grep({
+                cwd = dir,
+                cmd = "rg",
+                args = {
+                  "-g", "!.git", "-g", "!node_modules", "-g", "!dist",
+                  "-g", "!build", "-g", "!coverage", "-g", "!.DS_Store",
+                  "-g", "!.docusaurus", "-g", "!.dart_tool",
+                },
+                show_empty = true,
+                hidden = true,
+                ignored = true,
+                follow = false,
+                supports_live = true,
+              })
+            end,
+          },
+          diff = {
+            action = function(picker)
+              picker:close()
+              local sel = picker:selected()
+              if #sel > 1 then
+                vim.cmd("tabnew " .. sel[1].file)
+                vim.cmd("vert diffs " .. sel[2].file)
+                require("snacks").notify.info("Diffing " .. sel[1].file .. " against " .. sel[2].file)
+              else
+                require("snacks").notify.info("Select two entries for the diff")
+              end
+            end,
+          },
+        },
+        win = {
+          list = {
+            keys = {
+              ["y"] = "copy_file_path",
+              ["s"] = "search_in_directory",
+              ["D"] = "diff",
+            },
+          },
+        },
+      },
+    },
+  },
+})
+
+-- Открыть файловый "explorer" snacks
+vim.api.nvim_create_user_command("SnacksExplorer", function()
+  require("snacks").picker.explorer()
+end, {})
+
+-- Поиск по проекту (grep)
+vim.api.nvim_create_user_command("SnacksGrep", function()
+  require("snacks").picker.grep()
+end, {})
+
+-- Поиск файлов (аналог telescope find_files)
+vim.api.nvim_create_user_command("SnacksFiles", function()
+  require("snacks").picker.files()
+end, {})
+
+
+-- Snacks Explorer
+vim.keymap.set("n", "<leader>se", function()
+  require("snacks").picker.explorer()
+end, { desc = "Snacks: Explorer" })
+
+-- Snacks Grep (поиск по тексту)
+vim.keymap.set("n", "<leader>sg", function()
+  require("snacks").picker.grep()
+end, { desc = "Snacks: Grep" })
+
+-- Snacks Files (поиск по имени файла)
+vim.keymap.set("n", "<leader>sf", function()
+  require("snacks").picker.files()
+end, { desc = "Snacks: Files" })
+
+EOF
+
+lua << EOF
+-- todo-comments
+require("todo-comments").setup({
+  signs = true,
+  keywords = {
+    TODO = { icon = " ", color = "info" },
+    FIX = { icon = " ", color = "error", alt = { "FIXME", "BUG", "ISSUE" } },
+    WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
+    NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
+    HACK = { icon = " ", color = "warning" },
+    PERF = { icon = " ", color = "default", alt = { "OPTIMIZE" } },
+    TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
+  },
+  highlight = {
+    keyword = "wide",
+    after = "fg",
+    comments_only = true,
+  },
+  search = {
+    command = "rg",
+    args = {
+      "--color=never", "--no-heading", "--with-filename",
+      "--line-number", "--column",
+    },
+    pattern = [[\b(KEYWORDS):]],
+  },
+})
+
+-- Подключаем расширение в Telescope
+require("telescope").load_extension("todo-comments")
+
+-- Горячая клавиша
+vim.keymap.set("n", "<leader>td", "<cmd>TodoTelescope<CR>", { desc = "🔍 Поиск TODO через Telescope" })
+
+
+EOF
+
+
+
+" Настройки плагина
+" Настройки markdown-preview.nvim
+" Настройки плагина markdown-preview.nvim
+" Настройки плагина markdown-preview.nvim
+let g:mkdp_auto_start = 0                    " Не запускать предварительный просмотр автоматически при открытии файла
+let g:mkdp_auto_close = 1                    " Закрывать окно предварительного просмотра, когда переключаюсь на другой буфер
+let g:mkdp_refresh_slow = 0                  " Обновление страницы при сохранении или выходе из режима вставки
+let g:mkdp_command_for_global = 0            " Использовать команды только для markdown файлов
+let g:mkdp_open_to_the_world = 0             " Не открывать сервер в сети
+let g:mkdp_open_ip = ''                      " Использовать свой IP для открытия, если работаете через SSH
+let g:mkdp_browser = ''                      " По умолчанию использовать браузер по умолчанию
+let g:mkdp_echo_preview_url = 1              " Показывать URL предварительного просмотра в командной строке
+let g:mkdp_theme = 'light'                   " Тема для предварительного просмотра: light или dark
+let g:mkdp_combine_preview = 0               " Не комбинировать окна предварительного просмотра
+let g:mkdp_combine_preview_auto_refresh = 1  " Автоматически обновлять комбинированный предварительный просмотр
+let g:mkdp_filetypes = ['markdown', 'vimwiki'] " Работать с файлами markdown и vimwiki
+let g:mkdp_markdown_css = ''                 " Пользовательский CSS для markdown (путь к файлу CSS)
+let g:mkdp_highlight_css = ''                " Пользовательский CSS для подсветки синтаксиса
+let g:mkdp_images_path = expand('~/.markdown_images') " Путь к изображениям
+let g:mkdp_port = ''                         " Указать порт для сервера
+let g:mkdp_page_title = '「${name}」'         " Название страницы (файл будет подставлен в ${name})
+
+" Опции рендера Markdown
+let g:mkdp_preview_options = {
+      \ 'mkit': {},
+      \ 'katex': {},
+      \ 'uml': {},
+      \ 'maid': {},
+      \ 'sequence_diagrams': {},
+      \ 'flowchart_diagrams': {},
+      \ 'disable_sync_scroll': 0,
+      \ 'sync_scroll_type': 'middle',
+      \ 'hide_yaml_meta': 1,
+      \ 'content_editable': v:false,
+      \ 'disable_filename': 0,
+      \ 'toc': {}
+      \ }
+
+" Горячие клавиши для управления предварительным просмотром Markdown
+nnoremap <leader>mp :MarkdownPreview<CR>      " Запуск предварительного просмотра
+nnoremap <leader>ms :MarkdownPreviewStop<CR>  " Остановка предварительного просмотра
+nnoremap <leader>mt :MarkdownPreviewToggle<CR> " Переключение между просмотром и закрытием
+
+" Настройка для vimwiki синтаксиса
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': 'md'}]
+
+lua << EOF
+-- Автокоманда для открытия Leet, если это пустой Neovim
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    if #vim.api.nvim_list_bufs() == 1 and vim.api.nvim_buf_get_name(0) == "" then
+      vim.cmd("Leet")
+    end
+  end
+})
+
+-- Настройка плагина leetcode.nvim
+local leetcode = require("leetcode")
+
+leetcode.setup {
+  lang = "golang",  -- Устанавливаем Go как язык по умолчанию
+  keymaps = {
+    list = "<leader>ll",
+    solve = "<leader>ls",
+    test = "<leader>lt",
+    submit = "<leader>lsb",
+  },
+  plugins = {
+    non_standalone = true,  -- Обязательно для работы Leet в непустой сессии
+  },
+}
+
+-- Кастомные команды для Leetcode
+vim.api.nvim_create_user_command("LeetcodeLL", function()
+  vim.cmd("Leet list")
+end, {})
+
+vim.api.nvim_create_user_command("LeetcodeLS", function()
+  vim.cmd("Leet solve")
+end, {})
+
+vim.api.nvim_create_user_command("LeetcodeLT", function()
+  vim.cmd("Leet test")
+end, {})
+
+vim.api.nvim_create_user_command("LeetcodeLSB", function()
+  vim.cmd("Leet submit")
+end, {})
+
+-- Для Easy Collection
+-- Легкие задачи
+vim.api.nvim_create_user_command("LeetcodeEasy", function()
+  vim.cmd("Leet list tags=easy")
+end, {})
+
+-- Средние задачи
+vim.api.nvim_create_user_command("LeetcodeMedium", function()
+  vim.cmd("Leet list tags=medium")
+end, {})
+
+-- Трудные задачи
+vim.api.nvim_create_user_command("LeetcodeHard", function()
+  vim.cmd("Leet list tags=hard")
+end, {})
+-- Для Top Interview Questions
+vim.api.nvim_create_user_command("LeetcodeTop", function()
+  vim.cmd("Leet list tags=top-interview-questions")
+end, {})
+
+EOF
+
+lua << EOF
+-- Проверяем, доступен ли плагин "exercism"
+local ok, exercism = pcall(require, "exercism")
+if not ok then
+  vim.notify("❌ Не удалось загрузить плагин exercism.nvim", vim.log.levels.ERROR)
+  return
+end
+
+-- Настройка плагина "exercism"
+exercism.setup({
+  exercism_workspace = vim.fn.expand("~/exercism"),  -- путь к рабочему каталогу
+  default_language = "go",  -- язык по умолчанию
+  add_default_keybindings = true,  -- можно false, если хочешь свои бинды
+  icons = {
+    concept = "",
+    practice = "",
+  },
+})
+EOF
+
+lua << EOF
+-- Инициализация lspkind
+require("lspkind").init({
+  mode = "symbol_text",
+  preset = "codicons",
+  symbol_map = {
+    Text = "󰉿",
+    Method = "󰆧",
+    Function = "󰊕",
+    Constructor = "",
+    Field = ":",
+    Variable = "",
+    Class =  "",
+    Interface = "",
+    Module = "",
+    Property = "󰜢",
+    Unit =  "",
+    Value = "",
+    Enum = "" ,
+    Keyword = "󰜰",
+    Color = "󰏘",
+    File = "󰀫",
+    Reference = "󰈇",
+    Folder = "󰉋",
+    EnumMember = "",
+    Constant = "󰏿",
+    Struct = "󰌗",
+    Event = "",
+    Operator = "󰆕",  
+    Snippet = "",
+    TypeParameter = "󰆩",
+
+    -- Расширенные для Go
+    Array = "",           -- массивы
+    Slice = "󰅪",           -- слайсы
+    Map = "󰘦",             -- map[string]int
+    Channel = "󰖂",         -- chan  "",
+    Argument = "󰘳",        -- аргументы функции
+    Package = "󰏖",         -- пакеты
+    Boolean = "",         -- true/false
+    Number = "󰎠",          -- int, float
+    String = "",          -- строка
+    Nil = "",            -- nil
+    Builtin = "󰨊",        -- make, new, len, cap, append, copy
+    Import = "",          -- import
+    Return = "󰁋",          -- return
+    Loop = "",         -- for, range
+    Condition = "",       -- if, else, switch
+    KeywordGo = "",       -- defer, go, select
+    Goroutine = "󱈅",
+    Mutex = "",
+
+  },
+})
+
+local cmp = require("cmp")
+local lspkind = require("lspkind")
+
+cmp.setup({
+  -- Окна с рамками
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = "symbol_text",
+      maxwidth = 50,
+      ellipsis_char = "...",
+      show_labelDetails = true,
+    }),
+  },
+
+  snippet = {
+    expand = function(args)
+      require("luasnip").lsp_expand(args.body)
+    end,
+  },
+
+  mapping = cmp.mapping.preset.insert({
+    ["<Tab>"] = cmp.mapping.select_next_item(),
+    ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+    ["<C-Space>"] = cmp.mapping.complete(),
+  }),
+
+  sources = cmp.config.sources({
+    { name = "nvim_lsp" },
+    { name = "luasnip" },
+  }),
+})
+
+-- Цвет рамки (зелёная)
+vim.api.nvim_set_hl(0, "CmpBorder", { fg = "#00FF00" })     -- окно автодополнения
+vim.api.nvim_set_hl(0, "CmpDocBorder", { fg = "#00FF00" })  -- окно документации
+
+-- Цветовая схема для nvim-cmp kind-иконок и источников
+vim.api.nvim_set_hl(0, "CmpItemKindSnippet",   { fg = "#ff9e64" })  -- оранжевый для сниппетов
+vim.api.nvim_set_hl(0, "CmpItemKindFunction",  { fg = "#b4f9f8" })
+vim.api.nvim_set_hl(0, "CmpItemKindVariable",  { fg = "#e3e3e3" })
+vim.api.nvim_set_hl(0, "CmpItemKindKeyword",   { fg = "#c792ea" })
+vim.api.nvim_set_hl(0, "CmpItemKindText",      { fg = "#9ece6a" })
+vim.api.nvim_set_hl(0, "CmpItemKindClass",     { fg = "#f9d849" })
+vim.api.nvim_set_hl(0, "CmpItemAbbrMatch",     { fg = "#569CD6", bold = true })
+vim.api.nvim_set_hl(0, "CmpItemMenu",          { fg = "#aaaaaa" })
+
+-- Функция, которая обновляет стили после загрузки плагинов
+vim.cmd("autocmd VimEnter * lua SetCmpColors()")
+
+-- Функция для установки цветов
+function SetCmpColors()
+  -- Цвет рамки автодополнения и документации (зелёная)
+  vim.api.nvim_set_hl(0, "CmpBorder", { fg = "#00FF00" })     -- окно автодополнения
+  vim.api.nvim_set_hl(0, "CmpDocBorder", { fg = "#00FF00" })  -- окно документации
+-- Цвет текста в окне документации
+--vim.api.nvim_set_hl(0, "NormalFloat", { fg = "#ff9e64", bg = "#1e1e2e" })
+
+-- Рамка документации (если не сработала CmpDocBorder)
+--vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#00ff00", bg = "#1e1e2e" })
+
+  -- Цветовая схема для nvim-cmp kind-иконок и источников
+  vim.api.nvim_set_hl(0, "CmpItemKindSnippet",   { fg = "#ff9e64" })  -- оранжевый для сниппетов
+  vim.api.nvim_set_hl(0, "CmpItemKindFunction",  { fg = "#b4f9f8" })
+  vim.api.nvim_set_hl(0, "CmpItemKindVariable",  { fg = "#e3e3e3" })
+  vim.api.nvim_set_hl(0, "CmpItemKindKeyword",   { fg = "#c792ea" })
+  vim.api.nvim_set_hl(0, "CmpItemKindText",      { fg = "#9ece6a" })
+  vim.api.nvim_set_hl(0, "CmpItemKindClass",     { fg = "#f9d849" })
+  vim.api.nvim_set_hl(0, "CmpItemAbbrMatch",     { fg = "#569CD6", bold = true })
+  vim.api.nvim_set_hl(0, "CmpItemMenu",          { fg = "#aaaaaa" })
+
+  -- Цвет скобок (оранжевые)
+  vim.api.nvim_set_hl(0, "@punctuation.bracket", { fg = "#ff9e64" })  -- если используется treesitter
+  vim.api.nvim_set_hl(0, "Delimiter", { fg = "#ff9e64" })             -- если нет
+end
+EOF
+
+
+lua << EOF
+vim.api.nvim_set_keymap('n', '<leader>gC', ':CoAuthor<CR>', { noremap = true, silent = true })
+
+EOF
+
+lua << EOF
+require("codewindow").setup({
+  active_in_terminals = false,
+  auto_enable = false,
+  exclude_filetypes = { "help" },
+  max_minimap_height = nil,
+  max_lines = nil,
+  minimap_width = 20,
+  use_lsp = true,
+  use_treesitter = true,
+  use_git = true,
+  width_multiplier = 4,
+  z_index = 1,
+  show_cursor = true,
+  screen_bounds = "lines",
+  window_border = "single",
+  relative = "win",
+  events = {
+    "TextChanged",
+    "InsertLeave",
+    "DiagnosticChanged",
+    "FileWritePost",
+  },
+})
+
+-- Клавиши по умолчанию (<leader>mw = toggle, <leader>me = enable, <leader>md = disable):
+require("codewindow").apply_default_keybinds()
+
+-- 💡 Кастомная команда:
+vim.api.nvim_create_user_command("MinimapToggle", function()
+  require("codewindow").toggle_minimap()
+end, { desc = "Toggle Code Minimap" })
+
+EOF
+
+
+lua << EOF
+-- should more better to learn
+require"octo".setup({
+  use_local_fs = false,                    -- use local files on right side of reviews
+  enable_builtin = false,                  -- shows a list of builtin actions when no action is provided
+  default_remote = {"upstream", "origin"}, -- order to try remotes
+  default_merge_method = "commit",         -- default merge method which should be used for both Octo pr merge and merging from picker, could be commit, rebase or squash
+  default_delete_branch = false,           -- whether to delete branch when merging pull request with either Octo pr merge or from picker (can be overridden with delete/nodelete argument to Octo pr merge)
+  ssh_aliases = {},                        -- SSH aliases. e.g. ssh_aliases = {["github.com-work"] = "github.com"}. The key part will be interpreted as an anchored Lua pattern.
+  picker = "telescope",                    -- or "fzf-lua" or "snacks"
+  picker_config = {
+    use_emojis = false,                    -- only used by "fzf-lua" picker for now
+    mappings = {                           -- mappings for the pickers
+      open_in_browser = { lhs = "<C-b>", desc = "open issue in browser" },
+      copy_url = { lhs = "<C-y>", desc = "copy url to system clipboard" },
+      checkout_pr = { lhs = "<C-o>", desc = "checkout pull request" },
+      merge_pr = { lhs = "<C-r>", desc = "merge pull request" },
+    },
+    snacks = {                                -- snacks specific config
+      actions = {                             -- custom actions for specific snacks pickers (array of tables)
+        issues = {                            -- actions for the issues picker
+          -- { name = "my_issue_action", fn = function(picker, item) print("Issue action:", vim.inspect(item)) end, lhs = "<leader>a", desc = "My custom issue action" },
+        },
+        pull_requests = {                     -- actions for the pull requests picker
+          -- { name = "my_pr_action", fn = function(picker, item) print("PR action:", vim.inspect(item)) end, lhs = "<leader>b", desc = "My custom PR action" },
+        },
+        notifications = {},                   -- actions for the notifications picker
+        issue_templates = {},                 -- actions for the issue templates picker
+        search = {},                          -- actions for the search picker
+        -- ... add actions for other pickers as needed
+      },
+    },
+  },
+  comment_icon = "▎",                      -- comment marker
+  outdated_icon = "󰅒 ",                    -- outdated indicator
+  resolved_icon = " ",                    -- resolved indicator
+  reaction_viewer_hint_icon = " ",        -- marker for user reactions
+  commands = {},                           -- additional subcommands made available to Octo command
+  users = "search",                        -- Users for assignees or reviewers. Values: "search" | "mentionable" | "assignable"
+  user_icon = " ",                        -- user icon
+  ghost_icon = "󰊠 ",                       -- ghost icon
+  timeline_marker = " ",                  -- timeline marker
+  timeline_indent = "2",                   -- timeline indentation
+  use_timeline_icons = true,               -- toggle timeline icons
+  timeline_icons = {                       -- the default icons based on timelineItems
+    commit = "  ",
+    label = "  ",
+    reference = " ",
+    connected = "  ",
+    subissue = "  ",
+    cross_reference = "  ",
+    parent_issue = "  ",
+    pinned = "  ",
+    milestone = "  ",
+    renamed = "  ",
+    merged = { "  ", "OctoPurple" },
+    closed = {
+      closed = { "  ", "OctoRed" },
+      completed = { "  ", "OctoPurple" },
+      not_planned = { "  ", "OctoGrey" },
+      duplicate = { "  ", "OctoGrey" },
+    },
+    reopened = { "  ", "OctoGreen" },
+    assigned = "  ",
+    review_requested = "  ",
+  },
+  right_bubble_delimiter = "",            -- bubble delimiter
+  left_bubble_delimiter = "",             -- bubble delimiter
+  github_hostname = "",                    -- GitHub Enterprise host
+  snippet_context_lines = 4,               -- number or lines around commented lines
+  gh_cmd = "gh",                           -- Command to use when calling Github CLI
+  gh_env = {},                             -- extra environment variables to pass on to GitHub CLI, can be a table or function returning a table
+  timeout = 5000,                          -- timeout for requests between the remote server
+  default_to_projects_v2 = false,          -- use projects v2 for the Octo card ... command by default. Both legacy and v2 commands are available under Octo cardlegacy ... and Octo cardv2 ... respectively.
+  ui = {
+    use_signcolumn = false,                -- show "modified" marks on the sign column
+    use_signstatus = true,                 -- show "modified" marks on the status column
+  },
+  issues = {
+    order_by = {                           -- criteria to sort results of Octo issue list
+      field = "CREATED_AT",                -- either COMMENTS, CREATED_AT or UPDATED_AT (https://docs.github.com/en/graphql/reference/enums#issueorderfield)
+      direction = "DESC"                   -- either DESC or ASC (https://docs.github.com/en/graphql/reference/enums#orderdirection)
+    }
+  },
+  reviews = {
+    auto_show_threads = true,              -- automatically show comment threads on cursor move
+    focus             = "right",           -- focus right buffer on diff open
+  },
+  runs = {
+    icons = {
+      pending = "🕖",
+      in_progress = "🔄",
+      failed = "❌",
+      succeeded = "",
+      skipped = "⏩",
+      cancelled = "✖",
+    },
+  },
+  pull_requests = {
+    order_by = {                           -- criteria to sort the results of Octo pr list
+      field = "CREATED_AT",                -- either COMMENTS, CREATED_AT or UPDATED_AT (https://docs.github.com/en/graphql/reference/enums#issueorderfield)
+      direction = "DESC"                   -- either DESC or ASC (https://docs.github.com/en/graphql/reference/enums#orderdirection)
+    },
+    always_select_remote_on_create = false -- always give prompt to select base remote repo when creating PRs
+  },
+  notifications = {
+    current_repo_only = false,             -- show notifications for current repo only
+  },
+  file_panel = {
+    size = 10,                             -- changed files panel rows
+    use_icons = true                       -- use web-devicons in file panel (if false, nvim-web-devicons does not need to be installed)
+  },
+  colors = {                               -- used for highlight groups (see Colors section below)
+    white = "#ffffff",
+    grey = "#2A354C",
+    black = "#000000",
+    red = "#fdb8c0",
+    dark_red = "#da3633",
+    green = "#acf2bd",
+    dark_green = "#238636",
+    yellow = "#d3c846",
+    dark_yellow = "#735c0f",
+    blue = "#58A6FF",
+    dark_blue = "#0366d6",
+    purple = "#6f42c1",
+  },
+  mappings_disable_default = false,        -- disable default mappings if true, but will still adapt user mappings
+  mappings = {
+    runs = {
+      expand_step = { lhs = "o", desc = "expand workflow step" },
+      open_in_browser = { lhs = "<C-b>", desc = "open workflow run in browser" },
+      refresh = { lhs = "<C-r>", desc = "refresh workflow" },
+      rerun = { lhs = "<C-o>", desc = "rerun workflow" },
+      rerun_failed = { lhs = "<C-f>", desc = "rerun failed workflow" },
+      cancel = { lhs = "<C-x>", desc = "cancel workflow" },
+      copy_url = { lhs = "<C-y>", desc = "copy url to system clipboard" },
+    },
+    issue = {
+      close_issue = { lhs = "<localleader>ic", desc = "close issue" },
+      reopen_issue = { lhs = "<localleader>io", desc = "reopen issue" },
+      list_issues = { lhs = "<localleader>il", desc = "list open issues on same repo" },
+      reload = { lhs = "<C-r>", desc = "reload issue" },
+      open_in_browser = { lhs = "<C-b>", desc = "open issue in browser" },
+      copy_url = { lhs = "<C-y>", desc = "copy url to system clipboard" },
+      add_assignee = { lhs = "<localleader>aa", desc = "add assignee" },
+      remove_assignee = { lhs = "<localleader>ad", desc = "remove assignee" },
+      create_label = { lhs = "<localleader>lc", desc = "create label" },
+      add_label = { lhs = "<localleader>la", desc = "add label" },
+      remove_label = { lhs = "<localleader>ld", desc = "remove label" },
+      goto_issue = { lhs = "<localleader>gi", desc = "navigate to a local repo issue" },
+      add_comment = { lhs = "<localleader>ca", desc = "add comment" },
+      delete_comment = { lhs = "<localleader>cd", desc = "delete comment" },
+      next_comment = { lhs = "]c", desc = "go to next comment" },
+      prev_comment = { lhs = "[c", desc = "go to previous comment" },
+      react_hooray = { lhs = "<localleader>rp", desc = "add/remove 🎉 reaction" },
+      react_heart = { lhs = "<localleader>rh", desc = "add/remove ❤️ reaction" },
+      react_eyes = { lhs = "<localleader>re", desc = "add/remove 👀 reaction" },
+      react_thumbs_up = { lhs = "<localleader>r+", desc = "add/remove 👍 reaction" },
+      react_thumbs_down = { lhs = "<localleader>r-", desc = "add/remove 👎 reaction" },
+      react_rocket = { lhs = "<localleader>rr", desc = "add/remove 🚀 reaction" },
+      react_laugh = { lhs = "<localleader>rl", desc = "add/remove 😄 reaction" },
+      react_confused = { lhs = "<localleader>rc", desc = "add/remove 😕 reaction" },
+    },
+    pull_request = {
+      checkout_pr = { lhs = "<localleader>po", desc = "checkout PR" },
+      merge_pr = { lhs = "<localleader>pm", desc = "merge commit PR" },
+      squash_and_merge_pr = { lhs = "<localleader>psm", desc = "squash and merge PR" },
+      rebase_and_merge_pr = { lhs = "<localleader>prm", desc = "rebase and merge PR" },
+      list_commits = { lhs = "<localleader>pc", desc = "list PR commits" },
+      list_changed_files = { lhs = "<localleader>pf", desc = "list PR changed files" },
+      show_pr_diff = { lhs = "<localleader>pd", desc = "show PR diff" },
+      add_reviewer = { lhs = "<localleader>va", desc = "add reviewer" },
+      remove_reviewer = { lhs = "<localleader>vd", desc = "remove reviewer request" },
+      close_issue = { lhs = "<localleader>ic", desc = "close PR" },
+      reopen_issue = { lhs = "<localleader>io", desc = "reopen PR" },
+      list_issues = { lhs = "<localleader>il", desc = "list open issues on same repo" },
+      reload = { lhs = "<C-r>", desc = "reload PR" },
+      open_in_browser = { lhs = "<C-b>", desc = "open PR in browser" },
+      copy_url = { lhs = "<C-y>", desc = "copy url to system clipboard" },
+      goto_file = { lhs = "gf", desc = "go to file" },
+      add_assignee = { lhs = "<localleader>aa", desc = "add assignee" },
+      remove_assignee = { lhs = "<localleader>ad", desc = "remove assignee" },
+      create_label = { lhs = "<localleader>lc", desc = "create label" },
+      add_label = { lhs = "<localleader>la", desc = "add label" },
+      remove_label = { lhs = "<localleader>ld", desc = "remove label" },
+      goto_issue = { lhs = "<localleader>gi", desc = "navigate to a local repo issue" },
+      add_comment = { lhs = "<localleader>ca", desc = "add comment" },
+      delete_comment = { lhs = "<localleader>cd", desc = "delete comment" },
+      next_comment = { lhs = "]c", desc = "go to next comment" },
+      prev_comment = { lhs = "[c", desc = "go to previous comment" },
+      react_hooray = { lhs = "<localleader>rp", desc = "add/remove 🎉 reaction" },
+      react_heart = { lhs = "<localleader>rh", desc = "add/remove ❤️ reaction" },
+      react_eyes = { lhs = "<localleader>re", desc = "add/remove 👀 reaction" },
+      react_thumbs_up = { lhs = "<localleader>r+", desc = "add/remove 👍 reaction" },
+      react_thumbs_down = { lhs = "<localleader>r-", desc = "add/remove 👎 reaction" },
+      react_rocket = { lhs = "<localleader>rr", desc = "add/remove 🚀 reaction" },
+      react_laugh = { lhs = "<localleader>rl", desc = "add/remove 😄 reaction" },
+      react_confused = { lhs = "<localleader>rc", desc = "add/remove 😕 reaction" },
+      review_start = { lhs = "<localleader>vs", desc = "start a review for the current PR" },
+      review_resume = { lhs = "<localleader>vr", desc = "resume a pending review for the current PR" },
+      resolve_thread = { lhs = "<localleader>rt", desc = "resolve PR thread" },
+      unresolve_thread = { lhs = "<localleader>rT", desc = "unresolve PR thread" },
+    },
+    review_thread = {
+      goto_issue = { lhs = "<localleader>gi", desc = "navigate to a local repo issue" },
+      add_comment = { lhs = "<localleader>ca", desc = "add comment" },
+      add_suggestion = { lhs = "<localleader>sa", desc = "add suggestion" },
+      delete_comment = { lhs = "<localleader>cd", desc = "delete comment" },
+      next_comment = { lhs = "]c", desc = "go to next comment" },
+      prev_comment = { lhs = "[c", desc = "go to previous comment" },
+      select_next_entry = { lhs = "]q", desc = "move to next changed file" },
+      select_prev_entry = { lhs = "[q", desc = "move to previous changed file" },
+      select_first_entry = { lhs = "[Q", desc = "move to first changed file" },
+      select_last_entry = { lhs = "]Q", desc = "move to last changed file" },
+      close_review_tab = { lhs = "<C-c>", desc = "close review tab" },
+      react_hooray = { lhs = "<localleader>rp", desc = "add/remove 🎉 reaction" },
+      react_heart = { lhs = "<localleader>rh", desc = "add/remove ❤️ reaction" },
+      react_eyes = { lhs = "<localleader>re", desc = "add/remove 👀 reaction" },
+      react_thumbs_up = { lhs = "<localleader>r+", desc = "add/remove 👍 reaction" },
+      react_thumbs_down = { lhs = "<localleader>r-", desc = "add/remove 👎 reaction" },
+      react_rocket = { lhs = "<localleader>rr", desc = "add/remove 🚀 reaction" },
+      react_laugh = { lhs = "<localleader>rl", desc = "add/remove 😄 reaction" },
+      react_confused = { lhs = "<localleader>rc", desc = "add/remove 😕 reaction" },
+      resolve_thread = { lhs = "<localleader>rt", desc = "resolve PR thread" },
+      unresolve_thread = { lhs = "<localleader>rT", desc = "unresolve PR thread" },
+    },
+    submit_win = {
+      approve_review = { lhs = "<C-a>", desc = "approve review", mode = { "n", "i" } },
+      comment_review = { lhs = "<C-m>", desc = "comment review", mode = { "n", "i" } },
+      request_changes = { lhs = "<C-r>", desc = "request changes review", mode = { "n", "i" } },
+      close_review_tab = { lhs = "<C-c>", desc = "close review tab", mode = { "n", "i" } },
+    },
+    review_diff = {
+      submit_review = { lhs = "<localleader>vs", desc = "submit review" },
+      discard_review = { lhs = "<localleader>vd", desc = "discard review" },
+      add_review_comment = { lhs = "<localleader>ca", desc = "add a new review comment", mode = { "n", "x" } },
+      add_review_suggestion = { lhs = "<localleader>sa", desc = "add a new review suggestion", mode = { "n", "x" } },
+      focus_files = { lhs = "<localleader>e", desc = "move focus to changed file panel" },
+      toggle_files = { lhs = "<localleader>b", desc = "hide/show changed files panel" },
+      next_thread = { lhs = "]t", desc = "move to next thread" },
+      prev_thread = { lhs = "[t", desc = "move to previous thread" },
+      select_next_entry = { lhs = "]q", desc = "move to next changed file" },
+      select_prev_entry = { lhs = "[q", desc = "move to previous changed file" },
+      select_first_entry = { lhs = "[Q", desc = "move to first changed file" },
+      select_last_entry = { lhs = "]Q", desc = "move to last changed file" },
+      close_review_tab = { lhs = "<C-c>", desc = "close review tab" },
+      toggle_viewed = { lhs = "<localleader><space>", desc = "toggle viewer viewed state" },
+      goto_file = { lhs = "gf", desc = "go to file" },
+    },
+    file_panel = {
+      submit_review = { lhs = "<localleader>vs", desc = "submit review" },
+      discard_review = { lhs = "<localleader>vd", desc = "discard review" },
+      next_entry = { lhs = "j", desc = "move to next changed file" },
+      prev_entry = { lhs = "k", desc = "move to previous changed file" },
+      select_entry = { lhs = "<cr>", desc = "show selected changed file diffs" },
+      refresh_files = { lhs = "R", desc = "refresh changed files panel" },
+      focus_files = { lhs = "<localleader>e", desc = "move focus to changed file panel" },
+      toggle_files = { lhs = "<localleader>b", desc = "hide/show changed files panel" },
+      select_next_entry = { lhs = "]q", desc = "move to next changed file" },
+      select_prev_entry = { lhs = "[q", desc = "move to previous changed file" },
+      select_first_entry = { lhs = "[Q", desc = "move to first changed file" },
+      select_last_entry = { lhs = "]Q", desc = "move to last changed file" },
+      close_review_tab = { lhs = "<C-c>", desc = "close review tab" },
+      toggle_viewed = { lhs = "<localleader><space>", desc = "toggle viewer viewed state" },
+    },
+    notification = {
+      read = { lhs = "<localleader>rn", desc = "mark notification as read" },
+    },
+  },
+})
+
+EOF
+
+lua << EOF
+local path_actions = require('telescope_insert_path')
+
+require('telescope').setup {
+  defaults = {
+    mappings = {
+      n = {
+        ["["] = path_actions.insert_reltobufpath_visual,
+        ["]"] = path_actions.insert_abspath_visual,
+        ["{"] = path_actions.insert_reltobufpath_insert,
+        ["}"] = path_actions.insert_abspath_insert,
+        ["-"] = path_actions.insert_reltobufpath_normal,
+        ["="] = path_actions.insert_abspath_normal,
+      }
+    }
+  }
+}
+
+-- Горячая клавиша для вызова find_files
+vim.api.nvim_set_keymap('n', '<leader>p', '<cmd>lua require("telescope.builtin").find_files()<CR>', { noremap = true, silent = true })
+EOF
+
+
+lua << EOF
+local lsp_signature = require("lsp_signature")
+
+local cfg = {
+  bind = true,
+  hint_enable = true,
+  hint_prefix = "󰊕 ",
+  hint_scheme = "LspSignatureHintPrefix",
+  floating_window = true,
+  floating_window_above_cur_line = false,
+
+  floating_window_off_x = function()
+    local win_width = vim.api.nvim_win_get_width(0)
+    local col = vim.api.nvim_win_get_cursor(0)[2]
+    local max_width = 60
+    local offset = win_width - col - max_width - 4
+    return offset > 0 and offset or 0
+  end,
+
+  floating_window_off_y = function()
+    local screen_line = vim.fn.winline()
+    local win_height = vim.fn.winheight(0)
+    if screen_line < 5 then
+      return 1
+    elseif win_height - screen_line < 5 then
+      return -1
+    else
+      return 0
+    end
+  end,
+
+  handler_opts = {
+    border = "rounded",
+    handler = function(sig_handler, err, result, ctx, config)
+      -- Проверим, есть ли сигнатура
+      if result and result.signatures and result.signatures[1] then
+        local label = result.signatures[1].label or ""
+        local ignore_list = { "Println", "Printf", "Print", "Errorf" }
+        for _, name in ipairs(ignore_list) do
+          if label:find(name) then
+            return -- игнорируем
+          end
+        end
+      end
+      -- вызываем стандартный обработчик
+      return sig_handler(err, result, ctx, config)
+    end,
+  },
+
+  doc_lines = 2,
+  max_width = 40,
+  wrap = true,
+}
+
+vim.cmd([[
+  highlight LspSignatureHintPrefix guifg=#ff8800 gui=bold
+]])
+
+lsp_signature.setup(cfg)
+EOF
+
+
+
+lua << EOF
+
+local symbol_map = {
+  Function  = "󰊕",
+  Method    = "󰆧",
+  Interface = "",
+  Struct    = "󰌗",
+}
+
+-- Функция для возвращения цвета #ff8800
+local function h()
+  return "#ff8800"  -- Возвращаем цвет #ff8800
+end
+
+-- Настройка подсветки для разных типов символов
+vim.api.nvim_set_hl(0, 'SymbolUsageHint', { fg = h(), bold = true })
+
+-- Настройка подсветки для ссылок и других типов, не затрагивая фон
+vim.api.nvim_set_hl(0, 'SymbolUsageRef', { fg = h(), bold = true })  -- только цвет текста
+vim.api.nvim_set_hl(0, 'SymbolUsageRefRound', { fg = h() })  -- только цвет текста
+
+vim.api.nvim_set_hl(0, 'SymbolUsageDef', { fg = h(), bold = true })  -- только цвет текста
+vim.api.nvim_set_hl(0, 'SymbolUsageDefRound', { fg = h() })  -- только цвет текста
+
+vim.api.nvim_set_hl(0, 'SymbolUsageImpl', { fg = h(), bold = true })  -- только цвет текста
+vim.api.nvim_set_hl(0, 'SymbolUsageImplRound', { fg = h() })  -- только цвет текста
+
+-- Функция для форматирования текста с подсветкой
+local function text_format(symbol)
+  local res = {}
+
+  -- Стек символов на той же строке
+  local stacked_functions_content = symbol.stacked_count > 0
+      and ("+%s"):format(symbol.stacked_count)
+      or ''
+
+  -- Обработка ссылок
+  if symbol.references then
+    table.insert(res, { '󰆧 ' .. tostring(symbol.references), 'SymbolUsageRef' })
+  end
+
+  -- Обработка определений
+  if symbol.definition then
+    if #res > 0 then
+      table.insert(res, { ' ', 'NonText' })
+    end
+    table.insert(res, { '󰍞', 'SymbolUsageDefRound' })
+    table.insert(res, { '󰳽 ' .. tostring(symbol.definition), 'SymbolUsageDef' })
+    table.insert(res, { '󰍟', 'SymbolUsageDefRound' })
+  end
+
+  -- Обработка реализаций
+  if symbol.implementation then
+    if #res > 0 then
+      table.insert(res, { ' ', 'NonText' })
+    end
+    table.insert(res, { '󰍞', 'SymbolUsageImplRound' })
+    table.insert(res, { '󰡱 ' .. tostring(symbol.implementation), 'SymbolUsageImpl' })
+    table.insert(res, { '󰍟', 'SymbolUsageImplRound' })
+  end
+
+  -- Обработка стековых символов
+  if stacked_functions_content ~= '' then
+    if #res > 0 then
+      table.insert(res, { ' ', 'NonText' })
+    end
+    table.insert(res, { '󰍞', 'SymbolUsageImplRound' })
+    table.insert(res, { ' ' .. tostring(stacked_functions_content), 'SymbolUsageImpl' })
+    table.insert(res, { '󰍟', 'SymbolUsageImplRound' })
+  end
+
+  return res
+end
+
+-- Настройка плагина
+require("symbol-usage").setup({
+  kinds_filter = vim.tbl_keys(symbol_map), -- использовать ключи из символов
+
+  update_events = { "CursorHold", "InsertLeave", "BufWritePost" },
+  debounce_ms = 150,
+  highlight = "SymbolUsageHint",  -- Применение группы подсветки
+
+  text_format = text_format, -- Использование нашей функции форматирования
+})
+
+EOF
+
+lua << EOF
+
+-- Настройка плагина gosigns.nvim
+require('gosigns').setup({
+  signs = {
+    Interface =  "",  -- Иконка для интерфейса
+    Struct    =  "󰌗",  -- Иконка для структуры
+    Method    =  "",  -- Иконка для метода
+  },
+  show_interfaces = true,
+  show_methods = true,
+  show_comments = true,
+})
+
+-- Виртуальные строки над структурами, интерфейсами и методами
+_G.gosigns_overlay = {}
+
+local kind_labels = {
+  [vim.lsp.protocol.SymbolKind.Interface] = "", --"интерфейс"
+  [vim.lsp.protocol.SymbolKind.Struct] = "󰌗",  -- "структура реализует интерфейс"
+  [vim.lsp.protocol.SymbolKind.Method] = "",  -- "метод реализует метод интерфейса"
+}
+
+-- Создание группы подсветки для цвета вишни
+vim.api.nvim_set_hl(0, 'GosignCherry', { fg = '#9B111E', bg = 'NONE', bold = true })  -- Вишневый цвет для знаков
+
+function _G.gosigns_overlay.add_comments()
+  local params = { textDocument = vim.lsp.util.make_text_document_params() }
+  local ns = vim.api.nvim_create_namespace("gopls_struct_tags")
+  local bufnr = vim.api.nvim_get_current_buf()
+
+  vim.lsp.buf_request(0, "textDocument/documentSymbol", params, function(err, result, _, _)
+    if err or not result then return end
+    vim.api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
+
+    for _, item in ipairs(result) do
+      local kind = item.kind
+      local range = item.range
+
+      if kind_labels[kind] then
+        local line = range.start.line
+        vim.api.nvim_buf_set_extmark(bufnr, ns, line, 0, {
+          virt_lines = {
+            { { kind_labels[kind], 'GosignCherry' } }  -- Используем группу подсветки
+          },
+          virt_lines_above = true,
+        })
+      end
+    end
+  end)
+end
+
+-- Автокоманда для запуска добавления комментариев
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "CursorHold" }, {
+  pattern = "*.go",
+  callback = function()
+    _G.gosigns_overlay.add_comments()
+  end,
+})
+
+
+EOF
+
+
+
+lua << EOF
+vim.api.nvim_set_hl(0, 'GosignCherry', { fg = '#9B111E', bg = 'NONE', bold = true })  -- Вишневый цвет для знаков
+
+-- goplements.nvim configuration
+require('goplements').setup({
+  -- Префиксы, добавляемые к именам типов
+  prefix = {
+    interface = " interface implemented by: ",
+    struct = "struct implements: ",
+  },
+  display_package = true,  -- Показывать полное имя пакета (например, builtins.error вместо просто error)
+  
+  -- Пространство имён для extmarks (обычно не нужно изменять)
+  namespace_name = "goplements",
+  
+  highlight = "GosignCherry",  -- Убедитесь, что используется правильная группа подсветки
+  
+  -- Использовать nvim-treesitter для лучшего опыта
+  treesitter = true,  -- Включить поддержку Treesitter для Go, если он установлен
+  
+  -- Если хотите отключить отображение имен интерфейсов и структур, установите в false
+  show_names = true,  -- Показывать имена интерфейсов и структур рядом с определением
+})
+EOF
+
+
+
+" Настройка nvim-cmp и автокоманды
+lua << EOF
+  local cmp = require('cmp')
+
+  -- Настройка nvim-cmp
+  cmp.setup({
+    sources = {
+      { name = 'go_pkgs' },  -- Источник для автодополнения Go пакетов
+      { name = 'nvim_lsp' },
+      { name = 'buffer' },
+      { name = 'path' },
+    },
+    formatting = {
+      format = require('lspkind').cmp_format({
+        menu = {
+          go_pkgs = "󰏖 [pkgs]",  -- Иконка для пакетов Go
+        },
+      }),
+    },
+  })
+
+  -- Добавляем автокоманду для инициализации пакетов Go при подключении LSP
+  vim.api.nvim_create_autocmd("LspAttach", {
+    pattern = { "*.go" },  -- Для Go файлов
+    callback = function(args)
+      -- Инициализация пакетов для автодополнения
+      require("cmp_go_pkgs").init_items(args)
+    end,
+  })
+EOF
