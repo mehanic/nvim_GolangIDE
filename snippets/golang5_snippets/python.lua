@@ -1,0 +1,3308 @@
+local ls = require("luasnip") -- обязательно
+local s = ls.snippet
+local t = ls.text_node
+
+return {
+
+}
+
+
+-- local ls = require("luasnip")
+-- local s = ls.snippet
+-- local t = ls.text_node
+-- local i = ls.insert_node
+-- local f = ls.function_node
+-- local rep = require("luasnip.extras").rep
+
+-- return {
+--   s("shebang_py3", {
+--     t("#!/usr/bin/env python3"),
+--   }),
+
+--   s("shebang_py2", {
+--     t({"#!/usr/bin/env python2", "# -*- coding: utf-8 -*-"}),
+--   }),
+
+--   s("shebang_py3b", {
+--     t("#!/usr/bin/env python3"),
+--   }),
+
+--   s("imp", {
+--     t("import "),
+--     i(0, "module"),
+--   }),
+
+--   s("uni", {
+--     t("def __unicode__(self):"),
+--     t({"", "\t"}),
+--     i(0, "representation"),
+--   }),
+
+--   s("from", {
+--     t("from "),
+--     i(1, "package"),
+--     t(" import "),
+--     i(0, "module"),
+--   }),
+
+--   s("docs", {
+--     t('"""'),
+--     t({"", "File: "}),
+--     f(function() 
+--       -- This example just returns 'foo.py', as vim snippet can't run here
+--       return "foo.py"
+--     end),
+--     t({"", "Author: "}),
+--     f(function() return "Your Name" end),
+--     t({"", "Email: "}),
+--     f(function() return "your.email@example.com" end),
+--     t({"", "Github: "}),
+--     f(function() return "yourgithub" end),
+--     t({"", "Description: "}),
+--     i(0),
+--     t({"", '"""'}),
+--   }),
+
+--   s("sk", {
+--     t("@unittest.skip("),
+--     i(1, "skip_reason"),
+--     t(")"),
+--   }),
+
+--   s("wh", {
+--     t("while "),
+--     i(1, "condition"),
+--     t(":"),
+--     t({"", "\t"}),
+--     i(0),
+--   }),
+
+--   s("dowh", {
+--     t("while True:"),
+--     t({"", "\t"}),
+--     i(1),
+--     t({"", "\tif "}),
+--     i(0),
+--     t({":", "\t\tbreak"}),
+--   }),
+
+--   s("with", {
+--     t("with "),
+--     i(1, "expr"),
+--     t(" as "),
+--     i(2, "var"),
+--     t(":"),
+--     t({"", "\t"}),
+--     i(0),
+--   }),
+
+--   s({trig = "async_with", dscr = "Async with statement for context managers"}, {
+--     t("async with "),
+--     i(1, "expr"),
+--     t(" as "),
+--     i(2, "var"),
+--     t(":"),
+--     t({"", "\t"}),
+--     i(0),
+--   }),
+
+--   s({trig = "class_simple", dscr = "Simple class definition with docstring"}, {
+--     t("class "),
+--     i(1, "class_name"),
+--     t(":"),
+--     t({"", "\t\"\"\""}),
+--     i(0, "description"),
+--     t({"\"\"\""}),
+--   }),
+
+--   s({trig = "class_init", dscr = "Class definition with __init__ method stub"}, {
+--     t("class "),
+--     i(1, "class_name"),
+--     t(":"),
+--     t({"", "\t\"\"\""}),
+--     i(2, "description"),
+--     t({"\"\"\"", "\tdef __init__(self, "}),
+--     i(3, "args"),
+--     t("):"),
+--     t({"", "\t\t"}),
+--     i(0),
+--   }),
+
+--   s({trig = "dataclass", dscr = "Dataclass with typed attributes and a method"}, {
+--     t({"@dataclass", "class "}),
+--     i(1, "ClassName"),
+--     t(":"),
+--     t({"", "\t\"\"\""}),
+--     i(2, "description"),
+--     t({"\"\"\"", "\t"}),
+--     i(3, "var_1"),
+--     t(": "),
+--     i(4, "int"),
+--     t({"", "\t"}),
+--     i(5, "var_2"),
+--     t(": "),
+--     i(6, "float"),
+--     t(" = "),
+--     i(7, "0"),
+--     t({"", "", "\tdef "}),
+--     i(8, "total"),
+--     t("(self) -> "),
+--     f(function(args) return args[1][1] or "float" end, {6}),
+--     t({":", "\t\treturn "}),
+--     i(0, "self." .. (vim.fn.expand("<cword>") or "var_1") .. " * self." .. (vim.fn.expand("<cword>") or "var_2")),
+--   }),
+
+--   s({trig = "def", dscr = "Function definition with docstring and self parameter"}, {
+--     t("def "),
+--     i(1, "fname"),
+--     t("("),
+--     f(function() return "self" end),
+--     t("):"),
+--     t({"", "\t\"\"\""}),
+--     i(3, "docstring for function"),
+--     t({"\"\"\"", "\t"}),
+--     i(0),
+--   }),
+
+--    s({trig = "def_no_doc", dscr = "Function definition without docstring"}, {
+--     t("def "),
+--     i(1, "fname"),
+--     t("("),
+--     f(function() return "self" end),
+--     t("):"),
+--     t({"", "\t"}),
+--     i(0),
+--   }),
+
+--   s({trig = "async_def", dscr = "Async function with docstring and self parameter"}, {
+--     t("async def "),
+--     i(1, "fname"),
+--     t("("),
+--     f(function() return "self" end),
+--     t("):"),
+--     t({"", "\t\"\"\""}),
+--     i(3, "docstring for function"),
+--     t({"\"\"\"", "\t"}),
+--     i(0),
+--   }),
+
+--   s({trig = "async_def_no_doc", dscr = "Async function without docstring"}, {
+--     t("async def "),
+--     i(1, "fname"),
+--     t("("),
+--     f(function() return "self" end),
+--     t("):"),
+--     t({"", "\t"}),
+--     i(0),
+--   }),
+
+--   -- Example switch statement snippet with trig and dscr
+--   s({trig = "switch1", dscr = "Switch statement with cases and default"}, {
+--     t("switch "), i(1, "var"), t(" {"),
+--     t({"", "case "}), i(2, "value"), t({":", "\t"}), i(3, "// case body"),
+--     t({"", "default:"}), 
+--     t({"", "\t"}), i(0, "// default"),
+--     t({"", "}"}),
+--   }),
+
+--   s({trig = "class_new", dscr = "Class with constructor and super call"}, {
+--   t("class "),
+--   i(1, "ClassName"),
+--   t("("),
+--   i(2, "object"),
+--   t("):"),
+--   t({"", "\t\"\"\""}),
+--   i(3, "docstring for " .. (vim.fn.expand("<cword>") or "ClassName")),
+--   t({"\"\"\"", "\tdef __init__(self, "}),
+--   i(4, "arg"),
+--   t("):"),
+--   t({"", "\t\tsuper("}),
+--   f(function(args) return args[1][1] or "ClassName" end, {1}),
+--   t(", self).__init__()"),
+--   t({"", "\t\tself."}),
+--   i(5),
+--   t(" = "),
+--   f(function(args) return args[1][1] or "arg" end, {4}),
+--   t({"", "\t\t"}),
+--   i(0),
+-- }),
+
+-- -- New Method __init__ snippet
+--   s({trig = "defi", dscr = "Define __init__ method"}, {
+--     t("def __init__(self, "),
+--     i(1, "args"),
+--     t("):"),
+--     t({"", "\t"}),
+--     i(0),
+--   }),
+
+--   -- New Method snippet
+--   s({trig = "defm", dscr = "Define method with self and arg"}, {
+--     t("def "),
+--     i(1, "mname"),
+--     t("(self, "),
+--     i(2, "arg"),
+--     t("):"),
+--     t({"", "\t"}),
+--     i(0),
+--   }),
+
+--   -- Async Method snippet
+--   s({trig = "adefm", dscr = "Define async method with self and arg"}, {
+--     t("async def "),
+--     i(1, "mname"),
+--     t("(self, "),
+--     i(2, "arg"),
+--     t("):"),
+--     t({"", "\t"}),
+--     i(0),
+--   }),
+
+--   -- Property snippet with getter and setter
+--   s({trig = "property", dscr = "Property with getter and setter"}, {
+--     t({"@property", "def "}),
+--     i(1, "foo"),
+--     t("(self) -> "),
+--     i(2, "type"),
+--     t({":", "\t\"\"\""}),
+--     i(3, "doc"),
+--     t({"\"\"\"", "\treturn self._"}),
+--     f(function(args) return args[1][1] end, {1}),
+--     t({"", "", "@"}),
+--     f(function(args) return args[1][1] end, {1}),
+--     t(".setter", "def "),
+--     f(function(args) return args[1][1] end, {1}),
+--     t("(self, value: "),
+--     f(function(args) return args[1][1] end, {2}),
+--     t("):"),
+--     t({"", "\tself._"}),
+--     f(function(args) return args[1][1] end, {1}),
+--     t(" = value"),
+--   }),
+
+--   -- If statement snippet
+--   s({trig = "if", dscr = "If statement"}, {
+--     t("if "),
+--     i(1),
+--     t(":"),
+--     t({"", "\t"}),
+--     i(0),
+--   }),
+
+--   -- Else statement snippet
+--   s({trig = "el", dscr = "Else statement"}, {
+--     t("else:"),
+--     t({"", "\t"}),
+--     i(0),
+--   }),
+
+--   -- Elif statement snippet
+--   s({trig = "ei", dscr = "Elif statement"}, {
+--     t("elif "),
+--     i(1),
+--     t(":"),
+--     t({"", "\t"}),
+--     i(0),
+--   }),
+
+--   -- Match statement snippet (Python 3.10+ structural pattern matching)
+--   s({trig = "match", dscr = "Structural pattern matching"}, {
+--     t("match "),
+--     i(1, "expression"),
+--     t({":", "\tcase "}),
+--     i(2, "pattern_1"),
+--     t({":", "\t\t"}),
+--     i(3, "pass"),
+--     t({"", "\tcase "}),
+--     i(4, "pattern_2"),
+--     t({":", "\t\t"}),
+--     i(5, "pass"),
+--   }),
+
+--   -- Match with wildcard snippet
+--   s({trig = "matchw", dscr = "Pattern matching with wildcard"}, {
+--     t("match "),
+--     i(1, "expression"),
+--     t({":", "\tcase "}),
+--     i(2, "pattern_1"),
+--     t({":", "\t\t"}),
+--     i(3, "pass"),
+--     t({"", "\tcase _:", "\t\t"}),
+--     i(0, "pass"),
+--   }),
+
+--   -- For loop snippet
+--   s({trig = "for", dscr = "For loop"}, {
+--     t("for "),
+--     i(1, "item"),
+--     t(" in "),
+--     i(2, "items"),
+--     t({":", "\t"}),
+--     i(0),
+--   }),
+
+--   -- Encoding snippets
+--   s({trig = "cutf8", dscr = "UTF-8 encoding header"}, {
+--     t("# -*- coding: utf-8 -*-"),
+--   }),
+
+--   s({trig = "clatin1", dscr = "Latin-1 encoding header"}, {
+--     t("# -*- coding: latin-1 -*-"),
+--   }),
+
+--   s({trig = "cascii", dscr = "ASCII encoding header"}, {
+--     t("# -*- coding: ascii -*-"),
+--   }),
+
+--   -- Lambda assignment snippet
+--   s({trig = "ld", dscr = "Lambda definition"}, {
+--     i(1, "var"),
+--     t(" = lambda "),
+--     i(2, "vars"),
+--     t(" : "),
+--     i(0, "action"),
+--   }),
+
+--   -- Return statement snippet
+--   s({trig = "ret", dscr = "Return statement"}, {
+--     t("return "),
+--     i(0),
+--   }),
+
+--   -- Self dot snippet
+--   s({trig = ".", dscr = "self."}, {
+--     t("self."),
+--   }),
+
+--   -- Self attribute assignment snippet
+--   s({trig = "sa", dscr = "self.attribute assignment"}, {
+--     t("self."),
+--     i(1, "attribute"),
+--     t(" = "),
+--     t(""),
+--     t({""}),
+--     f(function(args) return args[1][1] end, {1}),
+--   }),
+
+--   -- Try/Except snippet
+--   s({trig = "try", dscr = "Try/Except block"}, {
+--     t("try:"),
+--     t({"", "\t"}),
+--     i(1),
+--     t({"", "except "}),
+--     i(2, "Exception"),
+--     t(" as "),
+--     i(3, "e"),
+--     t({":", "\t"}),
+--     i(0, "raise e"),
+--   }),
+
+--   -- Try/Except/Else snippet
+--   s({trig = "trye", dscr = "Try/Except/Else block"}, {
+--     t("try:"),
+--     t({"", "\t"}),
+--     i(1),
+--     t({"", "except "}),
+--     i(2, "Exception"),
+--     t(" as "),
+--     i(3, "e"),
+--     t({":", "\t"}),
+--     i(4, "raise e"),
+--     t({"", "else:"}),
+--     t({"", "\t"}),
+--     i(0),
+--   }),
+
+--   -- Try/Except/Finally
+--   s({trig = "tryf", dscr = "Try/Except/Finally block"}, {
+--     t("try:"),
+--     t({"", "\t"}),
+--     i(1),
+--     t({"", "except "}),
+--     i(2, "Exception"),
+--     t(" as "),
+--     i(3, "e"),
+--     t({":", "\t"}),
+--     i(4, "raise e"),
+--     t({"", "finally:", "\t"}),
+--     i(0),
+--   }),
+
+--   -- Try/Except/Else/Finally
+--   s({trig = "tryef", dscr = "Try/Except/Else/Finally block"}, {
+--     t("try:"),
+--     t({"", "\t"}),
+--     i(1),
+--     t({"", "except "}),
+--     i(2, "Exception"),
+--     t(" as "),
+--     i(3, "e"),
+--     t({":", "\t"}),
+--     i(4, "raise e"),
+--     t({"", "else:", "\t"}),
+--     i(5),
+--     t({"", "finally:", "\t"}),
+--     i(0),
+--   }),
+
+--   -- if __name__ == '__main__':
+--   s({trig = "ifmain", dscr = "if __name__ == '__main__'"}, {
+--     t("if __name__ == '__main__':"),
+--     t({"", "\t"}),
+--     i(0, "main()"),
+--   }),
+
+--   -- __magic__ method
+--   s({trig = "_", dscr = "__magic__ method"}, {
+--     t("__"),
+--     i(1, "init"),
+--     t("__"),
+--   }),
+
+--   -- Debugger breakpoint()
+--   s({trig = "br", dscr = "breakpoint()"}, {
+--     t("breakpoint()"),
+--   }),
+
+--   -- pdb debugger
+--   s({trig = "pdb", dscr = "pdb debugger set_trace()"}, {
+--     t("__import__('pdb').set_trace()"),
+--   }),
+
+--   -- bpdb debugger
+--   s({trig = "bpdb", dscr = "bpython debugger (bpdb)"}, {
+--     t("__import__('bpdb').set_trace()"),
+--   }),
+
+--   -- bpython debugger
+--   s({trig = "bpdb", dscr = "bpython debugger (bpdb)"}, {
+--     t("__import__('bpdb').set_trace()"),
+--   }),
+
+--   -- ipython debugger
+--   s({trig = "ipdb", dscr = "IPython debugger (ipdb)"}, {
+--     t("__import__('ipdb').set_trace()"),
+--   }),
+
+--   -- IPython embed
+--   s({trig = "iem", dscr = "Embed IPython shell"}, {
+--     t("__import__('IPython').embed()"),
+--   }),
+
+--   -- Remote Python debugger
+--   s({trig = "rpdb", dscr = "Remote Python debugger (rpdb)"}, {
+--     t("__import__('rpdb').set_trace()"),
+--   }),
+
+--   -- Web Python debugger
+--   s({trig = "wdb", dscr = "Web Python debugger (wdb)"}, {
+--     t("__import__('wdb').set_trace()"),
+--   }),
+
+--   -- ptpython embed
+--   s({trig = "ptpython", dscr = "Embed ptpython REPL"}, {
+--     t("__import__('ptpython.repl', fromlist=('repl')).embed(globals(), locals(), vi_mode="),
+--     i(1, "False"),
+--     t(", history_filename="),
+--     i(2, "None"),
+--     t(")"),
+--   }),
+
+--   -- pudb debugger
+--   s({trig = "pudb", dscr = "PuDB console debugger"}, {
+--     t("__import__('pudb').set_trace()"),
+--   }),
+
+--   -- pudb remote debugger
+--   s({trig = "pudbr", dscr = "PuDB remote debugger"}, {
+--     t("from pudb.remote import set_trace"),
+--     t({"", "set_trace()"}),
+--   }),
+
+--   -- nosetests debugger
+--   s({trig = "nosetrace", dscr = "Nose tests debugger set_trace"}, {
+--     t("__import__('nose').tools.set_trace()"),
+--   }),
+
+--   -- pprint usage
+--   s({trig = "pprint", dscr = "Pretty print using pprint"}, {
+--     t("__import__('pprint').pprint("),
+--     i(1),
+--     t(")"),
+--   }),
+
+--   -- Triple-quoted docstring
+--   s({trig = "\"", dscr = "Triple-quoted Python docstring"}, {
+--     t("\"\"\""),
+--     i(0, "doc"),
+--     t("\"\"\""),
+--   }),
+
+--    -- Assert Equal
+--   s({trig = "a=", dscr = "self.assertEqual"}, {
+--     t("self.assertEqual("), i(1), t(", "), i(0), t(")")
+--   }),
+
+--   -- Test function/method
+--   s({trig = "test", dscr = "Test function or method"}, {
+--     t("def test_"), i(1, "description"), t("("),
+--     i(2, "self"), t("):"),
+--     t({"", "\t"}), i(0)
+--   }),
+
+--   -- TestCase class
+--   s({trig = "testcase", dscr = "UnitTest TestCase class"}, {
+--     t("class "), i(1, "ExampleCase"), t("(unittest.TestCase):"),
+--     t({"", "", "\tdef test_"}), i(2, "description"), t("(self):"),
+--     t({"", "\t\t"}), i(0)
+--   }),
+
+--   -- Given / When / Then comments
+--   s({trig = "tgwt", dscr = "Given / When / Then comment block"}, {
+--     t("# given: "), i(1),
+--     t({"", "# when: "}), i(2),
+--     t({"", "# then: "}), i(3),
+--   }),
+
+--   -- from __future__ import
+--   s({trig = "fut", dscr = "from __future__ import"}, {
+--     t("from __future__ import "), i(0),
+--   }),
+
+--   -- getopt template
+--   s({trig = "getopt", dscr = "getopt parsing template"}, {
+--     t({"try:", "\t# Short option syntax: \"hv:\"", "\t# Long option syntax: \"help\" or \"verbose=\"" }),
+--     t({"", "\topts, args = getopt.getopt(sys.argv[1:], \""}), i(1, "short_options"),
+--     t("\", ["), i(2, "\"long_options\""), t("])"),
+--     t({"", "", "except getopt.GetoptError, err:"}),
+--     t({"", "\t# Print debug info", "\tprint str(err)"}),
+--     t({"", "\t"}), i(3, "# handle error"),
+--     t({"", "", "for option, argument in opts:"}),
+--     t({"", "\tif option in (\"-h\", \"--help\"):"}),
+--     t({"", "\t\t"}), i(0),
+--     t({"", "\telif option in (\"-v\", \"--verbose\"):", "\t\tverbose = argument"}),
+--   }),
+
+--   -- Argparse: create parser
+--   s({trig = "addp", dscr = "Create ArgumentParser"}, {
+--     t("parser = "), i(1, "argparse."), t("ArgumentParser()")
+--   }),
+
+--   -- Argparse: add subparser
+--   s({trig = "addsp", dscr = "Add subparser"}, {
+--     i(1, "sub_parser"), t(' = parser.add_subparsers().add_parser("'),
+--     i(2, "name"), t('")')
+--   }),
+
+--   -- Argparse: add argument
+--   s({trig = "addarg", dscr = "parser.add_argument with defaults and help"}, {
+--     t('parser.add_argument("'), i(1, "short_arg"),
+--     t('", "'), i(2, "long_arg"),
+--     t('", default='), i(3, "None"),
+--     t(', help="'), i(4, "Help text"),
+--     t('")')
+--   }),
+
+--   -- Argparse: add argument with nargs
+--   s({trig = "addnarg", dscr = "parser.add_argument with nargs"}, {
+--     t('parser.add_argument("'), i(1, "arg"),
+--     t('", nargs="'), i(2, "*"),
+--     t('", default='), i(3, "None"),
+--     t(', help="'), i(4, "Help text"),
+--     t('")')
+--   }),
+
+--   -- Argparse: add argument with action
+--   s({trig = "addaarg", dscr = "parser.add_argument with action"}, {
+--     t('parser.add_argument("'), i(1, "arg"),
+--     t('", "'), i(2, "long_arg"),
+--     t('", action="'), i(3, "store_true"),
+--     t('", default='), i(4, "False"),
+--     t(', help="'), i(5, "Help text"),
+--     t('")')
+--   }),
+
+--   -- Argparse: parse_args
+--   s({trig = "pargs", dscr = "parser.parse_args()"}, {
+--     t("return parser.parse_args()")
+--   }),
+
+--   -- Logging: get logger
+--   s({trig = "glog", dscr = "Import logging and get logger"}, {
+--     t({"import logging", "LOGGER = logging.getLogger("}), i(1, "__name__"), t(")")
+--   }),
+
+--   -- Logging levels
+--   s({trig = "le", dscr = "LOGGER.error"}, {
+--     t("LOGGER.error("), i(0, "msg"), t(")")
+--   }),
+--   s({trig = "lg", dscr = "LOGGER.debug"}, {
+--     t("LOGGER.debug("), i(0, "msg"), t(")")
+--   }),
+--   s({trig = "lw", dscr = "LOGGER.warning"}, {
+--     t("LOGGER.warning("), i(0, "msg"), t(")")
+--   }),
+--   s({trig = "lc", dscr = "LOGGER.critical"}, {
+--     t("LOGGER.critical("), i(0, "msg"), t(")")
+--   }),
+--   s({trig = "li", dscr = "LOGGER.info"}, {
+--     t("LOGGER.info("), i(0, "msg"), t(")")
+--   }),
+
+--   -- Epydoc-style docstring
+--   s({trig = "epydoc", dscr = "Epydoc-style docstring"}, {
+--     t('"""'), i(1, "Description"),
+--     t({"", "", "@param "}), i(2, "param"), t(": "), i(3, "Description"),
+--     t({"", "@type  "}), f(function(args) return args[1][1] end, {2}), t(": "), i(4, "Type"),
+--     t({"", "", "@return: "}), i(5, "Description"),
+--     t({"", "@rtype : "}), i(6, "Type"),
+--     t({"", "", "@raise e: "}), i(0, "Description"),
+--     t({"", "\"\"\""})
+--   }),
+
+--   -- __init__ with super call
+--   s({ trig = "dol", dscr = "Constructor with super call" }, {
+--     t("def "), i(1, "__init__"), t("(self, *args, **kwargs):"),
+--     t({ "", "\t" }), t("super("), i(2, "ClassName"), t(", self)."), f(function(args) return args[1][1] end, {1}),
+--     t("(*args, **kwargs)")
+--   }),
+
+--   -- self.kwargs.get assignment
+--   s({ trig = "kwg", dscr = "self.var = kwargs.get()" }, {
+--     t("self."), i(1, "var_name"), t(" = kwargs.get('"), f(function(args) return args[1][1] end, {1}),
+--     t("', "), i(2, "None"), t(")")
+--   }),
+
+--   -- var = kwargs.get()
+--   s({ trig = "lkwg", dscr = "var = kwargs.get()" }, {
+--     i(1, "var_name"), t(" = kwargs.get('"), f(function(args) return args[1][1] end, {1}),
+--     t("', "), i(2, "None"), t(")")
+--   }),
+
+--   -- *args
+--   s({ trig = "args", dscr = "*args with optional trailing comma" }, {
+--     t("*args"), i(1), i(0)
+--   }),
+
+--   -- **kwargs
+--   s({ trig = "kwargs", dscr = "**kwargs with optional trailing comma" }, {
+--     t("**kwargs"), i(1), i(0)
+--   }),
+
+--   -- *args, **kwargs
+--   s({ trig = "akw", dscr = "*args, **kwargs" }, {
+--     t("*args, **kwargs"), i(1), i(0)
+--   }),
+
+--   -- List comprehension
+--   s({ trig = "lcp", dscr = "List comprehension" }, {
+--     t("["), i(1, "x"), t(" for "), i(2, "x"), t(" in "), i(3, "iterable"), t("]"), i(0)
+--   }),
+
+--   -- Dict comprehension
+--   s({ trig = "dcp", dscr = "Dict comprehension" }, {
+--     t("{"), i(1, "k"), t(": "), i(2, "v"), t(" for "), i(3, "k, v"), t(" in "), i(4, "iterable"), t("}"), i(0)
+--   }),
+
+--   -- Set comprehension
+--   s({ trig = "scp", dscr = "Set comprehension" }, {
+--     t("{"), i(1, "x"), t(" for "), i(2, "x"), t(" in "), i(3, "iterable"), t("}"), i(0)
+--   }),
+
+--   -- Emulating a container type
+--   s({ trig = "contain", dscr = "Methods for emulating a container type" }, {
+--     t({
+--       "def __len__(self):", "\t",
+--     }), i(1, "pass"),
+--     t({"", "", "def __getitem__(self, key):", "\t"}), i(2, "pass"),
+--     t({"", "", "def __setitem__(self, key, value):", "\t"}), i(3, "pass"),
+--     t({"", "", "def __delitem__(self, key):", "\t"}), i(4, "pass"),
+--     t({"", "", "def __iter__(self):", "\t"}), i(5, "pass"),
+--     t({"", "", "def __reversed__(self):", "\t"}), i(6, "pass"),
+--     t({"", "", "def __contains__(self, item):", "\t"}), i(0, "pass"),
+--   }),
+
+--   -- Context manager methods
+--   s({ trig = "context", dscr = "Context manager methods" }, {
+--     t("def __enter__(self):"), t({"", "\t"}), i(1, "pass"),
+--     t({"", "", "def __exit__(self, exc_type, exc_value, traceback):", "\t"}), i(0, "pass"),
+--   }),
+
+--   -- Attribute access customization
+--   s({ trig = "attr", dscr = "Methods for customizing attribute access" }, {
+--     t("def __getattr__(self, name):"), t({"", "\t"}), i(1, "pass"),
+--     t({"", "", "def __setattr__(self, name, value):", "\t"}), i(2, "pass"),
+--     t({"", "", "def __delattr__(self, name):", "\t"}), i(0, "pass"),
+--   }),
+
+--   -- Descriptor protocol methods
+--   s({ trig = "desc", dscr = "Methods implementing descriptors" }, {
+--     t("def __get__(self, instance, owner):"), t({"", "\t"}), i(1, "pass"),
+--     t({"", "", "def __set__(self, instance, value):", "\t"}), i(2, "pass"),
+--     t({"", "", "def __delete__(self, instance):", "\t"}), i(0, "pass"),
+--   }),
+
+--   -- Rich comparison methods
+--   s({ trig = "cmp", dscr = "Methods implementing rich comparison" }, {
+--     t("def __eq__(self, other):"), t({"", "\t"}), i(1, "pass"),
+--     t({"", "", "def __ne__(self, other):", "\t"}), i(2, "pass"),
+--     t({"", "", "def __lt__(self, other):", "\t"}), i(3, "pass"),
+--     t({"", "", "def __le__(self, other):", "\t"}), i(4, "pass"),
+--     t({"", "", "def __gt__(self, other):", "\t"}), i(5, "pass"),
+--     t({"", "", "def __ge__(self, other):", "\t"}), i(6, "pass"),
+--     t({"", "", "def __cmp__(self, other):", "\t"}), i(0, "pass"),
+--   }),
+
+--   -- String representation methods
+--   s({ trig = "repr", dscr = "Methods implementing string representation" }, {
+--     t("def __repr__(self):"), t({"", "\t"}), i(1, "pass"),
+--     t({"", "", "def __str__(self):", "\t"}), i(2, "pass"),
+--     t({"", "", "def __unicode__(self):", "\t"}), i(0, "pass"),
+--   }),
+
+--   s({ trig = "numeric", dscr = "methods for emulating a numeric type" }, {
+--     t("def __add__(self, other):"), t({"", "\t"}), i(1, "pass"),
+--     t({"", "", "def __sub__(self, other):", "\t"}), i(2, "pass"),
+--     t({"", "", "def __mul__(self, other):", "\t"}), i(3, "pass"),
+--     t({"", "", "def __div__(self, other):", "\t"}), i(4, "pass"),
+--     t({"", "", "def __truediv__(self, other):", "\t"}), i(5, "pass"),
+--     t({"", "", "def __floordiv__(self, other):", "\t"}), i(6, "pass"),
+--     t({"", "", "def __mod__(self, other):", "\t"}), i(7, "pass"),
+--     t({"", "", "def __divmod__(self, other):", "\t"}), i(8, "pass"),
+--     t({"", "", "def __pow__(self, other):", "\t"}), i(9, "pass"),
+--     t({"", "", "def __lshift__(self, other):", "\t"}), i(10, "pass"),
+--     t({"", "", "def __rshift__(self, other):", "\t"}), i(11, "pass"),
+--     t({"", "", "def __and__(self, other):", "\t"}), i(12, "pass"),
+--     t({"", "", "def __xor__(self, other):", "\t"}), i(13, "pass"),
+--     t({"", "", "def __or__(self, other):", "\t"}), i(14, "pass"),
+--     t({"", "", "def __neg__(self):", "\t"}), i(15, "pass"),
+--     t({"", "", "def __pos__(self):", "\t"}), i(16, "pass"),
+--     t({"", "", "def __abs__(self):", "\t"}), i(17, "pass"),
+--     t({"", "", "def __invert__(self):", "\t"}), i(18, "pass"),
+--     t({"", "", "def __complex__(self):", "\t"}), i(19, "pass"),
+--     t({"", "", "def __int__(self):", "\t"}), i(20, "pass"),
+--     t({"", "", "def __long__(self):", "\t"}), i(21, "pass"),
+--     t({"", "", "def __float__(self):", "\t"}), i(22, "pass"),
+--     t({"", "", "def __oct__(self):", "\t"}), i(23, "pass"),
+--     t({"", "", "def __hex__(self):", "\t"}), i(24, "pass"),
+--     t({"", "", "def __index__(self):", "\t"}), i(25, "pass"),
+--     t({"", "", "def __coerce__(self, other):", "\t"}), i(0, "pass"),
+--   }),
+
+--   s("pr", {
+--     t("print("), i(0), t(")")
+--   }),
+--   s("prs", {
+--     t('print("'), i(0), t('")')
+--   }),
+--   s("prf", {
+--     t('print(f"'), i(0), t('")')
+--   }),
+--   s("fpr", {
+--     t("print("), i(0), t(", file="), i(1, "sys.stderr"), t(")")
+--   }),
+--   s("fprs", {
+--     t('print("'), i(0), t('", file='), i(1, "sys.stderr"), t(")")
+--   }),
+--   s("fprf", {
+--     t('print(f"'), i(0), t('", file='), i(1, "sys.stderr"), t(")")
+--   }),
+
+
+--   s({ trig = "pyprint3", dscr = "Intro to print statements and whitespace (Python 3)" }, {
+--   t({ "# The print() function is a good place to start -- it allows us to see results right away.", "" }),
+--   t('print("Or you can have a comment on the same line") '), t("# as a command that Python WILL run"),
+--   t({ "", 'print("The print() function will output some text to the screen.") ' }), t("# it doesn't print anything to paper."),
+--   t({ "", "", "# Python will run commands from top to bottom, left to right", "" }),
+--   t({ "# So the print() on the next line will run before the one after that", "", "", "", "" }),
+--   t('print("You can use lots of newlines to space things out if you like")'),
+--   t({ "", 'print("Or you can keep your statements close to one another.")', "" }),
+--   t('print("It\'s really up to you, but generally speaking, you\'ll want to make your code as readable as possible.")'),
+--   t({ "", "", "# These two statements are identical", "print(4+4)", "print(4 + 4)", "" }),
+--   t("# Indentation levels matter a lot in Python, even if other whitespace like newlines or spacing doesn’t"),
+--   t({ "", "", "# So if you uncommented the next line and ran this, you'd get an error due to unexpected indentation.", "#    print(4 + 4)" }),
+-- }),
+
+
+-- s({ trig = "pytypes", dscr = "Simple math, data types, and comparisons in Python 3" }, {
+--   t({
+--     "# In Simple Math and Variable Assignment, we saw ints and floats in action.",
+--     "# Here's a quick refresher.",
+--     "",
+--     "# ints are whole numbers",
+--     "print(5 + 2, 5 - 3, 5 * 5, 5 // 2)  # 7, 2, 25, 2",
+--     "",
+--     "# floats are decimal numbers",
+--     "print(5.4 + 2.1, 5.0 - 3, 5.7 * 5.2, 5 / 2.0)  # 7.5, 2.0, 29.64, 2.5",
+--     "",
+--     "# boolean values store True or False (yes or no)",
+--     "print(5 > 4)        # True",
+--     "print(3 + 3 <= 1)   # False",
+--     "",
+--     "# Comparison Operators Sneak Peek",
+--     "#   >    greater than",
+--     "#   <    less than",
+--     "#   >=   greater than or equal to",
+--     "#   <=   less than or equal to",
+--     "#   !=   not equal to",
+--     "#   ==   is equal to",
+--     "",
+--     "# strings are covered in greater detail in Section 2",
+--     "# But essentially, they contain words, or really, anything you could type on a keyboard",
+--     'print("Yep, all those print statements you saw before? Those things between the quotes are strings! Yes, I\'m a string, too.")',
+--     "",
+--     'print("Python usually isn\'t too strict about data types, but there are some things you can\'t do.")',
+--     "",
+--     "# Uncomment the next line to get an error!",
+--     "# print(\"This line here"
+--   }),
+-- }),
+
+
+-- s({ trig = "pyarith", dscr = "Python 3 arithmetic with print examples" }, {
+--   t({
+--     "# You can separate multiple print items with commas, as shown below:",
+--     "",
+--     'print("Four times four is", 4 * 4)',
+--     "",
+--     "# Addition",
+--     'print("5 + 3 is", 5 + 3)',
+--     "",
+--     "# Subtraction",
+--     'print("6 - 2 is", 6 - 2)',
+--     "",
+--     "# Multiplication",
+--     'print("10 * 20 is", 10 * 20)',
+--     "",
+--     "# Division",
+--     'print("55 / 2 is", 55 / 2)  # Hmm ... !',
+--     "",
+--     'print("By default, Python treats numbers as whole numbers (integers)")',
+--     'print("So in a way, Python\'s answer of 55 / 2 = 27 makes sense, even if it\'s not quite what we\'re looking for.")',
+--     'print("Luckily, there are other ways to get the answer we want.")',
+--     "",
+--     "# Precise Division (using floats)",
+--     'print("55.0 / 2 is", 55.0 / 2)',
+--     'print("55 / 2.0 is", 55 / 2.0)',
+--     'print("55.0 / 2.0 is", 55.0 / 2.0)',
+--     "",
+--     "# Remainder Division",
+--     'print("55 % 2 is", 55 % 2)  # This is super useful for determining whether a number is odd or even',
+--     "",
+--     "# Powers",
+--     'print("2 ** 10 is", 2 ** 10)',
+--   }),
+-- }),
+
+-- s({ trig = "pyvars", dscr = "Python 3 variable assignment and usage example" }, {
+--   t({
+--     "# If you see a word on its own that isn't reserved to Python, chances are it's a variable.",
+--     "",
+--     "lesson_section = 1  # General Programming Basics",
+--     "lesson_subsection = 2  # Variable Assignment",
+--     "",
+--     "# In line 19, I'm telling Python I want to create a variable called 'section' and set it equal to 1",
+--     "",
+--     "# Shannon's Rules of variable names",
+--     "# ---------------------------------",
+--     "# Variables should be descriptive, even if it means their names are long",
+--     "# You should be able to show your code to anyone and they'll know exactly what information a given variable holds",
+--     "# Use underscores to break up words!",
+--     "",
+--     "# We've stored values inside of lesson_section and lesson_subsection, so now let's use them!",
+--     'print("We are on Section #", lesson_section)',
+--     'print("And this is unit #", lesson_subsection, ", which covers Variable Assignment")',
+--     "",
+--     'print("Take another look at the code for the basic math unit.")',
+--     'print("Anywhere you see a number in that code, you can replace it with a variable that holds a number instead.")',
+--     "",
+--     "# Let's see that in practice:",
+--     "days_in_a_year = 365  # Beautifully descriptive variable names are their own comments",
+--     "my_age = 21  # yeah, right!",
+--     "",
+--     'print("My age is", my_age, ", and I\'ve been alive for", days_in_a_year * my_age, "days, give or take.")',
+--     "",
+--     "# Now let's change the value stored in days_in_a_year to account for leap years and try it again.",
+--     "days_in_a_year = days_in_a_year + 0.25  # Equivalent to days_in_a_year = 365 + 0.25",
+--     "",
+--     'print("My age is", my_age, ", and I\'ve been alive for", days_in_a_year * my_age, "days, give or take, now that I\'m including leap years.")',
+--   }),
+-- }),
+
+-- s({ trig = "pyalphaspace", dscr = "Check if a string contains only letters and spaces (Python 3)" }, {
+--   t({
+--     "def is_alphaspace(string):",
+--     '    """',
+--     "    Returns True if all characters in the string are spaces or letters; otherwise returns False.",
+--     "",
+--     "    - str.isalpha(): Returns True if all characters are letters.",
+--     "    - str.isspace(): Returns True if all characters are whitespace.",
+--     "",
+--     "    This custom function combines both behaviors, checking each character individually.",
+--     '    """',
+--     "    return all([char.isalpha() or char.isspace() for char in string])",
+--     "",
+--     "# This custom function behaves similarly to str.isalpha() and str.isspace(), but combined.",
+--     "",
+--     'test_string = "This string will return false for each of isalpha and isspace but it will return true for the custom function"',
+--     "",
+--     'print("test_string.isalpha() gives us:", test_string.isalpha())',
+--     'print("test_string.isspace() gives us:", test_string.isspace())',
+--     "",
+--     "# Note how the syntax differs. That's because is_alphaspace() isn't a string method—it's a custom function.",
+--     'print("But is_alphaspace(test_string) gives us:", is_alphaspace(test_string))',
+--   }),
+-- }),
+
+-- s({ trig = "pyslicing", dscr = "Python 3 string slicing and find example" }, {
+--   t({
+--     "# Let's start by creating a variable called github_handle; it will hold a string with my GitHub handle in it",
+--     "github_handle = '@shannonturner'",
+--     "",
+--     "# You can use a comma to separate different items that you want to print as shown below",
+--     'print("My github handle is", github_handle)',
+--     "",
+--     "# This is our first slicing example. Notice the square brackets attached directly to the variable name with no spaces in between.",
+--     "# The two numbers in the middle, separated by a colon, are called the slicing indexes",
+--     'print("My first name is", github_handle[1:8])',
+--     "",
+--     "# Here's how you can visualize the print statement above.",
+--     "",
+--     "#       @shannonturner",
+--     "#       0123456789....",
+--     "",
+--     "# A note about the above: Python starts counting at zero, and the last few letters (r, n, e, r) are tied to 10, 11, 12, 13",
+--     "",
+--     "# Or, shown vertically, it looks like this:",
+--     "##      0       @",
+--     "##      1       s",
+--     "##      2       h",
+--     "##      3       a",
+--     "##      4       n",
+--     "##      5       n",
+--     "##      6       o",
+--     "##      7       n",
+--     "##      8       t",
+--     "##      9       u",
+--     "##      10      r",
+--     "##      11      n",
+--     "##      12      e",
+--     "##      13      r",
+--     "",
+--     "# So in the example of github_handle[1:8], notice that the t (at slice #8) is not included, but the s (at slice #1), is.",
+--     "# That's because the first slice value is inclusive, but the second slice value is exclusive.",
+--     "# I think of it as: Python starts at 1 and walks UNTIL it gets to 8 and then stops, gathering up everything in between.",
+--     "",
+--     'print("My last name is", github_handle[8:14])',
+--     "",
+--     "# Notice that there is no index 14. If the second index is higher than what exists, Python will assume you mean 'until the very end'",
+--     'print("My last name is", github_handle[8:])',
+--     "",
+--     "# And if you omit the first index, Python understands this as 'start from the beginning'",
+--     'print("My twitter handle is NOT", github_handle[:8])',
+--     "",
+--     "# What happens if you use a negative slicing index?",
+--     "# You can use negative slicing indexes to count backwards from the end, like this:",
+--     "##      -14      @",
+--     "##      -13      s",
+--     "##      -12      h",
+--     "##      -11      a",
+--     "##      -10      n",
+--     "##      -9       n",
+--     "##      -8       o",
+--     "##      -7       n",
+--     "##      -6       t",
+--     "##      -5       u",
+--     "##      -4       r",
+--     "##      -3       n",
+--     "##      -2       e",
+--     "##      -1       r",
+--     "",
+--     'print("My last name is", github_handle[-6:])',
+--     "",
+--     "# You can also mix and match positive and negative slicing indexes as needed",
+--     'print("My first name is", github_handle[1:-6])',
+--     "",
+--     "# In these examples, we're relying on knowing the exact slicing indexes. But what if our string changes in size or content?",
+--     "# With short strings, it's fairly easy (especially if you write it out as above) to figure out which slices you need.",
+--     "",
+--     "# But a more common and practical way to slice, rather than using numbers directly, is to create a variable that holds the number you need (but can change as needed)",
+--     "# If this part is confusing, you may want to revisit this section when you're comfortable with string methods like str.find()",
+--     "",
+--     'print("### Part Two ###")',
+--     "",
+--     'text = "My GitHub handle is @shannonturner and my Twitter handle is @svt827"',
+--     "",
+--     "# Let's extract the GitHub handle using str.find() and slicing.",
+--     "snail_index = text.find('@')",
+--     "",
+--     "print(text[snail_index:snail_index + 14])  # First slicing index is variable, but length (14) is hardcoded; can be improved.",
+--     "",
+--     "space_after_first_snail_index = text[snail_index:].find(' ')  # Find space after first @ using slicing",
+--     "",
+--     "print(text[snail_index:snail_index + space_after_first_snail_index])  # Add snail_index to get correct absolute index",
+--     "",
+--     'print("snail_index is:", snail_index)',
+--     'print("space_after_first_snail_index is:", space_after_first_snail_index)',
+--   }),
+-- }),
+
+-- s({ trig = "pycount", dscr = "Using string.count() method in Python 3" }, {
+--   t({
+--     '# string.count() tells you how many times one string appears in a larger string',
+--     "",
+--     'gettysburg_address = """',
+--     "Four score and seven years ago our fathers brought forth on this continent a new nation, conceived in liberty, and dedicated to the proposition that all men are created equal.",
+--     "Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure.",
+--     "We are met on a great battlefield of that war.",
+--     "We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live.",
+--     "It is altogether fitting and proper that we should do this.",
+--     "But, in a larger sense, we can not dedicate, we can not consecrate, we can not hallow this ground.",
+--     "The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract.",
+--     "The world will little note, nor long remember what we say here, but it can never forget what they did here.",
+--     "It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced.",
+--     "It is rather for us to be here dedicated to the great task remaining before us -- that from these honored dead we take increased devotion to that cause",
+--     "for which they gave the last full measure of devotion -- that we here highly resolve that these dead shall not have died in vain -- that this nation, under God,",
+--     "shall have a new birth of freedom -- and that government of the people, by the people, for the people, shall not perish from the earth.",
+--     '"""',
+--     "",
+--     '# Now that we have a fairly long string to search through, let\'s see how many times the word "people" appears in the text',
+--     'print(gettysburg_address.count("people"))  # appears 3 times',
+--     "",
+--     '# What goes inside the parentheses is the string that you\'re looking for; the larger string to look inside is the string that comes before the dot.',
+--     'print(gettysburg_address.count("here, "))  # appears 2 times',
+--     'print(gettysburg_address.count("e"))      # appears 165 times',
+--     'print(gettysburg_address.count("!!!!!!")) # doesn\'t appear at all',
+--   }),
+-- }),
+
+
+-- s({ trig = "pyfind", dscr = "Using string.find() and slicing in Python 3" }, {
+--   t({
+--     "# String methods: string.find()",
+--     "",
+--     "# string.find() tells you where you can find a part of one string in a larger string.",
+--     "# string.find() will return a number:",
+--     "#\tif string.find() returns -1, it could not find the string inside the larger string.",
+--     "#\totherwise, string.find() will return the slicing number/index of where it found that string",
+--     "",
+--     "email_address = \"hoorayforpython@notarealwebsite.com\"",
+--     "",
+--     "print(\"I found the snail at: {0}\".format(email_address.find(\"@\")))  # the slicing number/index of where the at symbol appears",
+--     "",
+--     "# string.find() + slicing = awesome!",
+--     "",
+--     "# Everything before the @ is part of the email_handle; everything after the @ is part of the domain where they have their email registered.",
+--     "# Let's use string.find() and slicing together to split those apart.",
+--     "",
+--     "at_symbol_index = email_address.find(\"@\")",
+--     "",
+--     "print(\"I found the snail at: {0}\".format(at_symbol_index))  # Notice how line 10 and 19 each give the same result, but take a different approach",
+--     "",
+--     "email_handle = email_address[0:at_symbol_index]",
+--     "",
+--     "print(\"The email_handle is: {0}\".format(email_handle))",
+--     "",
+--     "email_domain = email_address[at_symbol_index + 1:]  # without the +1, the at symbol would be included. Notice that there is no number after the colon, so Python assumes you want everything to the end.",
+--     "",
+--     "print(\"The email_domain is: {0}\".format(email_domain))",
+--     "",
+--     "print(\"When string.find() can't find a string, it'll give a -1.  So since there's no 'QQQ' in email_address, this will return a -1: {0}\".format(email_address.find(\"QQQ\")))",
+--   }),
+-- }),
+
+-- s({ trig = "pyformat", dscr = "Using .format() for string formatting in Python 3" }, {
+--   t({ 'name = "Pumpkin"', "" }),
+--   t('print("My name is {0}".format(name))  # This will print "My name is Pumpkin"', ""),
+--   t("# Remember that Python runs commands from top to bottom, left to right.", ""),
+--   t("# The two new parts of this print statement are the {0} and the .format(name)", ""),
+--   t("# The {0} is a placeholder for the 0th variable in the list that appears inside the parentheses of .format() -- remember Python starts counting at 0, not 1", ""),
+--   t("# So it really just keeps the spot warm.", "", ""),
+--   t("age = 100", ""),
+--   t('location = "The Pumpkin Patch"', ""),
+--   t('print("My name is {0} and my age is {1} and I live in {2}".format(name, age, location))', ""),
+--   t("# Note how we put the placeholders exactly in the string where we want them; and the variables go inside the parentheses of the .format()", ""),
+--   t("# Remember how Python counts.", ""),
+--   t("# So {0} is a placeholder for name;", ""),
+--   t("# {1} is a placeholder for age;", ""),
+--   t("# and {2} is a placeholder for location", "", ""),
+--   t('# But there\'s more than one way to do this:', ""),
+--   t('print("My name is {name} and my age is {age} and I live in {location}".format(name=name, age=age, location=location))  # This way feels more explicit', ""),
+-- }),
+
+-- s({ trig = "pylowerupper", dscr = "Working with .lower() and .upper() in Python 3" }, {
+--   t('name = "SHANNON!!"'),
+--   t({"", 'print(name.lower())  # shannon!!', 'print(name)  # it\'s back to the original of SHANNON!!'}),
+--   t({"", "# To make the changes stick:"}),
+--   t("name = name.lower()"),
+--   t('print(name)  # shannon!!', ""),
+
+--   t('# string.upper() will turn all characters in your string uppercase but otherwise works in the same manner as string.lower()'),
+--   t('greeting = "hello, hi"  # not very exuberant ...'),
+--   t('print(greeting.upper())  # MUCH BETTER!'),
+--   t("greeting = greeting.upper()"),
+--   t('print(greeting)  # HELLO, HI', ""),
+
+--   t("# string.lower() and .upper() are primarily used for testing strings in a case-insensitive manner"),
+--   t("gender = 'F'"),
+--   t("if gender.lower() == 'f':"),
+--   t('    print("Hi lady!")', ""),
+--   t("# To accomplish the same thing without string.lower(), you would have to do:"),
+--   t("if gender == 'F' or gender == 'f':"),
+--   t('    print("Hi lady!")'),
+-- }),
+
+
+-- s({ trig = "pyreplace", dscr = "Working with .replace() in Python 3" }, {
+--   t('song = "eat, eat, eat, apples and bananas"'),
+--   t({"", 'print("I like to ... {0}".format(song))'}),
+--   t({"", 'print("I like to ... {0}".format(song.replace("a", "o")))  # replacing "a" with "o"'}),
+--   t({"", 'print("But note that the original song is unchanged: {0}".format(song))'}),
+--   t({"", 'print("string.replace() is case-sensitive.")'}),
+--   t({"", 'print(song.replace("Eat", "chop"))  # nothing happens, case-sensitive'}),
+--   t({"", 'print(song.replace("eat", "chop"))'}),
+--   t({"", "# Make changes stick:"}),
+--   t('song = song.replace("eat", "chop")'),
+--   t({"", "# Multiple step-by-step replacements:"}),
+--   t('song = song.replace("apples", "mangos")'),
+--   t('song = song.replace(" and", ", pears, and")'),
+--   t('song = song.replace("bananas", "kiwis")'),
+--   t({"", 'print(song)'}),
+--   t({"", "# Or chain them together:"}),
+--   t('song = "eat, eat, eat, apples and bananas"'),
+--   t('song = ('),
+--   t('    song.replace("eat", "chop")'),
+--   t('        .replace("apples", "mangos")'),
+--   t('        .replace(" and", ", pears, and")'),
+--   t('        .replace("bananas", "kiwis")'),
+--   t(')'),
+--   t({"", 'print(song)'}),
+-- }),
+
+-- s({ trig = "pyagecheck", dscr = "Check age for permissions in Python 3" }, {
+--   t("age = 30"),
+--   t({"", "", "if age >= 21:"}),
+--   t({'    print("I would like a Three Philosophers, please")'}),
+--   t({"", "elif age >= 18:"}),
+--   t({'    print("I\'m here to vote -- you can vote at bars, right?")'}),
+--   t({"", "else:"}),
+--   t({'    print("I really shouldn\'t even be here, but can I have a cherry coke please?")'}),
+-- }),
+
+-- s({ trig = "pyagegender", dscr = "Age and gender based life stage commentary" }, {
+--   t("age = 10"),
+--   t({"", "gender = 'f'", "", "if age < 2:"}),
+--   t({'    print("You can eat and poo all day and people will fall all over themselves over how adorable you are")'}),
+--   t({"", "elif age == 2:"}),
+--   t({'    print("You can throw tantrums and it\'s pretty much expected")'}),
+--   t({"", "elif age == 3:"}),
+--   t({'    print("By this point, you are the master of object permanence.")'}),
+--   t({"", "elif 4 <= age <= 6:"}),
+--   t({'    print("This seems like a good time to learn how to read.")'}),
+--   t({'    if age == 4:'}),
+--   t({'        print("How about some preschool?")'}),
+--   t({'    elif age == 5:'}),
+--   t({'        print("Kindergarten is cool -- nap time rocks.  Don\'t forget to share.")'}),
+--   t({'    elif age == 6:'}),
+--   t({'        print("First grade.  Naptime is a thing of the past. You\'re probably too stubborn to be upset much by this.")'}),
+--   t({"", "elif 7 <= age <= 9:"}),
+--   t({'    print("Grade school goes by so quickly")'}),
+--   t({"", "elif 10 <= age <= 11:"}),
+--   t({'    print("Middle school is kind of neat.")'}),
+--   t({'    if age == 10:'}),
+--   t({'        print("Health class for the first time ...")'}),
+--   t({'        if gender.lower() == "f":'}),
+--   t({'            print("... Well, that explains a lot, really.")'}),
+--   t({'        elif gender.lower() == "m":'}),
+--   t({'            print("Wonder what the girls are all talking about?")'}),
+--   t({'    elif age == 11:'}),
+--   t({'        print("The periodic table is SO COOL")'}),
+--   t({"", "elif 12 <= age <= 13:"}),
+--   t({'    print("Junior high, aka welcome to hormone land")'}),
+--   t({'    print("PS: sucks to be you")'}),
+--   t({"", "elif 14 <= age <= 17:"}),
+--   t({'    print("High school was probably the worst")'}),
+--   t({'    print("Why on earth did everyone say it was the best time of their life?")'}),
+--   t({'    if age >= 16:'}),
+--   t({'        print("But you can drive, so you\'ve got that going for you")'}),
+--   t({"", "elif age == 18:"}),
+--   t({'    print("So you\'re technically an adult now. But not really.")'}),
+--   t({'    print("But you can vote, so you\'ve got that going for you.")'}),
+--   t({'    print("PS: you have responsibilities now. sucks to be you")'}),
+--   t({'    if gender.lower() == "m":'}),
+--   t({'        print("Better register for the draft.")'}),
+--   t({"", "elif 19 <= age <= 20:"}),
+--   t({'    print("Now\'s a good time to be in college.")'}),
+--   t({"", "elif age == 21:"}),
+--   t({'    print("Well, you can drink now.")'}),
+--   t({"", "elif 22 <= age <= 24:"}),
+--   t({'    print("Graduating college and spoiling your liver, mostly.")'}),
+--   t({"", "elif age == 25:"}),
+--   t({'    print("You can rent a car now.  You know, that\'s never actually come up for me, but apparently it\'s a thing ...")'}),
+--   t({"", "else:"}),
+--   t({'    print("You\'re an adult.  Do what you want.")'}),
+--   t({'    if age > 30 and gender.lower() == "f":'}),
+--   t({'        print("Meddling folks are going to start hectoring you about your love life.  Yawn.")'}),
+--   t({'    if age > 40:'}),
+--   t({'        print("You\'re over the hill")'}),
+--   t({'    if age > 50:'}),
+--   t({'        print("Everything hurts and your children never call.")'}),
+--   t({'    if age > 70:'}),
+--   t({'        print("You\'re old enough not to care about anything.  You can now do what you like with total impunity.")'}),
+-- }),
+
+
+-- s({ trig = "pyvolunteers", dscr = "Check volunteer recruitment progress" }, {
+--   t({"# Change these variables to change the behavior of your program",
+--      "volunteers_goal = 20",
+--      "current_volunteers = 100",
+--      "",
+--      "# Is current_volunteers less than, equal to, or greater than volunteers_goal?",
+--      "",
+--      "if current_volunteers < volunteers_goal:",
+--      "    print(\"You still have {0} volunteers to recruit!\".format(volunteers_goal - current_volunteers))",
+--      "elif current_volunteers == volunteers_goal:",
+--      "    print(\"You met your goal exactly! Way to go!\")",
+--      "elif current_volunteers > volunteers_goal:",
+--      "    print(\"You exceeded your recruitment goals by {0}! Way to go!\".format(current_volunteers - volunteers_goal))"
+--   }),
+-- }),
+
+-- s({ trig = "pylistops", dscr = "Python 3 list operations: append, insert, extend, pop, index, remove" }, {
+--   t({
+--     "names = []  # an empty list",
+--     "print(names)",
+--     "",
+--     "names.append('Shannon')  # add one item to the end of the list",
+--     "print(names)",
+--     "",
+--     "# Accessing names by slicing:",
+--     "print(names[0])  # Shannon",
+--     "",
+--     "# Inserting an item (not just adding it to the end):",
+--     "names.insert(0, 'Finn')",
+--     "print(names)",
+--     "",
+--     "# 0 is the slicing number for where you'd like to insert the item BEFORE",
+--     "# In other words, this will insert 'Finn' just *before* index 0",
+--     "",
+--     "many_more = ['Jake', 'Princess Bubblegum', 'Marceline the Vampire Queen', 'Peppermint Butler']",
+--     "",
+--     "# Now we can add all of the names in many_more to the end of the list",
+--     "names.extend(many_more)",
+--     "print(names)",
+--     "",
+--     "# Now we're going to go sugar-free, so everyone from the candy kingdom needs to go.",
+--     "# Let's remove Peppermint Butler and Princess Bubblegum from our list.",
+--     "",
+--     "names.pop()  # removes the last item: Peppermint Butler",
+--     "print(names)",
+--     "",
+--     "names.pop(3)  # removes Princess Bubblegum at index 3",
+--     "print(names)",
+--     "",
+--     "# Now we're going to search for an item and remove it.",
+--     "remove_this = names.index('Jake')",
+--     "print(\"I found Jake at slicing number / index #{0}\".format(remove_this))",
+--     "print(\"Now I can use .pop() to remove that item.\")",
+--     "names.pop(remove_this)",
+--     "print(names)",
+--     "",
+--     "# We can also use .remove() to shortcut that.",
+--     "names.remove('Finn')",
+--     "print(names)",
+--   }),
+-- }),
+
+-- s({ trig = "pyremovedups", dscr = "Remove duplicates from a list using set() and list()" }, {
+--   t({
+--     "# Here, we have a list of state abbreviations ... but our list has lots of duplicates!",
+--     "list_with_duplicates = ['CT', 'DE', 'MN', 'OH', 'CT', 'OK', 'MT', 'FL', 'TX', 'CT', 'OK', 'TX', 'PA', 'OK']",
+--     "",
+--     "# First we convert our list with duplicates to the set type, which will eliminate the duplicates",
+--     "# Next we convert that set back to a list so we can use it as intended.",
+--     "list_without_duplicates = list(set(list_with_duplicates))",
+--     "",
+--     'print("List with duplicates: {0}".format(list_with_duplicates))',
+--     'print("List without duplicates: {0}".format(list_without_duplicates))',
+--   }),
+-- }),
+
+-- s({ trig = "py12days", dscr = "12 Days of Christmas gift tracker and analyzer" }, {
+--   t({
+--     "gifts = [",
+--     '    "A partridge in a pear tree",',
+--     '    "Two turtle doves",',
+--     '    "Three french hens",',
+--     '    "Four colly birds",',
+--     '    "Five golden rings",',
+--     '    "Six geese-a-laying",',
+--     '    "Seven swans-a-swimming",',
+--     '    "Eight maids-a-milking",',
+--     '    "Nine ladies dancing",',
+--     '    "Ten lords-a-leaping",',
+--     '    "Eleven pipers piping",',
+--     '    "Twelve drummers drumming"',
+--     "]",
+--     "",
+--     "gifts_given = []",
+--     "",
+--     "for day in range(1,13):",
+--     "    gifts_given.extend(gifts[:day])",
+--     "",
+--     "    if day == 1:",
+--     '        suffix = "st"',
+--     "    elif day == 2:",
+--     '        suffix = "nd"',
+--     "    elif day == 3:",
+--     '        suffix = "rd"',
+--     "    else:",
+--     '        suffix = "th"',
+--     "",
+--     '    print("-" * 57)',
+--     '    print("On the {0}{1} day of Christmas, my true love gave to me:".format(day, suffix))',
+--     '    print("-" * 57)',
+--     '    print("\\t" + "\\n\\t".join(reversed(gifts[:day])))',
+--     "",
+--     'print("-" * 57)',
+--     'print("The gifts I have received in total are:")',
+--     'print("-" * 57)',
+--     'print("\\t" + "\\n\\t".join(sorted(gifts_given)))',
+--     "",
+--     'print("-" * 57)',
+--     'print("Over all twelve days I received:")',
+--     'print("-" * 57)',
+--     "",
+--     "total_gifts = 0",
+--     "for repetitions, day in zip(reversed(range(1,13)), range(1,13)):",
+--     '    gift_name = gifts[day-1][gifts[day-1].index(" ") + 1:]',
+--     '    print("{0} of {1}".format(repetitions * day, gift_name))',
+--     "    total_gifts += repetitions * day",
+--     "",
+--     'print("I received {0} gifts in total".format(total_gifts))',
+--   }),
+-- }),
+
+-- s({ trig = "pymonthweekend", dscr = "Loop through first 6 months and print weekends" }, {
+--   t({
+--     "months_in_year = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',",
+--     "                  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']",
+--     "",
+--     "days_of_week = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']",
+--     "",
+--     "# Loop through first 6 months only",
+--     "for month in months_in_year[:6]:",
+--     "    print(f\"\\n{month}\\n\")",
+--     "",
+--     "    for week in range(1, 5):",
+--     "        print(f\"Week {week}\")",
+--     "",
+--     "        for day in days_of_week[-2:]:  # Only Saturday and Sunday",
+--     "            print(day)",
+--   }),
+-- }),
+
+-- s({ trig = "pyweekdaysenum", dscr = "Loop through days with enumerate and format output" }, {
+--   t({
+--     "days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']",
+--     "",
+--     "# Simple loop: print each day",
+--     "for day in days:",
+--     "    print(day)",
+--     "",
+--     "# Loop with index and value using enumerate()",
+--     "for index, day in enumerate(days):",
+--     "    print(\"days[{0}] contains {1}\".format(index, day))",
+--     "    print(\"day contains {0}\".format(day))",
+--     "",
+--     "# Loop with human-friendly day numbering (starting at 1)",
+--     "for index, day in enumerate(days):",
+--     "    print(\"{0} is day # {1}\".format(day, index + 1))",
+--   }),
+-- }),
+
+-- s({ trig = "pyquadrantaddr", dscr = "Sort addresses into quadrant lists in Python 3" }, {
+--   t({
+--     "nw_addresses = []",
+--     "ne_addresses = []",
+--     "sw_addresses = []",
+--     "se_addresses = []",
+--     "no_quadrant = []",
+--     "",
+--     "for _ in range(3):  # do this three times",
+--     "    address = input(\"What is your address? \")  # get the address from the user",
+--     "",
+--     "    address_split = address.split(\" \")  # split address into a list based on spaces",
+--     "",
+--     "    if 'NW' in address_split:",
+--     "        nw_addresses.append(address)  # add full address string",
+--     "    elif 'NE' in address_split:",
+--     "        ne_addresses.append(address)",
+--     "    elif 'SW' in address_split:",
+--     "        sw_addresses.append(address)",
+--     "    elif 'SE' in address_split:",
+--     "        se_addresses.append(address)",
+--     "    else:",
+--     "        no_quadrant.append(address)",
+--     "",
+--     "print(\"NW addresses include: {0}\".format(nw_addresses))",
+--     "print(\"NE addresses include: {0}\".format(ne_addresses))",
+--     "print(\"SW addresses include: {0}\".format(sw_addresses))",
+--     "print(\"SE addresses include: {0}\".format(se_addresses))",
+--     "print(\"Addresses without a quadrant include: {0}\".format(no_quadrant))",
+--   }),
+-- }),
+
+-- s({ trig = "pyquadrantaddr", dscr = "Sort addresses into quadrant lists in Python 3" }, {
+--   t({
+--     "nw_addresses = []",
+--     "ne_addresses = []",
+--     "sw_addresses = []",
+--     "se_addresses = []",
+--     "no_quadrant = []",
+--     "",
+--     "for _ in range(3):  # do this three times",
+--     "    address = input(\"What is your address? \")  # get the address from the user",
+--     "",
+--     "    address_split = address.split(\" \")  # split address into a list based on spaces",
+--     "",
+--     "    if 'NW' in address_split:",
+--     "        nw_addresses.append(address)  # add full address string",
+--     "    elif 'NE' in address_split:",
+--     "        ne_addresses.append(address)",
+--     "    elif 'SW' in address_split:",
+--     "        sw_addresses.append(address)",
+--     "    elif 'SE' in address_split:",
+--     "        se_addresses.append(address)",
+--     "    else:",
+--     "        no_quadrant.append(address)",
+--     "",
+--     "print(\"NW addresses include: {0}\".format(nw_addresses))",
+--     "print(\"NE addresses include: {0}\".format(ne_addresses))",
+--     "print(\"SW addresses include: {0}\".format(sw_addresses))",
+--     "print(\"SE addresses include: {0}\".format(se_addresses))",
+--     "print(\"Addresses without a quadrant include: {0}\".format(no_quadrant))",
+--   }),
+-- }),
+
+-- s({ trig = "pysquareloop", dscr = "Loop through a list and return squares of each item in Python 3" }, {
+--   t({
+--     "def loop_example(list_to_loop_through):",
+--     "    \"\"\"Assuming each item in list_to_loop_through is a number,",
+--     "    return a list of each item in that list squared.\"\"\"",
+--     "",
+--     "    print(\"I'm going to begin to loop through this list:\", list_to_loop_through, \"\\n\")",
+--     "",
+--     "    list_items_squared = []",
+--     "",
+--     "    for each_item in list_to_loop_through:",
+--     "        print(\"Now I'm on:\", each_item)",
+--     "        print(\"{0} squared is {1}\\n\".format(each_item, each_item**2))",
+--     "        list_items_squared.append(each_item**2)",
+--     "",
+--     "    print(\"Now I'm done looping through the list, and I'm going to return the new list, where each list item has been squared.\")",
+--     "",
+--     "    return list_items_squared",
+--   }),
+-- }),
+
+-- s({ trig = "pydayfoodloop", dscr = "Loop over days and foods with enumerate and zip in Python 3" }, {
+--   t({
+--     "days_of_week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']",
+--     "foods_of_day = ['Manicotti', 'Tacos', 'Waffles', 'Raspberries', 'Franks', 'Salad', 'Soup']",
+--     "",
+--     "# Example #1: Simple loop",
+--     "for day in days_of_week:",
+--     "    print(f\"Today is {day}\")",
+--     "print()",
+--     "",
+--     "# Example #2: Using enumerate to get index and value",
+--     "for index, day in enumerate(days_of_week):",
+--     "    print(f\"Today is the {index}th day of the week, which is {day}\")  # Note: 0th day grammar is informal",
+--     "    print(f\"So day_of_week[{index}] is: {days_of_week[index]}, which is the same as day, which is: {day}\")",
+--     "print()",
+--     "",
+--     "# Example #3: Using zip to loop over two lists together",
+--     "for day, food in zip(days_of_week, foods_of_day):",
+--     "    print(f\"Today is {day} so obviously I'm having {food} for dinner.\")",
+--   }),
+-- }),
+
+-- s({ trig = "pynamecmd", dscr = "Interactive name list with add, remove, show, quit commands" }, {
+--   t({
+--     "instructions = '''Type a one-letter command and hit enter:",
+--     "A to add a name to your list",
+--     "R to remove a name from your list",
+--     "S to show the names in your list",
+--     "Q to quit",
+--     "> '''",
+--     "",
+--     "allowed_commands = ['a', 'r', 's', 'q']",
+--     "names = []",
+--     "",
+--     "command = input(instructions)",
+--     "",
+--     "while command.lower() in allowed_commands:",
+--     "    if command.lower() == 'a':",
+--     "        name = input(\"Enter a name to add to your list: \")",
+--     "        names.append(name)",
+--     "    elif command.lower() == 'r':",
+--     "        name = input(\"Enter a name to remove from your list: \")",
+--     "        if name in names:",
+--     "            names.remove(name)  # removes first instance",
+--     "        else:",
+--     "            print(f\"{name} is not in the list.\")",
+--     "    elif command.lower() == 's':",
+--     "        print('\\n'.join(names))",
+--     "    elif command.lower() == 'q':",
+--     "        break",
+--     "",
+--     "    command = input(instructions)",
+--   }),
+-- }),
+
+-- s({ trig = "pynamecmd", dscr = "Interactive name list with add, remove, show, quit commands" }, {
+--   t({
+--     "instructions = '''Type a one-letter command and hit enter:",
+--     "A to add a name to your list",
+--     "R to remove a name from your list",
+--     "S to show the names in your list",
+--     "Q to quit",
+--     "> '''",
+--     "",
+--     "allowed_commands = ['a', 'r', 's', 'q']",
+--     "names = []",
+--     "",
+--     "command = input(instructions)",
+--     "",
+--     "while command.lower() in allowed_commands:",
+--     "    if command.lower() == 'a':",
+--     "        name = input(\"Enter a name to add to your list: \")",
+--     "        names.append(name)",
+--     "    elif command.lower() == 'r':",
+--     "        name = input(\"Enter a name to remove from your list: \")",
+--     "        if name in names:",
+--     "            names.remove(name)  # removes first instance",
+--     "        else:",
+--     "            print(f\"{name} is not in the list.\")",
+--     "    elif command.lower() == 's':",
+--     "        print('\\n'.join(names))",
+--     "    elif command.lower() == 'q':",
+--     "        break",
+--     "",
+--     "    command = input(instructions)",
+--   }),
+-- }),
+
+-- s({ trig = "pyaddressquad", dscr = "Input addresses loop, categorize by quadrant" }, {
+--   t({
+--     "nw_addresses = []",
+--     "ne_addresses = []",
+--     "sw_addresses = []",
+--     "se_addresses = []",
+--     "no_quadrant = []",
+--     "",
+--     "address = input(\"Enter an address: \")",
+--     "",
+--     "while address.strip() != \"\":  # loop until empty input",
+--     "    address_parts = address.split()  # split by spaces",
+--     "",
+--     "    if 'NW' in address_parts:",
+--     "        nw_addresses.append(' '.join(address_parts))",
+--     "    elif 'NE' in address_parts:",
+--     "        ne_addresses.append(' '.join(address_parts))",
+--     "    elif 'SW' in address_parts:",
+--     "        sw_addresses.append(' '.join(address_parts))",
+--     "    elif 'SE' in address_parts:",
+--     "        se_addresses.append(' '.join(address_parts))",
+--     "    else:",
+--     "        no_quadrant.append(' '.join(address_parts))",
+--     "",
+--     "    address = input(\"Enter an address: \")  # prompt again",
+--     "",
+--     "print(f\"NW addresses include: {nw_addresses}\")",
+--     "print(f\"NE addresses include: {ne_addresses}\")",
+--     "print(f\"SW addresses include: {sw_addresses}\")",
+--     "print(f\"SE addresses include: {se_addresses}\")",
+--     "print(f\"Addresses without a quadrant include: {no_quadrant}\")",
+--   }),
+-- }),
+
+-- s({ trig = "pybingo", dscr = "Generate 5x5 bingo board from words list with free space" }, {
+--   t({
+--     "words = ['apple', 'banana', 'carrot', 'danke', 'elephant', 'fruit', 'gorilla', 'horse, michael', 'ice cream', 'jack, one eye', 'kazoo', 'lollerskates', 'mango', 'noodles', 'oboe', 'porcupine', 'quill', 'rowboat', 'sailboat', 'trolley', 'umbrella', 'voltage', 'watermelon', 'xylophobe', 'yarn', 'zebra-clops']",
+--     "",
+--     "print(f\"words has {len(words)} words in the list.\")",
+--     "",
+--     "output = ''",
+--     "",
+--     "# Uncomment to shuffle the words randomly",
+--     "# import random",
+--     "# random.shuffle(words)",
+--     "",
+--     "for word, position in zip(words, range(25)):",
+--     "    if position == 12:",
+--     "        output += 'Free space,'",
+--     "    else:",
+--     "        output += f\"{word},\"",
+--     "",
+--     "    if position in (4, 9, 14, 19, 24):",
+--     "        output += '\\n'",
+--     "",
+--     "print(output)",
+--   }),
+-- }),
+
+-- s({ trig = "pybingo", dscr = "Generate 5x5 bingo board from words list with free space" }, {
+--   t({
+--     "words = ['apple', 'banana', 'carrot', 'danke', 'elephant', 'fruit', 'gorilla', 'horse, michael', 'ice cream', 'jack, one eye', 'kazoo', 'lollerskates', 'mango', 'noodles', 'oboe', 'porcupine', 'quill', 'rowboat', 'sailboat', 'trolley', 'umbrella', 'voltage', 'watermelon', 'xylophobe', 'yarn', 'zebra-clops']",
+--     "",
+--     "print(f\"words has {len(words)} words in the list.\")",
+--     "",
+--     "output = ''",
+--     "",
+--     "# Uncomment to shuffle the words randomly",
+--     "# import random",
+--     "# random.shuffle(words)",
+--     "",
+--     "for word, position in zip(words, range(25)):",
+--     "    if position == 12:",
+--     "        output += 'Free space,'",
+--     "    else:",
+--     "        output += f\"{word},\"",
+--     "",
+--     "    if position in (4, 9, 14, 19, 24):",
+--     "        output += '\\n'",
+--     "",
+--     "print(output)",
+--   }),
+-- }),
+
+-- s({ trig = "pyjoinstates", dscr = "Join list of states with newlines" }, {
+--   t({
+--     "states = [",
+--     "    \"Alabama\", \"Alaska\", \"Arizona\", \"Arkansas\", \"California\", \"Colorado\", \"Connecticut\", \"Delaware\",",
+--     "    \"District Of Columbia\", \"Florida\", \"Georgia\", \"Hawaii\", \"Idaho\", \"Illinois\", \"Indiana\", \"Iowa\",",
+--     "    \"Kansas\", \"Kentucky\", \"Louisiana\", \"Maine\", \"Maryland\", \"Massachusetts\", \"Michigan\", \"Minnesota\",",
+--     "    \"Mississippi\", \"Missouri\", \"Montana\", \"Nebraska\", \"Nevada\", \"New Hampshire\", \"New Jersey\",",
+--     "    \"New Mexico\", \"New York\", \"North Carolina\", \"North Dakota\", \"Ohio\", \"Oklahoma\", \"Oregon\",",
+--     "    \"PALAU\", \"Pennsylvania\", \"PUERTO RICO\", \"Rhode Island\", \"South Carolina\", \"South Dakota\",",
+--     "    \"Tennessee\", \"Texas\", \"Utah\", \"Vermont\", \"Virginia\", \"Washington\", \"West Virginia\", \"Wisconsin\",",
+--     "    \"Wyoming\"",
+--     "]",
+--     "",
+--     "# Join the list of states with newlines between each state",
+--     "print(\"\\n\".join(states))",
+--   }),
+-- }),
+
+-- s({ trig = "pyaddrquad", dscr = "Categorize address by quadrant" }, {
+--   t({
+--     "NW = []",
+--     "NE = []",
+--     "SE = []",
+--     "SW = []",
+--     "Other = []",
+--     "",
+--     "address = \"\"  # Enter your address here",
+--     "",
+--     "print(f\"Address entered: {address}\")",
+--     "",
+--     "address_as_list = address.upper().split(' ')",
+--     "",
+--     "if 'NW' in address_as_list:",
+--     "    NW.append(address)",
+--     "elif 'NE' in address_as_list:",
+--     "    NE.append(address)",
+--     "elif 'SE' in address_as_list:",
+--     "    SE.append(address)",
+--     "elif 'SW' in address_as_list:",
+--     "    SW.append(address)",
+--     "else:",
+--     "    Other.append(address)",
+--     "",
+--     "print(f\"NW is {NW}\")",
+--     "print(f\"NE is {NE}\")",
+--     "print(f\"SE is {SE}\")",
+--     "print(f\"SW is {SW}\")",
+--     "print(f\"Other is {Other}\")",
+--   }),
+-- }),
+
+-- s({ trig = "pysplitaddr", dscr = "Split an address string into list of words" }, {
+--   t({
+--     "address = \"1600 Pennsylvania Ave NW Washington, DC\"",
+--     "",
+--     "# Split the address string into a list at every space",
+--     "address_list = address.split(\" \")",
+--     "",
+--     "print(address_list)",
+--   }),
+-- }),
+
+-- s({ trig = "pysplitaddr", dscr = "Split an address string into list of words" }, {
+--   t({
+--     "address = \"1600 Pennsylvania Ave NW Washington, DC\"",
+--     "",
+--     "# Split the address string into a list at every space",
+--     "address_list = address.split(\" \")",
+--     "",
+--     "print(address_list)",
+--   }),
+-- }),
+
+-- s({ trig = "pyreadcsv", dscr = "Read CSV file and print with headers" }, {
+--   t({
+--     "with open('read_csv.csv', 'r') as states_file:",
+--     "    # Read file and split into lines",
+--     "    states = states_file.read().split('\\n')",
+--     "    ",
+--     "    # Split each line by commas to create nested list",
+--     "    for index, state in enumerate(states):",
+--     "        states[index] = state.split(',')",
+--     "",
+--     "# Print each state's info skipping header",
+--     "for state in states[1:]:",
+--     "    print(f\"\\n---{state[0]}---\")",
+--     "    for index, info in enumerate(state[1:]):",
+--     "        print(f\"{states[0][index+1]}:\\t{info}\")",
+--   }),
+-- }),
+
+-- s({ trig = "pyreadtxt", dscr = "Read text file and print lines" }, {
+--   t({
+--     "with open('states.txt', 'r') as states_file:",
+--     "    states = states_file.read().split('\\n')",
+--     "",
+--     "print(states)",
+--     "",
+--     "for state in states:",
+--     "    print(state)",
+--   }),
+-- }),
+
+-- s({ trig = "pystateabbr", dscr = "Read CSV and print state abbreviations" }, {
+--   t({
+--     "with open('states.csv', 'r') as states_file:",
+--     "    states = states_file.read().split('\\n')",
+--     "",
+--     "for index, state in enumerate(states):",
+--     "    states[index] = states[index].split(',')",
+--     "",
+--     "    print(\"{0}'s abbreviation is {1}\".format(states[index][1], states[index][0]))",
+--   }),
+-- }),
+
+-- s({ trig = "readstates", dscr = "Read and print contents of states.txt" }, {
+--   t({
+--     "with open('states.txt', 'r') as states_file:",
+--     "    states = states_file.read()",
+--     "",
+--     "print(states)",
+--   }),
+-- }),
+
+-- s({ trig = "write_csv", dscr = "Read CSV file, parse and write formatted output to a text file" }, {
+--   t({
+--     "with open('read_csv.csv', 'r') as states_file:",
+--     "    # Read and split file contents into lines",
+--     "    states = states_file.read().split(\"\\n\")",
+--     "    ",
+--     "    # Split each line into columns",
+--     "    for index, state in enumerate(states):",
+--     "        states[index] = state.split(\",\")",
+--     "",
+--     "# Write formatted data to a new text file",
+--     "with open('states_pop.txt', 'w') as population_file:",
+--     "    # Skip header and write state data",
+--     "    for state in states[1:]:",
+--     "        population_file.write(\"\\n---{0}---\\n\".format(state[0]))",
+--     "        for index, info in enumerate(state[1:]):",
+--     "            population_file.write(\"{0}:\\t{1}\\n\".format(states[0][index+1], info))",
+--   }),
+-- }),
+
+-- s({ trig = "csvtodict", dscr = "Convert a CSV file to a dictionary using headers" }, {
+--   t({
+--     "def csvtodict(filename):",
+--     "    with open(filename, 'r') as csv_file:",
+--     "        text = csv_file.read().strip().split('\\n')",
+--     "",
+--     "    header_row = text[0].split(',')",
+--     "    dictionary = {}",
+--     "",
+--     "    for row, line in enumerate(text[1:]):",
+--     "        dictionary[row] = {}",
+--     "        for col, cell in enumerate(line.split(',')):",
+--     "            dictionary[row][header_row[col]] = cell",
+--     "",
+--     "    return dictionary",
+--     "",
+--     "print(csvtodict('events.csv'))",
+--   }),
+-- }),
+
+-- s({ trig = "divisioncheck", dscr = "Safely perform division with zero check" }, {
+--   t({
+--     "def division(x, y):",
+--     "    if y == 0:",
+--     "        return  # You can't divide by Zero! If you do, you'll get an error.",
+--     "    return x / y  # It's implied that this only happens when y != 0, since otherwise the function would have ended at line 3",
+--   }),
+-- }),
+
+-- s({ trig = "dropdownstates", dscr = "Generate HTML dropdown for US states" }, {
+--   t({
+--     "def dropdown_states():",
+--     '    """ What\'s a string doing all by itself, you ask? ',
+--     "        Shouldn't I be attached to a variable?",
+--     "",
+--     "        Well I'm a special string that Python looks for at the very beginning of a function.",
+--     "        I'm used to describe the function.",
+--     "",
+--     "        This function will return a string with an HTML drop-down menu of US states.",
+--     '    """',
+--     "",
+--     "    states = ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming']",
+--     "    abbreviations = ['AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY']",
+--     "",
+--     "    output = ['<select>']",
+--     "",
+--     "    for state, abbreviation in zip(states, abbreviations):",
+--     '        output.append(\'\\t<option value="{0}">{1}</option>\'.format(abbreviation, state))',
+--     "",
+--     "    output.append('</select>')",
+--     "",
+--     "    output = '\\n'.join(output)  # Glue together the list with a newline between each list item.",
+--     "",
+--     "    return output",
+--   }),
+-- }),
+
+-- s({ trig = "opencsvfile", dscr = "Open a CSV file and return nested list of rows and columns" }, {
+--   t({
+--     "def open_csvfile(filename, delimiter=','):",
+--     '    """',
+--     "    Opens a CSV file and returns its contents as a list of lists (rows and columns).",
+--     "",
+--     "    Args:",
+--     "        filename (str): The path to the CSV file.",
+--     "        delimiter (str): The character that separates values in the CSV file (default is ',').",
+--     "",
+--     "    Returns:",
+--     "        list: A nested list where each sublist represents a row in the CSV.",
+--     '    """',
+--     "    with open(filename, \"r\") as csv_file:",
+--     "        rows = csv_file.read().strip().split(\"\\n\")  # Remove trailing newlines and split into rows",
+--     "",
+--     "    for index, row in enumerate(rows):",
+--     "        rows[index] = row.split(delimiter)  # Split each row into columns",
+--     "",
+--     "    return rows",
+--   }),
+-- }),
+
+-- s({ trig = "removeduplicates", dscr = "Remove duplicate values from a list using set()" }, {
+--   t({
+--     "def remove_duplicates(from_list):",
+--     "",
+--     '    """ ',
+--     "        The function list() will convert an item to a list. ",
+--     "        The function set() will convert an item to a set.",
+--     "",
+--     "        A set is similar to a list, but all values must be unique.",
+--     "",
+--     "        Converting a list to a set removes all duplicate values.",
+--     "        We then convert it back to a list since we're most comfortable working with lists.",
+--     '    """',
+--     "",
+--     "    from_list = list(set(from_list))",
+--     "",
+--     "    return from_list",
+--   }),
+-- }),
+
+-- s({ trig = "textfiletostring", dscr = "Read a text file and return its contents as a string" }, {
+--   t({
+--     "def textfile_to_string(filename):",
+--     "",
+--     '    """',
+--     "    Reads the contents of a text file and returns it as a string.",
+--     "",
+--     "    Args:",
+--     "        filename (str): The path to the text file.",
+--     "",
+--     "    Returns:",
+--     "        str: The contents of the file as a single string.",
+--     '    """',
+--     "",
+--     "    with open(filename, \"r\") as text_file:",
+--     "        text = text_file.read()",
+--     "",
+--     "    return text",
+--   }),
+-- }),
+
+-- s({ trig = "dictaccess", dscr = "Demonstrates string, list, and dictionary access in Python" }, {
+--   t({
+--     'name = "Shannon"',
+--     "",
+--     "attendees = ['Shannon', 'Amy', 'Jen', 'Julie']",
+--     "",
+--     "contacts = {",
+--     "    'Shannon': '202-555-1234',",
+--     "    'Amy': '410-515-3000',",
+--     "    'Jen': '301-600-5555',",
+--     "    'Julie': '202-333-9876'",
+--     "}",
+--     "",
+--     "# Access part of a string using slicing:",
+--     "print(name[0])  # S",
+--     "",
+--     "# Access part of a list using slicing:",
+--     "print(attendees[0:2])  # ['Shannon', 'Amy']",
+--     "",
+--     "# Access part of a dictionary using a key:",
+--     "print(contacts['Jen'])  # 301-600-5555",
+--     "",
+--     "# Dictionaries store key-value pairs, useful for quick lookups.",
+--     "",
+--     "contacts_as_list = [",
+--     "    ['Shannon', '202-555-1234'],",
+--     "    ['Amy', '410-515-3000'],",
+--     "    ['Jen', '301-600-5555'],",
+--     "    ['Julie', '202-333-9876']",
+--     "]",
+--     "",
+--     "phone_we_want = 'Jen'",
+--     "",
+--     "for contact in contacts_as_list:",
+--     "    if contact[0] == phone_we_want:",
+--     "        print(contact[1])  # The phone number",
+--     "",
+--     "# Easier with a dictionary!",
+--     "print(contacts['Jen'])",
+--   }),
+-- }),
+
+
+-- s({ trig = "schoolgeo", dscr = "GeoJSON-style dictionary for a school location" }, {
+--   t({
+--     'schools = {',
+--     '    "geometry": {',
+--     '        "coordinates": [',
+--     '            -81.50572799999999,',
+--     '            39.21675500000001',
+--     '        ],',
+--     '        "type": "Point"',
+--     '    },',
+--     '    "properties": {',
+--     '        "address": "300 Campus Drive, Parkersburg, WV 26104",',
+--     '        "marker-color": "#3F3040",',
+--     '        "marker-symbol": "circle",',
+--     '        "name": "West Virginia University at Parkersburg"',
+--     '    },',
+--     '    "type": "Feature"',
+--     '}',
+--   }),
+-- }),
+
+
+-- s({ trig = "safedictlookup", dscr = "Safe dictionary lookup with .get()" }, {
+--   t({
+--     "contacts = {",
+--     "    'Shannon': '202-555-1234',",
+--     "    'Amy': '410-515-3000',",
+--     "    'Jen': '301-600-5555',",
+--     "    'Julie': '202-333-9876'",
+--     "}",
+--     "",
+--     "name = input(\"Enter the name of the person whose phone number you want: \")",
+--     "",
+--     "print(\"We will get a KeyError if you entered a name that wasn't in the dictionary.\")",
+--     "print(\"{0}'s number is: {1}\".format(name, contacts[name]))",
+--     "",
+--     "print(\"But there's a way we don't need to worry about KeyErrors.\")",
+--     "",
+--     "name = input(\"Enter the name of the person whose phone number you want ... might I suggest Frankenstein? \")",
+--     "",
+--     "# .get() is a dictionary method that lets us safely access a dictionary even if that key doesn't exist.",
+--     "",
+--     "print(\"{0}'s number is ... {1}\".format(name, contacts.get(name, \" ... I couldn't find it!\")))",
+--   }),
+-- }),
+
+-- s({ trig = "dictitems", dscr = "Loop through dict items" }, {
+--   t({
+--     "contacts = {",
+--     "    'Shannon': '202-555-1234',",
+--     "    'Amy': '410-515-3000',",
+--     "    'Jen': '301-600-5555',",
+--     "    'Julie': '202-333-9876'",
+--     "}",
+--     "",
+--     "# We can use the dictionary method .items() to give us a list of all of the items in contacts.",
+--     "",
+--     "print(contacts.items())",
+--     "",
+--     "# Strictly speaking, .items() doesn't give us a list, it gives us a *tuple*, which is another way of storing information in Python.",
+--     "# Tuples are almost identical to lists, except they're read-only.  You can't add to/remove from a tuple.",
+--     "# But they're accessed and used in pretty much the same way, so we're going to treat it as if Python's giving us a list, and it will behave as we expect.",
+--     "",
+--     "# .items() gives us a key and value pair together - so we can use that directly when we're looping.",
+--     "",
+--     "for contact, phone in contacts.items():",
+--     "    print(\"{0}'s number is {1}\".format(contact, phone))",
+--   }),
+-- }),
+
+
+-- s({ trig = "dictkeys", dscr = "Loop through dict keys and sorted keys" }, {
+--   t({
+--     "contacts = {",
+--     "    'Shannon': '202-555-1234',",
+--     "    'Amy': '410-515-3000',",
+--     "    'Jen': '301-600-5555',",
+--     "    'Julie': '202-333-9876'",
+--     "}",
+--     "",
+--     "# We can use the dictionary method .keys() to give us a list of all of the keys in contacts.",
+--     "",
+--     "print(contacts.keys())",
+--     "",
+--     "for contact in contacts.keys():",
+--     "    print(\"{0}'s number is {1}\".format(contact, contacts[contact]))",
+--     "",
+--     "# Dictionaries are unordered, so the keys (and their values) might be in a different order each time.  Or they might not.  Either way, that's normal.",
+--     "",
+--     "# In other words, you can't rely on the ordering of anything in a dictionary.  But you could apply ordering to the keys.",
+--     "",
+--     "# The built-in function sorted() will sort a list in ascending order.",
+--     "",
+--     "for contact in sorted(contacts.keys()):",
+--     "    print(\"{0}'s number is {1}\".format(contact, contacts[contact]))",
+--   }),
+-- }),
+
+
+--   s({ trig = "py.dict-add", name = "Add or update dictionary item", wordTrig = true }, {
+--     t("contacts["), i(1, "'key'"), t("] = "), i(2, "'value'"), t("\n"),
+--     i(0)
+--   }),
+
+--   s({ trig = "py.dict-loop-update", name = "Loop through dict to update another dict", wordTrig = true }, {
+--     t("for "), i(1, "key"), t(", "), i(2, "value"), t(" in "), i(3, "new_dict"), t(".items():\n"),
+--     t("    "), i(4, "dict_to_update"), t("[key] = value\n"),
+--     i(0)
+--   }),
+
+--   s({ trig = "py.dict-update-method", name = "Use .update() to merge dictionaries", wordTrig = true }, {
+--     i(1, "dict_to_update"), t(".update("), i(2, "new_dict"), t(")\n"),
+--     i(0)
+--   }),
+
+--   s({ trig = "py.dict-print", name = "Print dictionary", wordTrig = true }, {
+--     t("print("), i(1, "dict_var"), t(")\n"),
+--     i(0)
+--   }),
+
+
+--   s({ trig = "py.dict-values", name = "Print dict values", wordTrig = true }, {
+--     t("print("), i(1, "dict_var"), t(".values())\n"),
+--     i(0)
+--   }),
+
+--   s({ trig = "py.dict-loop-values", name = "For loop over dict values", wordTrig = true }, {
+--     t("for "), i(1, "value"), t(" in "), i(2, "dict_var"), t(".values():\n"),
+--     t("    print(\"{0}\".format("), i(1), t("))\n"),
+--     i(0)
+--   }),
+
+--  s({ trig = "py.access-nested", name = "Access nested keys safely", wordTrig = true }, {
+--   t("def access(d, keys):"), t({ "", "    " }),
+--   t('"""Access nested keys from dict/list safely."""'), t({ "", "    " }),
+--   t("for k in keys:"), t({ "", "    " }),
+--   t("    try:"), t({ "", "        " }),
+--   t("        d = d[k]"), t({ "", "    " }),
+--   t("    except (KeyError, IndexError, TypeError):"), t({ "", "        " }),
+--   t("        return None"), t({ "", "    " }),
+--   t("return d"), t({ "", "" }),
+
+--   t("# Example usage:"), t({ "", "data = { 'a': { 'b': [ { 'c': 42 } ] } }" }),
+--   t("value = access(data, ['a', 'b', 0, 'c'])"), t({ "", "print(value)  # 42" }),
+--   t({ "", "" }),
+--   i(0)
+-- }),
+
+
+-- s({ trig = "py.json-contacts", name = "JSON contacts (pretty-print + save)", wordTrig = true }, {
+--   t("import json"), t({ "", "" }),
+--   t("# Define contacts dictionary"), 
+--   t({ "", "contacts = [" }),
+--   t({ "    {'friends': [" }),
+--   t("        {'Shannon': {'phone': '202-555-1234', 'twitter': '@svt827', 'github': '@shannonturner'} },"),
+--   t("        {'Amy': {'phone': '410-515-3000', 'fax': '410-555-3001', 'email': 'amy@amy.org'} },"),
+--   t("        {'Jen': {'phone': '301-600-5555', 'email': 'jen@jen.biz'} },"),
+--   t("        {'Julie': {'phone': '202-333-9876'} },"),
+--   t("    ],"),
+--   t("    'enemies': []}"),
+--   t("]"), t({ "", "" }),
+
+--   t("# Pretty print contacts as JSON"),
+--   t({ "", "print(json.dumps(contacts, indent=4, sort_keys=True))" }),
+--   t({ "", "" }),
+
+--   t("# Save to file"),
+--   t({ "", "with open('contacts.json', 'w') as f:" }),
+--   t({ "    f.write(json.dumps(contacts, indent=4, sort_keys=True))" }),
+--   t({ "", "" }),
+
+--   i(0)
+-- }),
+
+
+-- s({ trig = "py.json-dump", name = "Dump dict to JSON file", wordTrig = true }, {
+--   t({ "import json", "" }),
+--   t({ "", "# Define your data" }),
+--   t("data = "), i(1, "{'key': 'value'}"), t({ "", "" }),
+--   t("# Print pretty JSON"),
+--   t({ "", "print(json.dumps(data, indent=4, sort_keys=True))", "" }),
+--   t("# Write JSON to file"),
+--   t({ "", "with open(" }), i(2, "'output.json'"), t(", 'w') as f:"),
+--   t({ "", "    json.dump(data, f, indent=4, sort_keys=True)" }),
+--   t({ "", "" }),
+--   i(0)
+-- }),
+
+
+-- s({ trig = "py.geojson-access", name = "Access GeoJSON feature properties", wordTrig = true }, {
+--   t("investigations = "), i(1, "{...}"), t({ "", "" }),
+--   t("# Access all properties of the first feature"),
+--   t({ "", "props = investigations['features'][0]['properties']", "" }),
+--   t("print(props)  # {'marker-symbol': ..., 'name': ...}"), t({ "", "" }),
+--   t("# Access specific property, like name"),
+--   t("name = investigations['features'][0]['properties']['name']"), t({ "", "print(name)" }),
+--   t({ "", "" }),
+--   i(0)
+-- }),
+
+-- s({ trig = "py.json-load", name = "Load JSON from file and parse", wordTrig = true }, {
+--   t("# Converting JSON string from file back to Python data structures"), t({"", ""}),
+--   t("import json"), t({"", ""}),
+--   t("with open('contacts.json', 'r') as contacts_file:"), t({"", "    "}),
+--   t("contacts_str = contacts_file.read()"), t({"", ""}),
+--   t("print(contacts_str)"), t({"", "print(\"\\n\\ncontacts_str above is a string\")", ""}),
+--   t("# Convert JSON string to Python list/dict"), t({"", ""}),
+--   t("contacts = json.loads(contacts_str)"), t({"", ""}),
+--   t("print(contacts)"), t({"", "print(\"\\n\\nNow you can loop over contacts\")", ""}),
+--   i(0)
+-- }),
+
+-- s({ trig = "py.bechdel-api", name = "Bechdel Test API Movie Query", wordTrig = true }, {
+--   t("import requests"), t({"", ""}),
+--   t("title = raw_input(\"Enter your movie: \")"), t({"", ""}),
+--   t("url = 'http://bechdeltest.com/api/v1/getMoviesByTitle?title={0}'"), t({"", ""}),
+--   t("url = url.format(title).replace(\" \", \"+\").replace(\"'\", \"&#39;\")"), t({"", ""}),
+--   t("print(url)"), t({"", ""}),
+--   t("response = requests.get(url).json()"), t({"", ""}),
+--   t("print(response)"), t({"", ""}),
+--   t("# Loop through response and print title and rating"), t({"", ""}),
+--   t("for movie in response:"), t({"", "    "}),
+--   t("print(movie['title'], movie['rating'])"), t({"", ""}),
+--   i(0)
+-- }),
+
+-- s({ trig = "py.try-zero", name = "Try Except ZeroDivisionError", wordTrig = true }, {
+--   t("try:"), t({"", "    "}),
+--   t("print(1/0)  # This will fail."), t({"", ""}),
+--   t("except ZeroDivisionError:"), t({"", "    "}),
+--   t("print(\"You can't divide by zero!\")"), t({"", ""}),
+--   i(0)
+-- }),
+
+-- s({ trig = "py.try-multi-zero", name = "Try Except with unreachable code", wordTrig = true }, {
+--   t("try:"), t({"", "    "}),
+--   t("print 1/0  # This will fail."), t({"", "    "}),
+--   t("print \"I'm code that will never run!\""), t({"", "    "}),
+--   t("print 555/0  # This *would* fail, except we never get here."), t({"", "    "}),
+--   t("# That's why it's best to use a try block on the fewest lines of code possible."), t({"", ""}),
+--   t("except ZeroDivisionError:"), t({"", "    "}),
+--   t("print \"You still can't divide by zero!\""), t({"", ""}),
+--   i(0)
+-- }),
+
+-- s({ trig = "py.phonebook-loop", name = "Phonebook input loop with exception handling", wordTrig = true }, {
+--   t('print "Example #3: Phonebook!"'), t({"", ""}),
+--   t("phonebook = {}"), t({"", ""}),
+--   t("while True:  # this will loop forever until we issue a break!"), t({"", ""}),
+--   t("    key = raw_input(\" (Ex #3, Phonebook) Please enter a person's name, or leave blank to quit: \")"), t({"", ""}),
+--   t("    if key == '':"), t({"", "        break"}), t({"", ""}),
+--   t("    value = raw_input(\" (Ex #3, Phonebook) Please enter {0}'s phone number with no punctuation: \".format(key))"), t({"", ""}),
+--   t("    phonebook[key] = value"), t({"", ""}),
+--   t("user_input = raw_input(\" Okay, now we're done entering names. Please enter the name of the person whose number you would like: \")"), t({"", ""}),
+--   t("try:"), t({"", "    "}),
+--   t("print int(phonebook[user_input])"), t({"", ""}),
+--   t("except KeyError:"), t({"", "    "}),
+--   t("print \"You don't have {0}'s phone number!\".format(user_input)"), t({"", ""}),
+--   t("except ValueError:"), t({"", "    "}),
+--   t("print \"You typed in punctuation, didn't you?\""), t({"", "    "}),
+--   t("print \"Here's the number anyway ... {0}\".format(phonebook[user_input])"), t({"", ""}),
+--   i(0)
+-- }),
+
+-- s({ trig = "py.try-except-catchall", name = "Try-except with catch-all Exception", wordTrig = true }, {
+--   t('print "Now we\'ll just repeat the try ... except block from Example #3 but with a catch-all for any exception."'), t({"", ""}),
+--   t("phonebook = {}"), t({"", ""}),
+--   t("while True:  # this will loop forever until we issue a break!"), t({"", ""}),
+--   t("    key = raw_input(\" (Ex #3, Phonebook) Please enter a person's name, or leave blank to quit: \")"), t({"", ""}),
+--   t("    if key == '':"), t({"", "        break"}), t({"", ""}),
+--   t("    value = raw_input(\" (Ex #3, Phonebook) Please enter {0}'s phone number with no punctuation: \".format(key))"), t({"", ""}),
+--   t("    phonebook[key] = value"), t({"", ""}),
+--   t("user_input = raw_input(\" Okay, now we're done entering names. Please enter the name of the person whose number you would like: \")"), t({"", ""}),
+--   t("try:"), t({"", "    "}),
+--   t("print int(phonebook[user_input])"), t({"", ""}),
+--   t("except Exception, e:"), t({"", "    "}),
+--   t("print \"With any exception type (not just Exception), you can find out the detailed message specific to the error by using ', e' afterward.\""), t({"", ""}),
+--   t("print \"In this case, the detailed message was: {0}\".format(e)"), t({"", ""}),
+--   t("print \"Exception is best used in addition to other specific exceptions first.\""), t({"", ""}),
+--   t("print \"For best results, think of each except as being similar to an 'elif' statement targeting something specific; except Exception is similar to an 'else' statement being the catch-all.\""), t({"", ""}),
+--   i(0)
+-- }),
+
+-- s({ trig = "py.try-except-nested", name = "Try-except nested int/float conversion", wordTrig = true }, {
+--   t('user_input = raw_input(" Example #5: enter a number: ")'), t({"", ""}),
+--   t("try:"), t({"", "    user_input = int(user_input)"}), t({"", "except ValueError:"}), t({"", "    try:"}),
+--   t('        print "User input was either a float or a string."'), t({"", "        user_input = int(float(user_input))"}),
+--   t('        print "Turns out it was a float! {0}".format(user_input)'), t({"", "    except ValueError:"}),
+--   t('        print "Guess {0} was a string and not a number at all.".format(user_input)'), t({"", ""}),
+--   t('print "Now the code block above works pretty much the same as the following: "'), t({"", ""}),
+--   t('user_input = raw_input(" Example #5: enter a number: ")'), t({"", ""}),
+--   t("try:"), t({"", "    user_input = int(float(user_input))"}), t({"", "except ValueError:"}),
+--   t('    print "Guess {0} was a string and not a number at all.".format(user_input)'), t({"", ""}),
+--   i(0)
+-- }),
+
+-- s({ trig = "py.countdown-ctrlc", name = "Countdown with Ctrl+C pause handling", wordTrig = true }, {
+--   t('import time'), t({"", ""}),
+--   t('print "I\'m going to count down from 1000 as fast as I can.  Hit Ctrl+C three times to stop."'), t({"", ""}),
+--   t('x = 1000'), t('times_paused = 0'), t({"", ""}),
+--   t('while x > 0:'), t({"", "    try:"}),
+--   t('        print x'), t('        x -= 1'), t({"", "    except KeyboardInterrupt:"}),
+--   t('        times_paused += 1'), t({""}),
+--   t('        print " You have paused {0} time(s).".format(times_paused)'), t({""}),
+--   t('        if times_paused == 3:'), 
+--   t({"", '            print "You paused 3 times.  Ending early by raising the original exception (KeyboardInterrupt)"'}), 
+--   t({"", "            raise  # this will raise the *original* exception, which in this case is KeyboardInterrupt"}), t({""}),
+--   t('        print "Pausing for {0} seconds.".format(times_paused)'), t('        time.sleep(times_paused)'),
+--   i(0)
+-- }),
+
+-- s({ trig = "py.try-except-else", name = "Try-except-else example for input conversion", wordTrig = true }, {
+--   t('user_input = raw_input("Please enter a number: ")'), t({"", ""}),
+--   t('try:'), t({"    ", 'user_input = int(float(user_input))'}), t({"except ValueError:"}),
+--   t('    print "You didn\'t enter a number, did you?"'), t({"else:"}),
+--   t('    print "Hooray! We didn\'t encounter any errors!"'),
+--   t('    print "Oh, by the way, your number was: {0}".format(user_input)'),
+--   i(0)
+-- }),
+
+-- s("py-try-except", {
+--     t('user_input = raw_input("Please enter a number: ")'),
+--     t({ "", "" }),
+--     t("try:"),
+--     t({ "", "    user_input = int(float(user_input))" }),
+--     t({ "", "" }),
+--     t("except ValueError:"),
+--     t({ "", "    print \"You didn't enter a number, did you?\"" }),
+--     t({ "", "" }),
+--     t("else:  # no errors occurred"),
+--     t({ "", "    print \"Hooray! We didn't encounter any errors!\"" }),
+--     t({ "", "" }),
+--     t("finally:  # no matter what"),
+--     t({ "", "    print \"Here was your input: {0}\".format(user_input)" }),
+--     t({ "", "" }),
+--     t("print \"'finally' isn't that common though, and you could really just put your code outside of the block entirely.\""),
+--     t("print \"Here was your input: {0}\".format(user_input)  # Like this!"),
+--     i(0),
+--   }),
+
+--   s({ trig = "py.try-except-multi", name = "Try-except with multiple exceptions example", wordTrig = true }, {
+--   t('age = \'\'  # try with 100 or with \'x100\' or with [\'100\'] or with None or with False or with {\'age\': 100}'), t({"", ""}),
+--   t('try:'), t({"    ", 'age = int(age)'}), t({"except (TypeError, ValueError) as err:"}),
+--   t('    print "Invalid entry: {0}; error: {1}".format(age, err)'), t({"else:"}),
+--   t('    print "Your age is: {0}".format(age)'),
+--   i(0)
+-- }),
+
+
+-- s({ trig = "py.class-attrdisplay", name = "Class AttrDisplay with __repr__ example", wordTrig = true }, {
+--   t('class AttrDisplay:'), t({'    """', '    Provide an inheritable display overload method that shows', 
+--     '    instance with their class name and a name=value pair for', 
+--     '    each attribute stored on the instance itself (but not attrs', 
+--     '    inherited from its classes). Can be mixed into any class,', 
+--     '    and will work on any instance', '    """'}),
+--   t('    def __gatherAttrs(self):'),
+--   t('        attrs = []'),
+--   t('        for key in sorted(self.__dict__):'),
+--   t('            attrs.append("%s=%s" % (key, getattr(self, key)))'),
+--   t('        return attrs'),
+--   t(''),
+--   t('    def __repr__(self):'),
+--   t('        return "[%s: %s]" % (self.__class__.__name__, self.__gatherAttrs())'),
+--   t(''),
+--   t('if __name__ == "__main__":'),
+--   t(''),
+--   t('    class TopTest(AttrDisplay):'),
+--   t('        count = 0'),
+--   t(''),
+--   t('        def __init__(self):'),
+--   t('            self.attr1 = TopTest.count'),
+--   t('            self.attr2 = TopTest.count + 1'),
+--   t('            TopTest.count += 2'),
+--   t(''),
+--   t('    class SubTest(TopTest):'),
+--   t('        pass'),
+--   t(''),
+--   t('    X, Y = TopTest(), SubTest()'),
+--   t('    print(X, "\\n", Y)'),
+--   i(0)
+-- }),
+
+
+-- s({ trig = "py.class-instancetree", name = "Class and instance inheritance tree printer", wordTrig = true }, {
+--   t('def classtree(cls, indent):'),
+--   t('    print("." * indent + cls.__name__)'),
+--   t('    for supercls in cls.__bases__:'),
+--   t('        classtree(supercls, indent + 3)'),
+--   t(''),
+--   t('def instancetree(inst):'),
+--   t('    print("Tree of %s" % inst)'),
+--   t('    classtree(inst.__class__, 3)'),
+--   t(''),
+--   t('def selftest():'),
+--   t('    class A:'),
+--   t('        pass'),
+--   t(''),
+--   t('    class B(A):'),
+--   t('        pass'),
+--   t(''),
+--   t('    class C(A):'),
+--   t('        pass'),
+--   t(''),
+--   t('    class D(B, C):'),
+--   t('        pass'),
+--   t(''),
+--   t('    class E:'),
+--   t('        pass'),
+--   t(''),
+--   t('    class F(D, E):'),
+--   t('        pass'),
+--   t(''),
+--   t('    instancetree(B())'),
+--   t('    instancetree(D())'),
+--   t('    instancetree(F())'),
+--   t(''),
+--   t("if __name__ == '__main__':"),
+--   t('    selftest()'),
+--   i(0)
+-- }),
+
+-- s({ trig = "py.class-attr-getset", name = "Class with __getattr__/__setattr__ and property example", wordTrig = true }, {
+--   t('class operators(object):'),
+--   t('    def __getattr__(self, name):'),
+--   t('        if name == "age":'),
+--   t('            return 40'),
+--   t('        else:'),
+--   t('            raise AttributeError(name)'),
+--   t(''),
+--   t('    def __setattr__(self, name, value):'),
+--   t('        print("set: %s %s" % (name, value))'),
+--   t('        if name == "age":'),
+--   t('            self.__dict__["_age"] = value'),
+--   t('        else:'),
+--   t('            self.__dict__[name] = value'),
+--   t(''),
+--   t('# OR BETTER WAY'),
+--   t(''),
+--   t('class properties(object):'),
+--   t('    def getage(self):'),
+--   t('        return 40'),
+--   t(''),
+--   t('    def setage(self, value):'),
+--   t('        self._age = value'),
+--   t(''),
+--   t('    age = property(getage, setage, None, None)'),
+--   t(''),
+--   t('if __name__ == "__main__":'),
+--   t('    x, y = operators(), properties()'),
+--   t('    for ins in (x, y):'),
+--   t('        print(ins.age)'),
+--   t('        ins.age = 20'),
+--   t('        print(ins._age)'),
+--   i(0)
+-- }),
+
+-- s({ trig = "py.format-commas-money", name = "Format numbers with commas and money formatting", wordTrig = true }, {
+--   t('def commas(N):'),
+--   t('    """'),
+--   t('    Format positive integer-like N for display with'),
+--   t('    commas between digits grouping: "XXX,YYY,ZZZ"'),
+--   t('    """'),
+--   t('    digits = str(N)'),
+--   t('    assert(digits.isdigit())'),
+--   t('    result = \'\''),
+--   t('    while digits:'),
+--   t('        digits, last3 = digits[:-3], digits[-3:]'),
+--   t('        result = (last3 + \',\' + result) if result else last3'),
+--   t('    return result'),
+--   t(''),
+--   t('def commas1(N):'),
+--   t('    """'),
+--   t('    The more easiest way to format digits'),
+--   t('    """'),
+--   t('    return \'{:,}\'.format(N)'),
+--   t(''),
+--   t('def money(N, numwidth=0, currency="$"):'),
+--   t('    """'),
+--   t('    Format number N for display with commas, 2 decimal digits,'),
+--   t('    leading $ and sign, and optional padding: "$ -xxx,yyy.zz".'),
+--   t('    numwidth=0 for no space padding, currency=\'\' to omit symbol,'),
+--   t('    and non-ASCII for others (e.g., pound=u\'\\xA3\' or u\'\\u00A3\').'),
+--   t('    """'),
+--   t('    sign = \'-\' if N < 0 else \'\''),
+--   t('    N = abs(N)'),
+--   t('    whole = commas(int(N))'),
+--   t('    fract = (\'%2f\' % N)[-2:]'),
+--   t('    number = \'%s%s.%s\' % (sign, whole, fract)'),
+--   t('    return \'%s%*s\' % (currency, numwidth, number)'),
+--   t(''),
+--   t('if __name__ == \'__main__\':'),
+--   t('    def selftest():'),
+--   t('        tests = 0, 1             # fails -1, 1.23'),
+--   t('        tests += 12, 123, 1234, 12345, 123456, 1234567'),
+--   t('        tests += 2 ** 32, 2 ** 100'),
+--   t('        for test in tests:'),
+--   t('            print(commas(test))'),
+--   t(''),
+--   t('        print("-" * 80)'),
+--   t(''),
+--   t('        for test in tests:'),
+--   t('            print(commas1(test))'),
+--   t(''),
+--   t('        print("-" * 80)'),
+--   t(''),
+--   t('        tests = 0, 1, -1, 1.23, 1., 1.2, 3.1341'),
+--   t('        tests += 12, 123, 1234, 12345, 123456, 1234567'),
+--   t('        tests += 2 ** 32, (2 ** 32 + .2342)'),
+--   t('        tests += 1.2324, 1.2, 0.2345'),
+--   t('        tests += -1.242, -1.2, -15.2'),
+--   t('        tests += -(2 ** 32), -(2 ** 32 + 0.2324)'),
+--   t('        tests += 2 ** 100, -(2 ** 100)'),
+--   t('        for test in tests:'),
+--   t('            print(\'%s [%s]\' % (money(test, 17), test))'),
+--   t(''),
+--   t('    import sys'),
+--   t('    if len(sys.argv) == 1:'),
+--   t('        selftest()'),
+--   t('    else:'),
+--   t('        print(money(float(sys.argv[1]), int(sys.argv[2])))'),
+--   i(0)
+-- }),
+
+
+
+-- s({ trig = "py.listinherited", name = "ListInherited class with tester example", wordTrig = true }, {
+--   t('class ListInherited:'),
+--   t('    """'),
+--   t('    Use dir() to collect both instance attr and names inherited from'),
+--   t('    its classes; Python 3.x shows more name than 2.x because of the'),
+--   t('    implied object superclass in the new-style class model; getattr()'),
+--   t('    fetches inherited names not in self.__dict__; user __str__, not'),
+--   t('    __repr__, or else the loops when printing bound method!'),
+--   t('    """'),
+--   t(''),
+--   t('    def __attrname(self):'),
+--   t('        result = \'\''),
+--   t('        for attr in dir(self):  # instance dir'),
+--   t('            if attr[:2] == \'__\' and attr[-2:] == \'__\':'),
+--   t('                result += \'\\t%s\\n\' % attr'),
+--   t('            else:'),
+--   t('                result += \'\\t%s=%s\\n\' % (attr, getattr(self, attr))'),
+--   t('        return result'),
+--   t(''),
+--   t('    def __str__(self):'),
+--   t('        return \'<Instance of %s, address %s:\\n%s>\' % ('),
+--   t('            self.__class__.__name__,'),
+--   t('            id(self),           # My address'),
+--   t('            self.__attrname())  # name=value list'),
+--   t(''),
+--   t('def tester(listerclass, sept=False):'),
+--   t(''),
+--   t('    class Super:'),
+--   t(''),
+--   t('        def __init__(self):'),
+--   t('            self.data1 = \'spam\''),
+--   t(''),
+--   t('        def ham(self):'),
+--   t('            pass'),
+--   t(''),
+--   t('    class Sub(Super, listerclass):'),
+--   t(''),
+--   t('        def __init__(self):'),
+--   t('            Super.__init__(self)'),
+--   t('            self.data2 = \'eggs\''),
+--   t('            self.data3 = 42'),
+--   t(''),
+--   t('        def spam(self):'),
+--   t('            pass'),
+--   t(''),
+--   t('    instance = Sub()'),
+--   t('    print(instance)'),
+--   t('    if sept:'),
+--   t('        print(\'-\' * 80)'),
+--   t(''),
+--   t(''),
+--   t('if __name__ == \'__main__\':'),
+--   t('    tester(ListInherited)'),
+--   i(0)
+-- }),
+
+-- s({ trig = "py.listinherited-verbose", name = "ListInherited class with detailed attr display", wordTrig = true }, {
+--   t('class ListInherited:'),
+--   t('    """'),
+--   t('    Use dir() to collection both instance attr and names inherited from'),
+--   t('    its classes; Python 3.x shows more name than 2.x because of the'),
+--   t('    implied object superclass in the new-style class model; getattr()'),
+--   t('    fetches inherited names not in self.__dict__; user __str__, not'),
+--   t('    __repr__, or else the loops when printing bound method!'),
+--   t('    """'),
+--   t(''),
+--   t('    def __attrname(self, indent=\'    \'):'),
+--   t('        result = \'Unders%s\\n%s%%s\\nOthers%s\\n\' % (\'-\'*77, indent, \'-\'*77)'),
+--   t('        unders = []'),
+--   t('        for attr in dir(self):  # instance dir'),
+--   t('            if attr[:2] == \'__\' and attr[-2:] == \'__\':'),
+--   t('                unders.append(attr)'),
+--   t('            else:'),
+--   t('                display = str(getattr(self, attr))[:82-(len(indent) + len(attr))]'),
+--   t('                result += \'%s%s=%s\\n\' % (indent, attr, display)'),
+--   t('        return result % \', \'.join(unders)'),
+--   t(''),
+--   t('    def __str__(self):'),
+--   t('        return \'<Instance of %s, address %s:\\n%s>\' % ('),
+--   t('            self.__class__.__name__,'),
+--   t('            id(self),           # My address'),
+--   t('            self.__attrname())  # name=value list'),
+--   t(''),
+--   t('def tester(listerclass, sept=False):'),
+--   t(''),
+--   t('    class Super:'),
+--   t(''),
+--   t('        def __init__(self):'),
+--   t('            self.data1 = \'spam\''),
+--   t(''),
+--   t('        def ham(self):'),
+--   t('            pass'),
+--   t(''),
+--   t('    class Sub(Super, listerclass):'),
+--   t(''),
+--   t('        def __init__(self):'),
+--   t('            Super.__init__(self)'),
+--   t('            self.data2 = \'eggs\''),
+--   t('            self.data3 = 42'),
+--   t(''),
+--   t('        def spam(self):'),
+--   t('            pass'),
+--   t(''),
+--   t('    instance = Sub()'),
+--   t('    print(instance)'),
+--   t('    if sept:'),
+--   t('        print(\'-\' * 80)'),
+--   t(''),
+--   t(''),
+--   t('if __name__ == \'__main__\':'),
+--   t('    tester(ListInherited)'),
+--   i(0)
+-- }),
+
+
+-- s({ trig = "py.listinherited-verbose", name = "ListInherited class with detailed attr display", wordTrig = true }, {
+--   t('class ListInherited:'),
+--   t('    """'),
+--   t('    Use dir() to collection both instance attr and names inherited from'),
+--   t('    its classes; Python 3.x shows more name than 2.x because of the'),
+--   t('    implied object superclass in the new-style class model; getattr()'),
+--   t('    fetches inherited names not in self.__dict__; user __str__, not'),
+--   t('    __repr__, or else the loops when printing bound method!'),
+--   t('    """'),
+--   t(''),
+--   t('    def __attrname(self, indent=\'    \'):'),
+--   t('        result = \'Unders%s\\n%s%%s\\nOthers%s\\n\' % (\'-\'*77, indent, \'-\'*77)'),
+--   t('        unders = []'),
+--   t('        for attr in dir(self):  # instance dir'),
+--   t('            if attr[:2] == \'__\' and attr[-2:] == \'__\':'),
+--   t('                unders.append(attr)'),
+--   t('            else:'),
+--   t('                display = str(getattr(self, attr))[:82-(len(indent) + len(attr))]'),
+--   t('                result += \'%s%s=%s\\n\' % (indent, attr, display)'),
+--   t('        return result % \', \'.join(unders)'),
+--   t(''),
+--   t('    def __str__(self):'),
+--   t('        return \'<Instance of %s, address %s:\\n%s>\' % ('),
+--   t('            self.__class__.__name__,'),
+--   t('            id(self),           # My address'),
+--   t('            self.__attrname())  # name=value list'),
+--   t(''),
+--   t('def tester(listerclass, sept=False):'),
+--   t(''),
+--   t('    class Super:'),
+--   t(''),
+--   t('        def __init__(self):'),
+--   t('            self.data1 = \'spam\''),
+--   t(''),
+--   t('        def ham(self):'),
+--   t('            pass'),
+--   t(''),
+--   t('    class Sub(Super, listerclass):'),
+--   t(''),
+--   t('        def __init__(self):'),
+--   t('            Super.__init__(self)'),
+--   t('            self.data2 = \'eggs\''),
+--   t('            self.data3 = 42'),
+--   t(''),
+--   t('        def spam(self):'),
+--   t('            pass'),
+--   t(''),
+--   t('    instance = Sub()'),
+--   t('    print(instance)'),
+--   t('    if sept:'),
+--   t('        print(\'-\' * 80)'),
+--   t(''),
+--   t(''),
+--   t('if __name__ == \'__main__\':'),
+--   t('    tester(ListInherited)'),
+--   i(0)
+-- }),
+
+
+-- s({ trig = "py.listtree", name = "ListTree class with recursive class and instance attribute tracing", wordTrig = true }, {
+--   t('class ListTree:'),
+--   t('    """'),
+--   t('    Mix-in that returns an __str__ trace of the entire class and all'),
+--   t('    its object\'s attrs at and above self; run by print(), str() returns'),
+--   t('    constructed string; uses __X attr names to avoid impacting clients;'),
+--   t('    recurses to superclasses explicitly, uses str.format() for clarity.'),
+--   t('    """'),
+--   t(''),
+--   t('    def __attrnames(self, obj, indent):'),
+--   t('        spaces = \' \' * (indent + 1)'),
+--   t('        result = \'\''),
+--   t('        for attr in sorted(obj.__dict__):'),
+--   t('            if attr.startswith(\'__\') and attr.endswith(\'__\'):'),
+--   t('                result += spaces + \'{0}\\n\'.format(attr)'),
+--   t('            else:'),
+--   t('                result += spaces + \'{0}={1}\\n\'.format(attr, getattr(obj, attr))'),
+--   t('        return result'),
+--   t(''),
+--   t('    def __listclass(self, aClass, indent):'),
+--   t('        dots = \'.\' * indent'),
+--   t('        if aClass in self.__visited:'),
+--   t('            return \'\\n{0}<Class {1}:, address {2}: (see above)>\\n\'.format('),
+--   t('                dots,'),
+--   t('                aClass.__name__,'),
+--   t('                id(aClass))'),
+--   t('        else:'),
+--   t('            self.__visited[aClass] = True'),
+--   t('            here = self.__attrnames(aClass, indent)'),
+--   t('            above = \'\''),
+--   t('            for super in aClass.__bases__:'),
+--   t('                above += self.__listclass(super, indent + 4)'),
+--   t('            return \'\\n{0}<Class {1}:, address {2}:\\n{3}{4}{5}\'.format('),
+--   t('                dots,'),
+--   t('                aClass.__name__,'),
+--   t('                id(aClass),'),
+--   t('                here, above,'),
+--   t('                dots)'),
+--   t(''),
+--   t('    def __str__(self):'),
+--   t('        self.__visited = {}'),
+--   t('        here = self.__attrnames(self, 0)'),
+--   t('        above = self.__listclass(self.__class__, 4)'),
+--   t('        return \'<Instance of {0}, address {1}:\\n{2}{3}>\'.format('),
+--   t('            self.__class__.__name__,'),
+--   t('            id(self),'),
+--   t('            here, above)'),
+--   t(''),
+--   t('def tester(listerclass, sept=False):'),
+--   t('    class Super:'),
+--   t('         def __init__(self):'),
+--   t('            self.data1 = \'spam\''),
+--   t('         def ham(self):'),
+--   t('            pass'),
+--   t(''),
+--   t('    class Sub(Super, listerclass):'),
+--   t('        def __init__(self):'),
+--   t('            Super.__init__(self)'),
+--   t('            self.data2 = \'eggs\''),
+--   t('            self.data3 = 42'),
+--   t('        def spam(self):'),
+--   t('            pass'),
+--   t(''),
+--   t('    instance = Sub()'),
+--   t('    print(instance)'),
+--   t('    if sept:'),
+--   t('        print(\'-\' * 80)'),
+--   t(''),
+--   t(''),
+--   t('if __name__ == \'__main__\':'),
+--   t('    tester(ListTree)'),
+--   i(0)
+-- }),
+
+-- s({ trig = "py.inheritance-utils", name = "Inheritance and attribute mapping utilities", wordTrig = true }, {
+--   t('import pprint'),
+--   t(''),
+--   t('def trace(X, label=\'\', end=\'\\n\'):'),
+--   t('    print(label + pprint.pformat(X) + end)  # Print nicely'),
+--   t(''),
+--   t(''),
+--   t('def filterdictvals(D, V):'),
+--   t('    """'),
+--   t('    dict D with entries for valeus V removed.'),
+--   t('    filterdictvals(dict(a=1, b=2, c=1), 1) => {\'b\': 2}'),
+--   t('    """'),
+--   t('    return {K: V2 for (K, V2) in D.items() if V2 != V}'),
+--   t(''),
+--   t(''),
+--   t('def invertdict(D):'),
+--   t('    """'),
+--   t('    dict D with values changed to keys (grouped by values).'),
+--   t('    Values must all be hashable to work as dict/set keys.'),
+--   t('    invertdict(dict(a=1, b=2, c=1)) => {1: [\'a\', \'c\'], 2: \'b\'}'),
+--   t('    """'),
+--   t('    def keysof(V):'),
+--   t('        return sorted(K for K in D.keys() if D[K] == V)'),
+--   t('    return {V: keysof(V) for V in set(D.values())}'),
+--   t(''),
+--   t(''),
+--   t('def dflr(cls):'),
+--   t('    """'),
+--   t('    Classics depth-first left-to-right order of class tree at cls.'),
+--   t('    Cycles not possible: Python disallows on __bases__ changes.'),
+--   t('    """'),
+--   t('    here = [cls]'),
+--   t('    for sup in cls.__bases__:'),
+--   t('        here += dflr(sup)'),
+--   t('    return here'),
+--   t(''),
+--   t(''),
+--   t('def inheritance(instance):'),
+--   t('    """'),
+--   t('    Inheritance order sequnce: new-style (MRO) or classic (DFLR)'),
+--   t('    """'),
+--   t('    if (hasattr(instance.__class__, \'__mro__\')):'),
+--   t('        return (instance,) + instance.__class__.__mro__'),
+--   t('    else:'),
+--   t('        return [instance] + dflr(instance.__class__)'),
+--   t(''),
+--   t(''),
+--   t('def mapattrs(instance, withobject=False, bysource=False):'),
+--   t('    """'),
+--   t('    dict with keys giving all inherited attributes of instance,'),
+--   t('    with values giving the object that each is inherited from.'),
+--   t('    withobject: False=remove object built-in class attributes'),
+--   t('    bysource:   True=group result by objects instead of attributes.'),
+--   t('    Supports classes with slot that preclude __dict__ in instance.'),
+--   t('    """'),
+--   t('    attr2obj = {}'),
+--   t('    inherits = inheritance(instance)'),
+--   t('    for attr in dir(instance):'),
+--   t('        for obj in inherits:'),
+--   t('            if hasattr(obj, \'__dict__\') and attr in obj.__dict__:'),
+--   t('                attr2obj[attr] = obj'),
+--   t('                break'),
+--   t(''),
+--   t('    if not withobject:'),
+--   t('        attr2obj = filterdictvals(attr2obj, object)'),
+--   t(''),
+--   t('    return attr2obj if not bysource else invertdict(attr2obj)'),
+--   t(''),
+--   t(''),
+--   t('if __name__ == \'__main__\':'),
+--   t('    print(\'Classics classes in 2.x, new-style in 3.x\')'),
+--   t('    class A: attr1 = 1'),
+--   t('    class B(A): attr2 = 2'),
+--   t('    class C(A): attr1 = 3'),
+--   t('    class D(B, C): pass'),
+--   t('    I = D()'),
+--   t('    print("Py=>%s" % I.attr1)'),
+--   t('    trace(inheritance(I), \'INH\\n\')'),
+--   t('    trace(mapattrs(I), \'ATTRS\\n\')'),
+--   t('    trace(mapattrs(I, bysource=True), \'OBJS\\n\')'),
+--   t(''),
+--   t('    print(\'New-style classes in 2.x and 3.x\')'),
+--   t('    class A(object): attr1 = 1'),
+--   t('    class B(A): attr2 = 2'),
+--   t('    class C(A): attr1 = 3'),
+--   t('    class D(B, C): pass'),
+--   t('    I = D()'),
+--   t('    print("Py=>%s" % I.attr1)'),
+--   t('    trace(inheritance(I), \'INH\\n\')'),
+--   t('    trace(mapattrs(I), \'ATTRS\\n\')'),
+--   t('    trace(mapattrs(I, bysource=True), \'OBJS\\n\')'),
+--   i(0)
+-- }),
+
+-- s({ trig = "py.listing-module", name = "Module attribute listing with verbose output", wordTrig = true }, {
+--   t('from __future__ import print_function'),
+--   t(''),
+--   t('seplen = 60'),
+--   t('sepchr = \'-\''),
+--   t(''),
+--   t('def listing(module, verbose=True):'),
+--   t('    sepline = sepchr * seplen'),
+--   t('    if verbose:'),
+--   t('        print(sepline)'),
+--   t('        print(\'name:\', module.__name__, \'file:\', module.__file__)'),
+--   t('        print(sepline)'),
+--   t(''),
+--   t('    count = 0'),
+--   t('    for attr in sorted(module.__dict__):  # Scan namespace keys (or enumerate)'),
+--   t('        print(\'%02d) %s\' % (count, attr), end=\' \')'),
+--   t('        if attr.startswith(\'__\'):'),
+--   t('            print(\'<built-in name>\')  # Skip __file__, etc'),
+--   t('        else:'),
+--   t('            print(getattr(module, attr))  # Same as .__dict__[attr]'),
+--   t('        count += 1'),
+--   t(''),
+--   t('    if verbose:'),
+--   t('        print(sepline)'),
+--   t('        print(module.__name__, \'has following %d names\' % count)'),
+--   t('        print(sepline)'),
+--   t(''),
+--   t('if __name__ == \'__main__\':'),
+--   t('    import mydir'),
+--   t('    listing(mydir)'),
+--   i(0)
+-- }),
+
+-- s({ trig = "py.mymap", name = "Custom mymap implementations: list, generator, and generator expression", wordTrig = true }, {
+--   t('def mymap(func, *seqs):'),
+--   t('    res = []'),
+--   t('    for args in zip(*seqs):'),
+--   t('        res.append(func(*args))'),
+--   t('    return res'),
+--   t(''),
+--   t('# def mymap(func, *seqs):'),
+--   t('    # return [func(*args) for args in zip(*seqs)]'),
+--   t(''),
+--   t('print(mymap(abs, [-2, -1, 0, 1, 2]))'),
+--   t('print(mymap(pow, [1, 2], [2, 3, 4]))'),
+--   t(''),
+--   t('def mymap(func, *seqs):'),
+--   t('    for args in zip(*seqs):'),
+--   t('        yield func(*args)'),
+--   t(''),
+--   t('def mymap(func, *seqs):'),
+--   t('    return (func(*args) for args in zip(*seqs))'),
+--   t(''),
+--   t('print(list(mymap(abs, [-2, -1, 0, 1, 2])))'),
+--   t('print(list(mymap(pow, [1, 2], [2, 3, 4])))'),
+--   i(0)
+-- }),
+
+-- s({ trig = "py.myzipmymappad", name = "Custom myzip and mymapPad implementations with lists, generators, padding", wordTrig = true }, {
+--   t('def myzip(*seqs):'),
+--   t('    seqs = [list(S) for S in seqs]'),
+--   t('    res = []'),
+--   t('    while all(seqs):'),
+--   t('        res.append(tuple(x.pop(0) for x in seqs))'),
+--   t('    return res'),
+--   t(''),
+--   t('def mymapPad(*seqs, pad=None):'),
+--   t('    seqs = [list(S) for S in seqs]'),
+--   t('    res = []'),
+--   t('    while any(seqs):'),
+--   t('        res.append(tuple((S.pop(0) if S else pad) for S in seqs))'),
+--   t('    return res'),
+--   t(''),
+--   t('# Using Generator'),
+--   t('def myzip(*seqs):'),
+--   t('    seqs = [list(S) for S in seqs]'),
+--   t('    while all(seqs):'),
+--   t('        yield tuple(x.pop(0) for x in seqs)'),
+--   t(''),
+--   t('def mymapPad(*seqs, pad=None):'),
+--   t('    seqs = [list(S) for S in seqs]'),
+--   t('    while any(seqs):'),
+--   t('        yield tuple((S.pop(0) if S else pad) for S in seqs)'),
+--   t(''),
+--   t('# Using min and max len'),
+--   t('def myzip(*seqs):'),
+--   t('    minlen = min(len(S) for S in seqs)'),
+--   t('    return [tuple(S[i] for S in seqs) for i in range(minlen)]'),
+--   t(''),
+--   t('def mymapPad(*seqs, pad=None):'),
+--   t('    maxlen = max(len(S) for S in seqs)'),
+--   t('    index = range(maxlen)'),
+--   t('    return [tuple((S[i] if len(S) > i else pad) for S in seqs) for i in index]'),
+--   t(''),
+--   t('# Using Generator'),
+--   t('def myzip(*seqs):'),
+--   t('    minlen = min(len(S) for S in seqs)'),
+--   t('    return (tuple(S[i] for S in seqs) for i in range(minlen))'),
+--   t(''),
+--   t('def mymapPad(*seqs, pad=None):'),
+--   t('    maxlen = max(len(S) for S in seqs)'),
+--   t('    index = range(maxlen)'),
+--   t('    return (tuple((S[i] if len(S) > i else pad) for S in seqs) for i in index)'),
+--   t(''),
+--   t('# Clever implementation from python manual'),
+--   t('def myzip(*seqs):'),
+--   t('    iters = list(map(iter, seqs))'),
+--   t('    while iters:'),
+--   t('        res = [next(i) for i in iters]'),
+--   t('        yield tuple(res)'),
+--   t(''),
+--   t('S1, S2 = \'abc\', \'xyz123\''),
+--   t('print(myzip(S1, S2))'),
+--   t('print(mymapPad(S1, S2))'),
+--   t('print(mymapPad(S1, S2, pad=99)'),
+--   i(0)
+-- }),
+
+-- s({ trig = "py.permute", name = "Recursive permutation generator and list return", wordTrig = true }, {
+--   t('def permute(seq):'),
+--   t('    if not seq:'),
+--   t('        yield seq'),
+--   t('    else:'),
+--   t('        for i in range(len(seq)):'),
+--   t('            rest = seq[:i] + seq[i+1:]'),
+--   t('            for x in permute(rest):'),
+--   t('                yield seq[i:i+1] + x'),
+--   t(''),
+--   t('def permute1(seq):'),
+--   t('    if not seq:'),
+--   t('        return [seq]'),
+--   t('    else:'),
+--   t('        res = []'),
+--   t('        for i in range(len(seq)):'),
+--   t('            rest = seq[:i] + seq[i+1:]'),
+--   t('            for x in permute(rest):'),
+--   t('                res.append(seq[i:i+1] + x)'),
+--   t('    return res'),
+--   t(''),
+--   t('for i in permute(\'maths\'):'),
+--   t('    print(i)'),
+--   i(0)
+-- }),
+
+-- s({ trig = "py.reloadall", name = "Recursive module reload with cycle detection", wordTrig = true }, {
+--   t('import types'),
+--   t('from imp import reload  # from required in 3.x'),
+--   t(''),
+--   t('def status(module):'),
+--   t('    print(\'reloading \' + module.__name__)'),
+--   t(''),
+--   t('def tryreload(module):'),
+--   t('    try:'),
+--   t('        reload(module)'),
+--   t('    except:'),
+--   t('        print(\'FAILED: %s\' % module)'),
+--   t(''),
+--   t('def transitive_reload(module, visited):'),
+--   t('    if not module in visited:  # Trap cycles, duplicates'),
+--   t('        status(module)  # Reload this module'),
+--   t('        tryreload(module)  # And visit children'),
+--   t('        visited[module] = True'),
+--   t('        for attrobj in module.__dict__.values():  # For all attrs'),
+--   t('            if type(attrobj) == types.ModuleType:  # Recur if module'),
+--   t('                transitive_reload(attrobj, visited)'),
+--   t(''),
+--   t('def reload_all(*args):'),
+--   t('    visited = {}  # Main entry point'),
+--   t('    for arg in args:  # For all passed in'),
+--   t('        if type(arg) == types.ModuleType:'),
+--   t('            transitive_reload(arg, visited)'),
+--   t(''),
+--   t('def tester(reloader, modname):  # Self-test code'),
+--   t('    import importlib'),
+--   t('    import sys  # Import on tests only'),
+--   t('    if len(sys.argv) > 1:'),
+--   t('        modname = sys.argv[1]  # command line (or passed)'),
+--   t('    module = importlib.import_module(modname)  # Import by name string'),
+--   t('    reloader(module)  # Test passed-in reloade'),
+--   t(''),
+--   t('if __name__ == \'__main__\':'),
+--   t('    tester(reload_all, \'reloadall\')'),
+--   i(0)
+-- }),
+
+-- s({ trig = "py.scramble", name = "Scramble sequences with list and generator", wordTrig = true }, {
+--   t('L, S = [1, 2, 3], \'spam\''),
+--   t('# for i in range(len(S)):'),
+--   t('    # S = S[1:] + S[:1]'),
+--   t('    # print(S, end=\' \')'),
+--   t(''),
+--   t('# simple function'),
+--   t('def scramble(seq):'),
+--   t('    res = []'),
+--   t('    for i in range(len(seq)):'),
+--   t('        X = seq[1:] + seq[:1]'),
+--   t('        res.append(X)'),
+--   t('    return res'),
+--   t(''),
+--   t('def scramble1(seq):'),
+--   t('    return [seq[1:] + seq[:1] for i in range(len(seq))]'),
+--   t(''),
+--   t('# above wait caller to wait until all list is done'),
+--   t(''),
+--   t('# generator function'),
+--   t('def scramble2(seq):'),
+--   t('    for i in range(len(seq)):'),
+--   t('        yield seq[1:] + seq[:1]'),
+--   t(''),
+--   t('def scramble3(seq):'),
+--   t('    return (seq[1:] + seq[:1] for i in range(len(seq)))'),
+--   i(0)
+-- }),
+
+-- s({ trig = "py.closures-state", name = "Various stateful closures examples", wordTrig = true }, {
+--   t('from __future__ import print_function'),
+--   t(''),
+--   t('# nonlocal 3.x'),
+--   t('def tester(start):'),
+--   t('    state = start'),
+--   t(''),
+--   t('    def nested(label):'),
+--   t('        nonlocal state'),
+--   t('        print(label, state)'),
+--   t('        state += 1'),
+--   t('    return nested'),
+--   t(''),
+--   t('# nested global 2.x, 3.x'),
+--   t('def tester1(start):'),
+--   t('    global gstate'),
+--   t('    gstate = start'),
+--   t(''),
+--   t('    def nested(label):'),
+--   t('        global gstate'),
+--   t('        print(label, gstate)'),
+--   t('        gstate += 1'),
+--   t('    return nested'),
+--   t(''),
+--   t('# with mutables'),
+--   t('def tester2(start):'),
+--   t('    state = [start]'),
+--   t(''),
+--   t('    def nested(label):'),
+--   t('        print(label, state[0])'),
+--   t('        state[0] += 1'),
+--   t('    return nested'),
+--   t(''),
+--   t('# function attr'),
+--   t('def tester3(start):'),
+--   t(''),
+--   t('    def nested(label):'),
+--   t('        print(label, nested.state)'),
+--   t('        nested.state += 1'),
+--   t('    nested.state = 0'),
+--   t('    return nested'),
+--   t(''),
+--   t('# class'),
+--   t('class tester4(object):'),
+--   t(''),
+--   t('    def __init__(self, start):'),
+--   t('        self.state = start'),
+--   t(''),
+--   t('    def __call__(self, label):'),
+--   t('        print(label, self.state)'),
+--   t('        self.state += 1'),
+--   t(''),
+--   t('if __name__ == \'__main__\':'),
+--   t('    for test in (tester, tester1, tester2, tester3, tester4):'),
+--   t('        f = test(0)'),
+--   t('        f(\'name: %s, state:\' % test.__name__)'),
+--   t('        f(\'name: %s, state:\' % test.__name__)'),
+--   t('        f(\'name: %s, state:\' % test.__name__)'),
+--   t('        f(\'name: %s, state:\' % test.__name__)'),
+--   t('        print()'),
+--   t('    print(\'done\')'),
+--   i(0)
+-- }),
+
+-- s({ trig = "py.processor-class", name = "Processor function and class example", wordTrig = true }, {
+--   t('def processor(reader, converter, writer):'),
+--   t('    while True:'),
+--   t('        data = reader.read()'),
+--   t('        if not data:'),
+--   t('            break'),
+--   t('        data = converter(data)'),
+--   t('        writer.write(data)'),
+--   t(''),
+--   t('class Processor:'),
+--   t('    def __init__(self, reader, writer):'),
+--   t('        self.reader = reader'),
+--   t('        self.writer = writer'),
+--   t(''),
+--   t('    def process(self):'),
+--   t('        while True:'),
+--   t('            data = self.reader.readline()'),
+--   t('            if not data:'),
+--   t('                break'),
+--   t('            data = self.converter(data)'),
+--   t('            self.writer.write(data)'),
+--   t(''),
+--   t('    def converter(data):'),
+--   t('        assert False, \'converter must be defined\'  # Or raise exception'),
+--   i(0)
+-- }),
+
+-- s({ trig = "py.import-dynamic", name = "Dynamic Module Import", wordTrig = true }, {
+--   t("modname = '"), i(1, "strings"), t({"'",""}),
+--   t("string = __import__(modname)"),
+--   t({"","print(string)",""}),
+--   t("# Python official preferred way"),
+--   t({"","import importlib"}),
+--   t("modname = '"), rep(1), t({"'",""}),
+--   t("strings = importlib.import_module(modname)"),
+--   t({"","print(strings)"}),
+--   i(0)
+-- }),
+
+
+-- s({ trig = "py.benchmark2", name = "Benchmark with _reps kwargs", dscr = "Benchmark utilities using _reps/_reps1" }, {
+--   t([[
+-- import time
+-- import sys
+
+-- if sys.version_info[0] >= 3 and sys.version_info[1] >= 3:
+--     timer = time.perf_counter
+-- else:
+--     timer = time.clock if sys.platform[:3] == 'win' else time.time
+
+-- def total(func, *pargs, **kargs):
+--     _reps = kargs.pop('_reps', 1000)
+--     repslist = list(range(_reps))
+--     start = timer()
+--     for i in repslist:
+--         ret = func(*pargs, **kargs)
+--     elapsed = timer() - start
+--     return (elapsed, ret)
+
+-- def bestof(func, *pargs, **kargs):
+--     _reps = kargs.pop('_reps', 1000)
+--     repslist = list(range(_reps))
+--     best = 2 ** 32
+--     for i in repslist:
+--         start = timer()
+--         ret = func(*pargs, **kargs)
+--         elapsed = timer() - start
+--         if elapsed < best:
+--             best = elapsed
+--     return (best, ret)
+
+-- def bestoftotal(func, *pargs, **kargs):
+--     _reps1 = kargs.pop('_reps1', 5)
+--     return min(total(func, *pargs, **kargs) for i in range(_reps1))
+
+-- # Example usage:
+-- def 
+--   ]]),
+--   i(1, "example"),
+--   t("(): return sum(range(1000))\n"),
+--   t("print('Total:', total("), rep(1), t(", _reps=1000))\n"),
+--   t("print('Best of:', bestof("), rep(1), t(", _reps=1000))\n"),
+--   t("print('Best of total:', bestoftotal("), rep(1), t(", _reps=1000, _reps1=5))\n"),
+--   i(0)
+-- }),
+
+
+-- s({ trig = "py.benchmark", name = "Function Benchmarking", wordTrig = true }, {
+--   t({
+--     "import time",
+--     "import sys",
+--     "",
+--     "if sys.version_info[0] >= 3 and sys.version_info[1] >= 3:",
+--     "    timer = time.perf_counter",
+--     "else:",
+--     "    timer = time.clock if sys.platform[:3] == 'win' else time.time",
+--     "",
+--     "def total(reps, func, *pargs, **kargs):",
+--     "    replist = list(range(reps))",
+--     "    start = timer()",
+--     "    for i in replist:",
+--     "        ret = func(*pargs, **kargs)",
+--     "    elapsed = timer() - start",
+--     "    return (elapsed, ret)",
+--     "",
+--     "def bestof(reps, func, *pargs, **kargs):",
+--     "    best = 2 ** 32",
+--     "    for i in range(reps):",
+--     "        start = timer()",
+--     "        ret = func(*pargs, **kargs)",
+--     "        elapsed = timer() - start",
+--     "        if elapsed < best:",
+--     "            best = elapsed",
+--     "    return (best, ret)",
+--     "",
+--     "def bestoftotal(reps1, reps2, func, *pargs, **kargs):",
+--     "    return bestof(reps1, total, reps2, func, *pargs, **kargs)",
+--     "",
+--     "# Example usage",
+--     "def "
+--   }),
+--   i(1, "testfunc"),
+--   t("(): return sum(range(1000))\n"),
+--   t("print('Total:', total(1000, "), rep(1), t("))\n"),
+--   t("print('Best of:', bestof(1000, "), rep(1), t("))\n"),
+--   t("print('Best of total:', bestoftotal(5, 1000, "), rep(1), t("))\n"),
+--   i(0)
+-- })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- }

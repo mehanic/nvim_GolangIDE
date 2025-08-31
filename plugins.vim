@@ -136,6 +136,7 @@ Plug 'stevearc/aerial.nvim'
 " Генерация тестов
 Plug 'cweill/gotests'
 Plug 'nvim-neotest/neotest-go'
+Plug 'nvim-neotest/neotest-python'
 " Интеграция с Go Playground
 Plug 'tpope/vim-dispatch' " Используем vim-dispatch для отправки Go-кода в Go Playground
 "позволяет удобно отображать все доступные клавиши и их комбинации.
@@ -163,8 +164,8 @@ Plug 'tpope/vim-dadbod'
 "UI для работы с vim-dadbod-ui 
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'golang/vscode-go'
-Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
+" Plug 'williamboman/mason.nvim'
+" Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'windwp/nvim-ts-autotag'
 Plug 'ldelossa/litee.nvim'
 Plug 'ldelossa/litee-calltree.nvim'
@@ -199,7 +200,7 @@ Plug 'dense-analysis/ale'
 Plug 'kevinhwang91/nvim-bqf'
 "posibility to work with tekst
 "Plug 'andymass/vim-matchup'
-Plug 'linux-cultist/venv-selector.nvim', { 'branch': 'regexp' }
+Plug 'linux-cultist/venv-selector.nvim',
 " Source additional plugin configuration file  ---- not work
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-telescope/telescope-file-browser.nvim'
@@ -227,6 +228,18 @@ Plug 'ray-x/lsp_signature.nvim'
 Plug  'Wansmer/symbol-usage.nvim'
 Plug  'Yu-Leo/gosigns.nvim'
 Plug  'Yu-Leo/cmp-go-pkgs'
+
+Plug 'sshelll/telescope-gott.nvim'
+Plug 'lukas-reineke/cmp-under-comparator'
+Plug 'hedyhli/outline.nvim'
+
+Plug 'numToStr/Comment.nvim'
+
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'WhoIsSethDaniel/mason-tool-installer.nvim'
+Plug 'andythigpen/nvim-coverage'
+Plug 'hat0uma/csvview.nvim'
 " Source individual plugin configuration files
 "source ~/.config/nvim/vim-plug/dadbod.vim:
 "source ~/.config/nvim/vim-plug/telescope.vim
@@ -248,25 +261,25 @@ set mouse=a
 set filetype=helm
 
 " Отключаем использование временных меток Syntastic
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_show_signs = 0
-let g:syntastic_quiet = 1
+" let g:syntastic_auto_loc_list = 0
+" let g:syntastic_show_signs = 0
+" let g:syntastic_quiet = 1
 
 " Отключаем автоматическое создание списка локаций
-let g:syntastic_always_populate_loc_list = 0
+" let g:syntastic_always_populate_loc_list = 0
 
 " Проверка при открытии файла
-let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_open = 1
 " Отключаем проверку при сохранении
-let g:syntastic_check_on_wq = 0
+" let g:syntastic_check_on_wq = 0
 
 " Отключаем проверку для некоторых типов файлов
-let g:syntastic_check_on_filetype = 0
+" let g:syntastic_check_on_filetype = 0
 
 " Другое полезное:
-let g:syntastic_enable_signs = 0
-let g:syntastic_use_local_files = 1
-let g:syntastic_save_on_check = 1
+" let g:syntastic_enable_signs = 0
+" let g:syntastic_use_local_files = 1
+" let g:syntastic_save_on_check = 1
 
 
 
@@ -398,7 +411,7 @@ autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " (Optional) Enable terraform plan to be include in filter
-let g:syntastic_terraform_tffilter_plan = 1
+" let g:syntastic_terraform_tffilter_plan = 1
 
 " (Optional) Default: 0, enable(1)/disable(0) plugin's keymapping
 let g:terraform_completion_keys = 1
@@ -483,21 +496,31 @@ autocmd BufRead,BufNewFile *.yml,*.yaml setlocal expandtab shiftwidth=2 tabstop=
 
 
 
+lua << EOF
+-- Автостарт Neo-tree при запуске nvim без аргументов
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    -- Если nvim запущен без файла, открываем Neo-tree
+    if vim.fn.argc() == 0 then
+      require("neo-tree.command").execute({ toggle = false, dir = vim.loop.cwd() })
+    end
+  end
+})
 
+EOF
 
-
-autocmd vimenter * NERDTree
+"autocmd vimenter * NERDTree
 " Automatically close NERDTree when quitting Neovim
 
-let g:NERDTreeHighlightFoldersFullName = 1
-let g:NERDTreeHighlightFolders = 1
+"let g:NERDTreeHighlightFoldersFullName = 1
+"let g:NERDTreeHighlightFolders = 1
 "let NERDTreeShowHidden=1
 " Add this to your config file
-let NERDTreeIgnore = ['\.csm$']
-let g:NERDTreeShowIcons=1
+"let NERDTreeIgnore = ['\.csm$']
+"let g:NERDTreeShowIcons=1
 
 " Automatically close NERDTree when quitting Neovim (if it's still open)
-autocmd VimLeavePre * if exists('g:NERDTree') && g:NERDTree.IsOpen() | NERDTreeClose | endif
+"autocmd VimLeavePre * if exists('g:NERDTree') && g:NERDTree.IsOpen() | NERDTreeClose | endif
 
 " Enable syntax highlighting Markdown
 syntax enable
@@ -535,8 +558,54 @@ nnoremap <leader>gl :Git log<CR>
 nnoremap <leader>ga :Gwrite<CR>
 " Reset current file to HEAD
 nnoremap <leader>gr :Gread<CR>
-  
 
+
+
+lua << EOF
+vim.filetype.add({
+  pattern = {
+    [".*%.jinja"] = "htmldjango",
+    [".*%.jinja2"] = "htmldjango",
+    [".*%.html%.j2"] = "htmldjango",
+
+
+    -- YAML + Jinja
+    [".*%.ya?ml%.j2$"]     = "yaml",
+    [".*%.ya?ml%.jinja2?$"] = "yaml",
+
+    -- JSON + Jinja
+    [".*%.json%.j2$"]   = "json",
+    [".*%.json%.jinja2$"] = "json",
+
+    -- Markdown + Jinja
+    [".*%.md%.j2$"]     = "markdown",
+    [".*%.md%.jinja2$"] = "markdown",
+
+    -- Groovy + Jinja (например Jenkinsfile.j2)
+    [".*%.groovy%.j2$"]     = "groovy",
+    [".*%.groovy%.jinja2$"] = "groovy",
+    [".*Jenkinsfile%.j2$"]  = "groovy",
+
+    -- Terraform + Jinja
+    [".*%.tf%.j2$"]     = "terraform",
+    [".*%.tfvars%.j2$"] = "terraform",
+
+    -- Shell + Jinja
+    [".*%.sh%.j2$"]     = "sh",
+    [".*%.zsh%.j2$"]    = "zsh",
+
+    -- Dockerfile + Jinja
+    [".*%.dockerfile%.j2$"] = "dockerfile",
+
+    -- Lua + Jinja
+    [".*%.lua%.j2$"] = "lua",
+
+    -- Python + Jinja
+    [".*%.py%.j2$"] = "python",
+    [".*%.py%.jinja2$"] = "python",
+  },
+})
+EOF
 
 lua << EOF
 -- Mason: менеджер LSP и внешних инструментов
@@ -766,6 +835,92 @@ capabilities = capabilities,
   },
 })
 
+-- TypeScript / JavaScript (новый ts_ls вместо tsserver)
+lspconfig.ts_ls.setup({
+  on_attach = function(client, bufnr)
+    -- Твои базовые on_attach-хуки
+    if on_attach then
+      on_attach(client, bufnr)
+    end
+
+    -- Автоформат перед сохранением
+    if client.server_capabilities.documentFormattingProvider then
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = vim.api.nvim_create_augroup("TSLSFormatOnSave", { clear = true }),
+        buffer = bufnr,
+        callback = function()
+          vim.lsp.buf.format({ async = false })
+        end,
+      })
+    end
+  end,
+
+  capabilities = capabilities,
+  single_file_support = false,
+
+  filetypes = {
+    "javascript", "javascriptreact", "javascript.jsx",
+    "typescript", "typescriptreact", "typescript.tsx"
+  },
+
+  root_dir = require("lspconfig.util").root_pattern(
+    "package.json",
+    "tsconfig.json",
+    "jsconfig.json",
+    ".git"
+  ),
+
+  settings = {
+    javascript = {
+      inlayHints = {
+        includeInlayParameterNameHints = "all",
+        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayVariableTypeHints = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayEnumMemberValueHints = true,
+      },
+      format = {
+        semicolons = "insert",
+        indentSize = 2,
+        convertTabsToSpaces = true,
+      },
+      preferences = {
+        quotePreference = "single",
+        importModuleSpecifier = "relative",
+      },
+    },
+
+    typescript = {
+      inlayHints = {
+        includeInlayParameterNameHints = "all",
+        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayVariableTypeHints = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayEnumMemberValueHints = true,
+      },
+      format = {
+        semicolons = "insert",
+        indentSize = 2,
+        convertTabsToSpaces = true,
+      },
+      preferences = {
+        quotePreference = "single",
+        importModuleSpecifier = "relative",
+      },
+    },
+  },
+
+  init_options = {
+    preferences = {
+      disableSuggestions = false,
+    },
+    maxTsServerMemory = 4096,
+  },
+})
 
 -- Настройка terraform-ls
 require('lspconfig').terraformls.setup({
@@ -836,14 +991,40 @@ require("luasnip.loaders.from_vscode").load({
   paths = { "/home/mehanic/.config/nvim/snippets/go.json" }
 })
 
--- Загрузка сниппетов для Golang (golang_snippets)
+
 require("luasnip.loaders.from_lua").load({
   paths = vim.fn.expand("~/.config/nvim/snippets/golang_snippets"),
 })
 
--- Загрузка сниппетов для Golang2
+
 require("luasnip.loaders.from_lua").load({
   paths = vim.fn.expand("~/.config/nvim/snippets/golang2_snippets"),
+})
+
+
+require("luasnip.loaders.from_lua").load({
+  paths = vim.fn.expand("~/.config/nvim/snippets/golang3_snippets"),
+})
+
+
+
+require("luasnip.loaders.from_lua").load({
+  paths = vim.fn.expand("~/.config/nvim/snippets/golang4_snippets"),
+})
+
+
+require("luasnip.loaders.from_lua").load({
+  paths = vim.fn.expand("~/.config/nvim/snippets/golang5_snippets"),
+})
+
+
+require("luasnip.loaders.from_lua").load({
+  paths = vim.fn.expand("~/.config/nvim/snippets/golang6_snippets"),
+})
+
+
+require("luasnip.loaders.from_lua").load({
+  paths = vim.fn.expand("~/.config/nvim/snippets/golang7_snippets"),
 })
 
 -- Проверка сниппетов после их загрузки
@@ -863,22 +1044,22 @@ vim.defer_fn(function()
   end
 
   -- Проверка Golang2 сниппетов
-  if snippets.go then
+  -- if snippets.go then
     -- Проверяем наличие триггера "golang2"
-    local found_golang2 = false
-    for _, snippet in ipairs(snippets.go) do
-      if snippet.trigger == "golang2" then
-        found_golang2 = true
-        break
-      end
-    end
+    -- local found_golang2 = false
+    -- for _, snippet in ipairs(snippets.go) do
+      -- if snippet.trigger == "golang2" then
+        -- found_golang2 = true
+        -- break
+      -- end
+    -- end
 
-    if found_golang2 then
-      vim.notify("Golang2 snippet found in go filetype!", vim.log.levels.INFO)
-    else
-      vim.notify("Golang2 snippet not found in go filetype.", vim.log.levels.ERROR)
-    end
-  end
+    -- if found_golang2 then
+      -- vim.notify("Golang2 snippet found in go filetype!", vim.log.levels.INFO)
+    -- else
+      -- vim.notify("Golang2 snippet not found in go filetype.", vim.log.levels.ERROR)
+    -- end
+  -- end
 
   -- Отладка: вывод всех загруженных сниппетов
   vim.notify("All loaded snippets: " .. vim.inspect(snippets), vim.log.levels.DEBUG)
@@ -1207,33 +1388,292 @@ nnoremap <Leader>2 :ToggleTerm command='htop'<CR>  " Open terminal with 'htop'
 " Make sure terminal is in insert mode when opened
 autocmd TermOpen * startinsert
 
-
-" Neo-tree configuration
+" github
 lua << EOF
-require("neo-tree").setup({
+local neotree = require("neo-tree")
+
+-- Папки для Ansible, Jinja2, Go templates
+local ansible_dirs = {
+  "tasks", "handlers", "vars", "defaults", "roles", "group_vars", "host_vars",
+  "molecule", "meta", "files", "tests",
+}
+
+local jinja_dirs = { "templates" }
+local go_template_dirs = { "tmpl", "templates" }
+local hcl_dirs = { "terraform", "hcl", "vault" }
+
+neotree.setup({
   filesystem = {
     filtered_items = {
-      hide_dotfiles = false,  -- Show dotfiles
-      hide_gitignored = true, -- Hide git-ignored files
+      hide_dotfiles = true,
+      hide_gitignored = true,
+      hide_by_name = { "node_modules", "__pycache__" },
+      always_show = { ".github", ".gitlab-ci.yml", "terraform", "ansible", "Jenkinsfile", "helm" },
+    },
+    components = {
+      name = function(config, node, state)
+        local name = node.name or ""
+        local path = node.path or ""
+        local text = name
+        local hl = nil
+
+        -- Kubernetes manifests
+if node.type == "file" and name:match("%.ya?ml$") then
+  local is_k8s = false
+
+  -- Спочатку перевіряємо по директоріям
+  local k8s_dirs = { "ingress", "manifests", "deployments", "services" }
+  for _, d in ipairs(k8s_dirs) do
+    if path:match("/" .. d) then
+      is_k8s = true
+      break
+    end
+  end
+
+  -- Якщо не знайшли по директорії → читаємо файл
+  if not is_k8s then
+    local fd = vim.loop.fs_open(path, "r", 438)
+    if fd then
+      local stat = vim.loop.fs_fstat(fd)
+      if stat and stat.size > 0 then
+        local data = vim.loop.fs_read(fd, math.min(stat.size, 512), 0)
+        if data and data:match("apiVersion:") and data:match("kind:") then
+          is_k8s = true
+        end
+      end
+      vim.loop.fs_close(fd)
+    end
+  end
+
+  -- Якщо підтвердили → ставимо іконку
+  if is_k8s then
+    text = " " .. name  -- nf-dev-kubernetes
+    hl = "NeoTreeK8s"
+  end
+end
+
+
+        if node.type == "file" then
+  if name:match("%.sh$") or name:match("%.bash$") or name:match("%.zsh$") then
+    text = " " .. name
+    hl = "NeoTreeBash"
+  else
+    -- Перевірка shebang
+    local fd = vim.loop.fs_open(path, "r", 438) -- 438 = 0666
+    if fd then
+      local stat = vim.loop.fs_fstat(fd)
+      if stat and stat.size > 0 then
+        local data = vim.loop.fs_read(fd, math.min(stat.size, 64), 0)
+        if data and data:match("^#!.*/bin/bash") then
+          text = " " .. name
+          hl = "NeoTreeBash"
+        end
+      end
+      vim.loop.fs_close(fd)
+    end
+  end
+end
+
+
+-- systemd unit files
+if node.type == "file" and (
+  name:match("%.service$") or
+  name:match("%.socket$") or
+  name:match("%.timer$") or
+  name:match("%.target$") or
+  name:match("%.mount$") or
+  name:match("%.path$")
+) then
+  text = " " .. name  -- іконка для systemd
+  hl = "NeoTreeSystemd"
+end
+
+
+        -- GitHub
+        if name == ".github" or path:match("/%.github") then
+          text = " " .. name
+          hl = "NeoTreeGitHubDir"
+
+        -- GitLab CI
+        elseif name == ".gitlab-ci.yml" then
+          text = " " .. name
+          hl = "NeoTreeGitLabCI"
+
+        -- Terraform
+        elseif name:match("%.tf$") or name == "terraform" or path:match("/terraform") then
+          text = " " .. name
+          hl = "NeoTreeTerraform"
+
+        -- Jenkinsfile
+        elseif name == "Jenkinsfile" then
+          text = " " .. name
+          hl = "NeoTreeJenkins"
+
+
+
+
+        -- Helm
+        elseif name:match("%.helm$") or name == "helm" or path:match("/helm") then
+          text = "⎈ " .. name
+          hl = "NeoTreeHelm"
+        end
+
+
+        if node.type == "file" and name:match("%.hcl$") then
+  text = " " .. name  -- іконка Vault
+  hl = "NeoTreeVault"
+elseif node.type == "directory" then
+  local scan = vim.loop.fs_scandir(path)
+  local has_hcl = false
+  if scan then
+    while true do
+      local fname = vim.loop.fs_scandir_next(scan)
+      if not fname then break end
+      if fname:match("%.hcl$") then
+        has_hcl = true
+        break
+      end
+    end
+  end
+  if has_hcl then
+    text = " " .. name  -- іконка Vault
+    hl = "NeoTreeVault"
+  end
+end
+
+        -- Ansible папки з .yml
+        for _, d in ipairs(ansible_dirs) do
+          if name == d or path:match("/" .. d) then
+            local has_yml = false
+            local scan = vim.loop.fs_scandir(path)
+            if scan then
+              while true do
+                local fname = vim.loop.fs_scandir_next(scan)
+                if not fname then break end
+                if fname:match("%.ya?ml$") then
+                  has_yml = true
+                  break
+                end
+              end
+            end
+            if has_yml then
+              text =  " " .. name  
+              hl = "NeoTreeAnsible"
+            end
+            break
+          end
+        end
+
+
+        -- Jinja2
+if node.type == "file" and name:match("%.j2$") then
+  text = " " .. name
+  hl = "NeoTreeJinja"
+elseif node.type == "directory" then
+  for _, d in ipairs(jinja_dirs) do
+    if name == d or path:match("/" .. d) then
+      local has_j2 = false
+      local scan = vim.loop.fs_scandir(path)
+      if scan then
+        while true do
+          local fname = vim.loop.fs_scandir_next(scan)
+          if not fname then break end
+          if fname:match("%.j2$") then
+            has_j2 = true
+            break
+          end
+        end
+      end
+      if has_j2 then
+        text = " " .. name
+        hl = "NeoTreeJinja"
+      end
+      break
+    end
+  end
+end
+
+
+
+
+-- Go templates
+if node.type == "file" and (
+  name:match("%.tmpl$") or name:match("%.gotmpl$") or
+  name:match("%.html$") or name:match("%.gohtml$")
+) then
+  text = " " .. name
+  hl = "NeoTreeGoTpl"
+elseif node.type == "directory" then
+  for _, d in ipairs(go_template_dirs) do
+    if name == d or path:match("/" .. d) then
+      local has_go_tpl = false
+      local scan = vim.loop.fs_scandir(path)
+      if scan then
+        while true do
+          local fname = vim.loop.fs_scandir_next(scan)
+          if not fname then break end
+          if fname:match("%.tmpl$") or fname:match("%.gotmpl$") or
+             fname:match("%.html$") or fname:match("%.gohtml$") then
+            has_go_tpl = true
+            break
+          end
+        end
+      end
+      if has_go_tpl then
+        text = " " .. name
+        hl = "NeoTreeGoTpl"
+      end
+      break
+    end
+  end
+end
+
+        return { text = text, highlight = hl }
+      end,
     },
   },
+
   window = {
-    width = 30,  -- Width of the file tree window
+    width = 35,
     mappings = {
-      ["<CR>"] = "open",        -- Open a file or directory
-      ["<BS>"] = "close_node",  -- Close the current node
-      ["."] = "toggle_hidden",  -- Toggle visibility of hidden files
-      ["<C-p>"] = "preview",    -- Preview the file under cursor
+      ["<CR>"] = "open",
+      ["<BS>"] = "close_node",
+      ["."] = "toggle_hidden",
     },
   },
+
   default_component_configs = {
     icon = {
-      folder_closed = "▶",  -- Icon for closed folders
-      folder_open = "▼",    -- Icon for open folders
+      folder_closed = "",
+      folder_open = "",
+      folder_empty = "",
+      default = "",
+    },
+    name = {
+      trailing_slash = true,
     },
   },
 })
+
+-- Highlights
+vim.cmd([[highlight NeoTreeGitHubDir guifg=#f1502f gui=bold]])
+vim.cmd([[highlight NeoTreeGitLabCI guifg=#fc6d26 gui=bold]])
+vim.cmd([[highlight NeoTreeTerraform guifg=#5c4ee5 gui=bold]])
+vim.cmd([[highlight NeoTreeAnsible guifg=#c70e52 gui=bold]])
+vim.cmd([[highlight NeoTreeJenkins guifg=#d24939 gui=bold]])
+vim.cmd([[highlight NeoTreeHelm guifg=#1f9cf0 gui=bold]])
+vim.cmd([[highlight NeoTreeJinja guifg=#f7ca88 gui=bold]])
+vim.cmd([[highlight NeoTreeGoTpl guifg=#00aaff gui=bold]])
+vim.cmd([[highlight NeoTreeVault guifg=#b5b319 gui=bold]])
+vim.cmd([[highlight NeoTreeBash guifg=#89e051 gui=bold]])
+vim.cmd([[highlight NeoTreeSystemd guifg=#268BD2 gui=bold]])
+vim.cmd([[highlight NeoTreeK8s guifg=#326CE5 gui=bold]])
+
+
+
+
 EOF
+
 
 " LSP Configuration for Ansible
 lua << EOF
@@ -1243,28 +1683,32 @@ lspconfig.ansiblels.setup({
   cmd = { "ansible-language-server", "--stdio" },
   filetypes = { "yaml", "yml" },
 
-root_dir = lspconfig.util.root_pattern(
-  "ansible.cfg",
-  "requirements.yml",
-  "inventory.ini",
-  "hosts",
-  "roles",                  -- корень с ролями
-  "meta/main.yml",
-  "tasks/main.yml",
-  "handlers/main.yml",
-  "defaults/main.yml",
-  "vars/main.yml",
-  "test/main.yml",
-  "meta/main.yml",         -- molecule конфиг
-  "molecule/main.yml",
-  "meta",
-  "tasks",
-  "handlers",
-  "defaults",
-  "vars",
-  "test",
-  "molecule"
-),
+  -- Упрощённая и усиленная настройка корня проекта
+  root_dir = function(fname)
+    return lspconfig.util.root_pattern(
+      "ansible.cfg",
+      "requirements.yml",
+      "inventory.ini",
+      "hosts",
+      "roles",                  -- корень с ролями
+      "tasks/main.yml",
+      "handlers/main.yml",
+      "defaults/main.yml",
+      "vars/main.yml",
+      "test/main.yml",
+      "meta/main.yml",         -- molecule конфиг
+      "molecule/main.yml",
+      "meta",
+      "tasks",
+      "handlers",
+      "defaults",
+      "vars",
+      "test",
+      "molecule"
+    )(fname) or
+    lspconfig.util.root_pattern(".git")(fname) or
+    vim.fn.getcwd()  -- fallback к текущей директории, если ни одно не найдено
+  end,
 
   settings = {
     ansible = {
@@ -1297,7 +1741,35 @@ root_dir = lspconfig.util.root_pattern(
     end
   end
 })
+
+--после добавления этого автокоманда NerdTree стал показывать директории в формате [name] — в квадратных скобках. Это поведение указывает на побочный эффект от syntax match и особенно от containedin=all 
+
+-- syntax match AnsibleVar /{{ *[^} ]\+ *}}/ containedin=ALL искать совпадения по всему буферу, включая не только содержимое .yml файлов, но и буферы типа nerdtree, которые тоже используют filetype, и могут случайно интерпретироваться как yaml, особенно если ты жёстко выставляешь vim.bo.filetype = "yaml".
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "*/defaults/*.yml", "*/vars/*.yml", "*/meta/*.yml" },
+  callback = function()
+    if vim.bo.buftype == "" then
+      vim.bo.filetype = "yaml"
+      vim.cmd("syntax enable")
+
+      -- Подсветка Jinja2-переменных
+      vim.cmd([[syntax match AnsibleVar /{{ *[^} ]\+ *}}/ containedin=yamlBlockMappingKey,yamlPlainScalar,yamlString]])
+      vim.cmd([[highlight AnsibleVar guifg=#F8F8F2 guibg=#3c3836]])
+
+      -- Подсветка Jinja2-комментариев
+      vim.cmd([[syntax match AnsibleComment /{#.\{-}#}/ containedin=yamlBlockMappingKey,yamlPlainScalar,yamlString]])
+      vim.cmd([[highlight AnsibleComment guifg=#888888 gui=italic]])
+    end
+  end,
+})
+
+
+
 EOF
+
+
+
 
 
 " Lua-based configuration for nvim-scrollbar
@@ -1509,7 +1981,7 @@ require("scrollbar").setup({
 })
 
 
--- Словарь рун с названиями и описаниями
+-- Словарь рун с названиями и описаниями , + sudo apt install fonts-firacode
 local rune_descriptions = {
     ["ᚦ"] = { name = "runa Thurisaz", description = "Rune of giants, defense, or reaction" },
     ["ᚱ"] = { name = "runa Raido", description = "Rune of travel, movement, and journeys" },
@@ -1682,6 +2154,7 @@ require'nvim-treesitter.configs'.setup {
     "bash",
     "yaml",
     "gotmpl",
+    "proto",
   },
 
   sync_install = false,
@@ -1742,6 +2215,12 @@ require'nvim-treesitter.configs'.setup {
     },
   },
 }
+
+vim.api.nvim_set_hl(0, "@function", { fg = "#1E90FF", bold = true })
+vim.api.nvim_set_hl(0, "@type", { fg = "#FF2D55", bold = true })
+
+
+
 EOF
 
 
@@ -1957,7 +2436,63 @@ null_ls.setup({
 EOF
 
 "---------------------------------------------------------------------------------
-"for helm charts
+" "for helm charts
+" lua << EOF
+" local null_ls = require("null-ls")
+" local h = require("null-ls.helpers")
+
+" local helm_lint = {
+"   name = "helm_lint",
+"   method = null_ls.methods.DIAGNOSTICS,
+"   filetypes = { "helm", "yaml" },
+"   generator = h.generator_factory({
+"     command = "helm",
+"     args = function(params)
+"       return { "lint", params.bufname }
+"     end,
+"     to_stdin = false,
+"     from_stderr = true,
+"     format = "line",
+"     check_exit_code = function(code)
+"       return code <= 1  -- helm lint может возвращать 1 при предупреждениях
+"     end,
+"     on_output = function(line)
+"       return {
+"         row = 1,
+"         col = 1,
+"         message = line,
+"         severity = vim.diagnostic.severity.WARN,
+"       }
+"     end,
+"   }),
+" }
+
+" null_ls.setup({
+"   sources = {
+"     null_ls.builtins.diagnostics.yamllint,
+"     helm_lint,
+"   },
+" })
+
+" EOF
+" "for clear differnce between helm .yaml  and ansible .yaml
+" lua << EOF
+" vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+"   pattern = "*.yml",
+"   callback = function()
+"     local lines = vim.api.nvim_buf_get_lines(0, 0, 50, false)
+"     for _, line in ipairs(lines) do
+"       if line:match("hosts:") or line:match("tasks:") or line:match("galaxy_info") or line:match("platforms") or line:match("roles:") or line:match("gather_facts:") or line:match("ansible_") then
+"         vim.bo.filetype = "ansible"
+"         return
+"       end
+"     end
+"     vim.bo.filetype = "yaml"
+"   end,
+" })
+" EOF
+
+
 lua << EOF
 local null_ls = require("null-ls")
 local h = require("null-ls.helpers")
@@ -1969,13 +2504,13 @@ local helm_lint = {
   generator = h.generator_factory({
     command = "helm",
     args = function(params)
-      return { "lint", params.bufname }
+      return { "lint", vim.fn.fnamemodify(params.bufname, ":h") }  -- lint всей директории чарта
     end,
     to_stdin = false,
     from_stderr = true,
     format = "line",
     check_exit_code = function(code)
-      return code <= 1  -- helm lint может возвращать 1 при предупреждениях
+      return code <= 1
     end,
     on_output = function(line)
       return {
@@ -1994,16 +2529,17 @@ null_ls.setup({
     helm_lint,
   },
 })
-
 EOF
-"for clear differnce between helm .yaml  and ansible .yaml
+
 lua << EOF
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.yml",
   callback = function()
     local lines = vim.api.nvim_buf_get_lines(0, 0, 50, false)
     for _, line in ipairs(lines) do
-      if line:match("hosts:") or line:match("tasks:") or line:match("roles:") or line:match("gather_facts:") or line:match("ansible_") then
+      if line:match("hosts:") or line:match("tasks:") or line:match("galaxy_info")
+        or line:match("platforms") or line:match("roles:") or line:match("gather_facts:")
+        or line:match("ansible_") then
         vim.bo.filetype = "ansible"
         return
       end
@@ -2014,17 +2550,109 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 EOF
 
 
+lua << EOF
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "*/Chart.yaml", "*/values.yaml", "*/values-*.yaml" },
+  callback = function()
+    vim.bo.filetype = "helm"
+  end,
+})
+EOF
+
+
+"------------------------ I put for meta and defaults ansible 
+
+lua << EOF
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "*.yml", "*.yaml" },
+  callback = function()
+    local filename = vim.api.nvim_buf_get_name(0)
+    local lines = vim.api.nvim_buf_get_lines(0, 0, 50, false)
+
+    local ansible_keywords = {
+      "hosts:", "tasks:", "gather_facts:", "roles:", "ansible_", "galaxy_info", "platforms:"
+    }
+
+    for _, line in ipairs(lines) do
+      for _, kw in ipairs(ansible_keywords) do
+        if line:match(kw) then
+          vim.bo.filetype = "ansible"
+          return
+        end
+      end
+    end
+
+    if filename:find("/roles/.+/") and filename:find("/meta/") or filename:find("/tasks/") or
+       filename:find("/handlers/") or filename:find("/defaults/") or
+       filename:find("/vars/") or filename:find("/molecule/") then
+      vim.bo.filetype = "ansible"
+      return
+    end
+  end,
+})
+EOF
+
+
+
 " Настройка для vim-test
 let g:test#strategy = 'neovim'
 
 " Настройка для neotest
 lua << EOF
-  local neotest = require('neotest')
-  neotest.setup({
-    adapters = {
-      require('neotest-go'),
+local neotest = require("neotest")
+
+neotest.setup({
+  adapters = {
+    -- Go: Поддержка табличных тестов, параметры запуска
+    require("neotest-go")({
+      experimental = {
+        test_table = true, -- Расширенное отображение таблиц тестов
+      },
+      args = { "-count=1", "-timeout=60s", "-v" }, -- Подробный вывод
+    }),
+
+    -- Python: через pytest, с поддержкой DAP
+    require("neotest-python")({
+      dap = { justMyCode = false },  -- Показывать stdlib в дебаге
+      runner = "pytest",             -- Можно заменить на "unittest"
+      python = "python3",            -- Укажи путь, если нужен venv
+      args = { "-q", "--tb=short", "-p", "no:warnings" },
+    }),
+  },
+
+  icons = {
+    passed = "",    -- ✅
+    failed = "",    -- ❌
+    running = "",   -- 🔄
+    skipped = "ﰸ",   -- ⏭️
+    unknown = "",   -- ❓
+  },
+
+  output = {
+    enabled = true,
+    open_on_run = "short", -- "always", "never", "short"
+  },
+
+  summary = {
+    enabled = true,
+    follow = true,
+    expand_errors = true,
+    mappings = {
+      expand = { "<CR>", "<Right>" },
+      output = "o",
+      short = "O",
+      run = "r",
+      debug = "d",
+      stop = "s",
     },
-  })
+  },
+
+  floating = {
+    border = "rounded",
+    max_height = 0.5,
+    max_width = 0.8,
+  },
+})
 EOF
 
 " Настройка gotests для генерации тестов
@@ -2635,8 +3263,6 @@ vim.cmd('command! K8sOperators :terminal kubectl get operators')
 vim.cmd([[
   command! KubectlApplyFromBuffer execute '!kubectl apply -f ' . expand('%:p')
 ]])
-
-
 
 EOF
 
@@ -3485,6 +4111,7 @@ local leetcode = require("leetcode")
 
 leetcode.setup {
   lang = "golang",  -- Устанавливаем Go как язык по умолчанию
+  --lang = "python3",
   keymaps = {
     list = "<leader>ll",
     solve = "<leader>ls",
@@ -3776,7 +4403,7 @@ require"octo".setup({
   user_icon = " ",                        -- user icon
   ghost_icon = "󰊠 ",                       -- ghost icon
   timeline_marker = " ",                  -- timeline marker
-  timeline_indent = "2",                   -- timeline indentation
+  timeline_indent = 2,                   -- timeline indentation
   use_timeline_icons = true,               -- toggle timeline icons
   timeline_icons = {                       -- the default icons based on timelineItems
     commit = "  ",
@@ -4030,6 +4657,66 @@ vim.api.nvim_set_keymap('n', '<leader>p', '<cmd>lua require("telescope.builtin")
 EOF
 
 
+" local lsp_signature = require("lsp_signature")
+
+" local cfg = {
+  " bind = true,
+  " hint_enable = true,
+  " hint_prefix = "󰊕 ",
+  " hint_scheme = "LspSignatureHintPrefix",
+  " floating_window = true,
+  " floating_window_above_cur_line = false,
+
+  " floating_window_off_x = function()
+    " local win_width = vim.api.nvim_win_get_width(0)
+    " local col = vim.api.nvim_win_get_cursor(0)[2]
+    " local max_width = 60
+    " local offset = win_width - col - max_width - 4
+    " return offset > 0 and offset or 0
+  " end,
+
+  " floating_window_off_y = function()
+    " local screen_line = vim.fn.winline()
+    " local win_height = vim.fn.winheight(0)
+    " if screen_line < 5 then
+      " return 1
+    " elseif win_height - screen_line < 5 then
+      " return -1
+    " else
+      " return 0
+    " end
+  " end,
+
+  " handler_opts = {
+    " border = "rounded",
+    " handler = function(sig_handler, err, result, ctx, config)
+      " -- Проверим, есть ли сигнатура
+      " if result and result.signatures and result.signatures[1] then
+        " local label = result.signatures[1].label or ""
+        " local ignore_list = { "Println", "Printf", "Print", "Errorf" }
+        " for _, name in ipairs(ignore_list) do
+          " if label:find(name) then
+            " return -- игнорируем
+          " end
+        " end
+      " end
+      " -- вызываем стандартный обработчик
+      " return sig_handler(err, result, ctx, config)
+    " end,
+  " },
+
+  " doc_lines = 2,
+  " max_width = 40,
+  " wrap = true,
+" }
+
+" vim.cmd([[
+  " highlight LspSignatureHintPrefix guifg=#ff8800 gui=bold
+" ]])
+
+" lsp_signature.setup(cfg)
+" EOF
+
 lua << EOF
 local lsp_signature = require("lsp_signature")
 
@@ -4041,40 +4728,31 @@ local cfg = {
   floating_window = true,
   floating_window_above_cur_line = false,
 
+  -- X: к самому правому краю
   floating_window_off_x = function()
     local win_width = vim.api.nvim_win_get_width(0)
-    local col = vim.api.nvim_win_get_cursor(0)[2]
-    local max_width = 60
-    local offset = win_width - col - max_width - 4
-    return offset > 0 and offset or 0
+    local max_width = 40 -- то же что cfg.max_width
+    return win_width - max_width - 2
   end,
 
+  -- Y: к самому низу
   floating_window_off_y = function()
-    local screen_line = vim.fn.winline()
-    local win_height = vim.fn.winheight(0)
-    if screen_line < 5 then
-      return 1
-    elseif win_height - screen_line < 5 then
-      return -1
-    else
-      return 0
-    end
+    local win_height = vim.api.nvim_win_get_height(0)
+    return win_height - 2
   end,
 
   handler_opts = {
     border = "rounded",
     handler = function(sig_handler, err, result, ctx, config)
-      -- Проверим, есть ли сигнатура
       if result and result.signatures and result.signatures[1] then
         local label = result.signatures[1].label or ""
         local ignore_list = { "Println", "Printf", "Print", "Errorf" }
         for _, name in ipairs(ignore_list) do
           if label:find(name) then
-            return -- игнорируем
+            return
           end
         end
       end
-      -- вызываем стандартный обработчик
       return sig_handler(err, result, ctx, config)
     end,
   },
@@ -4085,13 +4763,28 @@ local cfg = {
 }
 
 vim.cmd([[
-  highlight LspSignatureHintPrefix guifg=#ff8800 gui=bold
+    highlight LspSignatureHintPrefix guifg=#ff8800 gui=bold
+
+  " Префікс (іконка / стрілочка)
+  " highlight LspSignatureHintPrefix guifg=#ffb86c gui=bold
+
+  " Активний параметр
+  " highlight LspSignatureActiveParameter guifg=#50fa7b gui=bold,underline
+
+  " Текст підпису
+  " highlight LspSignatureHint guifg=#f8f8f2 guibg=#282a36
+
+  " Рамка
+    highlight FloatBorder guifg=#bd93f9 guibg=#282a36
+
+  " Фон вікна + прозорість
+  " highlight NormalFloat guibg=#282a36
+  " set winblend=15
 ]])
 
 lsp_signature.setup(cfg)
+
 EOF
-
-
 
 lua << EOF
 
@@ -4204,7 +4897,7 @@ local kind_labels = {
 }
 
 -- Создание группы подсветки для цвета вишни
-vim.api.nvim_set_hl(0, 'GosignCherry', { fg = '#9B111E', bg = 'NONE', bold = true })  -- Вишневый цвет для знаков
+vim.api.nvim_set_hl(0, 'GosignCherry', { fg = '#FF2D55', bg = 'NONE', bold = true })  -- Вишневый цвет для знаков
 
 function _G.gosigns_overlay.add_comments()
   local params = { textDocument = vim.lsp.util.make_text_document_params() }
@@ -4246,7 +4939,7 @@ EOF
 
 
 lua << EOF
-vim.api.nvim_set_hl(0, 'GosignCherry', { fg = '#9B111E', bg = 'NONE', bold = true })  -- Вишневый цвет для знаков
+vim.api.nvim_set_hl(0, 'GosignCherry', { fg = '#FF2D55', bg = 'NONE', bold = true })  -- Вишневый цвет для знаков
 
 -- goplements.nvim configuration
 require('goplements').setup({
@@ -4272,35 +4965,355 @@ EOF
 
 
 
-" Настройка nvim-cmp и автокоманды
+
+
 lua << EOF
-  local cmp = require('cmp')
+local telescope = require("telescope")
 
-  -- Настройка nvim-cmp
-  cmp.setup({
-    sources = {
-      { name = 'go_pkgs' },  -- Источник для автодополнения Go пакетов
-      { name = 'nvim_lsp' },
-      { name = 'buffer' },
-      { name = 'path' },
-      { name = 'luasnip' },   -- Добавьте этот источник для сниппетов
+telescope.setup({
+  extensions = {
+    gott = {
+      -- 🔧 Аргументы к тестам: динамические
+      test_args = function()
+        if vim.env.CI then
+          return "-v -vet=off"
+        else
+          return "-v -count=1 -vet=off"
+        end
+      end,
 
+      -- 🔧 Возможность выбирать из списка
+      test_args_list = {
+        "-v",
+        "-count=1 -v",
+        '-gcflags="all=-l -N" -v', -- для дебага
+      },
+
+      -- Таймаут (мс)
+      timeout = 5000,
+
+      -- 🔧 Сохраняем вывод только если упали
+      keep = function(code)
+        return code ~= 0
+      end,
+
+      -- Рендерим в Trouble (если установлен), иначе fallback = "default"
+      render = function()
+        local ok, _ = pcall(require, "trouble")
+        if ok then
+          return "trouble"
+        end
+        return "default"
+      end,
+
+      theme = "dropdown",
+
+      layout_config = {
+        width = function(_, max_columns, _)
+          return math.min(max_columns, 120) -- не шире 120 символов
+        end,
+        height = 0.5,
+      },
+
+      -- Буфер для вывода (удобно для заметок)
+      display_with_buf = {
+        enabled = true,
+        modifiable = true,
+        height = 20,
+      },
     },
-    formatting = {
-      format = require('lspkind').cmp_format({
-        menu = {
-          go_pkgs = "󰏖 [pkgs]",  -- Иконка для пакетов Go
-        },
-      }),
-    },
-  })
+  },
+})
 
-  -- Добавляем автокоманду для инициализации пакетов Go при подключении LSP
-  vim.api.nvim_create_autocmd("LspAttach", {
+telescope.load_extension("gott")
+
+-- 🔥 Горячие клавиши
+vim.keymap.set("n", "<leader>tt", "<cmd>Telescope gott<cr>", { desc = "Run Go tests (picker)" })
+vim.keymap.set("n", "<leader>tf", function()
+  require("telescope").extensions.gott.test_file()
+end, { desc = "Run tests in current file" })
+vim.keymap.set("n", "<leader>tn", function()
+  require("telescope").extensions.gott.test_nearest()
+end, { desc = "Run nearest test" })
+vim.keymap.set("n", "<leader>ta", function()
+  require("telescope").extensions.gott.test_all()
+end, { desc = "Run all tests" })
+EOF
+
+let NERDTreeIgnore=['\.csm_.*']
+
+
+" === Общие настройки ALE ===
+let g:ale_enabled = 1
+let g:ale_lint_on_text_changed = 'always'
+let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
+let g:ale_lint_delay = 200
+let g:ale_open_list = 0
+let g:ale_keep_list_window_open = 0
+
+" === Отображение ошибок ===
+let g:ale_sign_error = '⛔'
+let g:ale_sign_warning = '⚠️'
+let g:ale_echo_cursor = 1
+let g:ale_set_signs = 1
+let g:ale_set_loclist = 1
+let g:ale_set_quickfix = 0
+let g:ale_sign_column_always = 1
+let g:ale_virtualtext_cursor = 1  " для Neovim
+
+
+lua << EOF
+local cmp = require("cmp")
+
+-- Настройка nvim-cmp
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      require("luasnip").lsp_expand(args.body) -- поддержка snippets
+    end,
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<Tab>'] = cmp.mapping.select_next_item(),
+    ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-Space>'] = cmp.mapping.complete(),
+  }),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp', priority = 1000 },
+    { name = 'go_pkgs', priority = 750 },
+    { name = 'luasnip', priority = 500 },
+    { name = 'path', priority = 250 },
+    { name = 'buffer', priority = 100 },
+    { name = 'nvim_lua', priority = 100 },
+  }),
+  sorting = {
+    comparators = {
+      cmp.config.compare.offset,
+      cmp.config.compare.exact,
+      cmp.config.compare.score,
+      require("cmp-under-comparator").under,
+      cmp.config.compare.kind,
+      cmp.config.compare.sort_text,
+      cmp.config.compare.length,
+      cmp.config.compare.order,
+    },
+  },
+  formatting = {
+    format = require("lspkind").cmp_format({
+      mode = "symbol_text",
+      maxwidth = 50,
+      ellipsis_char = "...",
+      menu = {
+        go_pkgs = "󰏖 [pkgs]",
+        nvim_lsp = "[LSP]",
+        buffer = "[Buf]",
+        path = "[Path]",
+        luasnip = "[Snip]",
+      },
+    }),
+  },
+})
+
+-- Автокоманда для Go: инициализация cmp_go_pkgs при подключении LSP
+
+ vim.api.nvim_create_autocmd("LspAttach", {
     pattern = { "*.go" },  -- Для Go файлов
     callback = function(args)
       -- Инициализация пакетов для автодополнения
       require("cmp_go_pkgs").init_items(args)
     end,
   })
+EOF
+
+
+
+set nowinfixbuf
+
+
+lua << EOF
+require("Comment").setup({
+  padding = true, -- Добавляет пробел между комментом и текстом
+  sticky = true,  -- Курсор остаётся на месте после комментирования
+
+  -- Горячие клавиши для Normal mode
+  toggler = {
+    line = "gcc", -- Комментировать строку
+    block = "gbc" -- Комментировать блок (многострочный)
+  },
+
+  -- Горячие клавиши для Visual mode
+  opleader = {
+    line = "gc",  -- Выдели строки и нажми gc
+    block = "gb"  -- Выдели блок и нажми gb
+  },
+
+  -- Маппинги в visual mode
+  mappings = {
+    basic = true,    -- Включает `gcc`, `gbc`, `gc`, `gb` и т.д.
+    extra = false,   -- Доп. команды типа `gco` (вставить комментарий снизу)
+    extended = false -- Расширенные маппинги (например, `g>`, `g<`)
+  },
+
+  -- Хуки (можно выполнять свою логику до/после комментирования)
+  pre_hook = nil,
+  post_hook = nil,
+})
+
+
+EOF
+
+
+lua << EOF
+
+require("coverage").setup({
+	commands = true,
+	highlights = {
+		covered = { fg = "#C3E88D" },   -- зелёный
+		uncovered = { fg = "#F07178" }, -- красный
+	},
+	signs = {
+		covered = { hl = "CoverageCovered", text = "▎" },
+		uncovered = { hl = "CoverageUncovered", text = "▎" },
+	},
+	summary = {
+		min_coverage = 80.0,
+	},
+	lang = {
+		python = {
+			coverage_command = "coverage xml -o coverage.xml",
+			coverage_file = "coverage.xml",
+		},
+		go = {
+			coverage_command = "go test -coverprofile=coverage.out ./...",
+			coverage_file = "coverage.out",
+		},
+	}
+})
+
+EOF
+
+
+lua << EOF
+function KafkaTopics()
+  local Job = require("plenary.job")
+  local pickers = require("telescope.pickers")
+  local finders = require("telescope.finders")
+  local conf = require("telescope.config").values
+  local actions = require("telescope.actions")
+  local action_state = require("telescope.actions.state")
+
+  Job:new({
+    command = "kafka-topics.sh",
+    args = { "--list", "--bootstrap-server", "localhost:9092" },
+    on_exit = function(j, _)
+      local output = j:result()
+      vim.schedule(function()
+        pickers.new({}, {
+          prompt_title = "Kafka Topics",
+          finder = finders.new_table {
+            results = output,
+          },
+          sorter = conf.generic_sorter({}),
+          attach_mappings = function(prompt_bufnr, _)
+            actions.select_default:replace(function()
+              actions.close(prompt_bufnr)
+              local topic = action_state.get_selected_entry()[1]
+
+              Job:new({
+                command = "kafka-topics.sh",
+                args = { "--describe", "--topic", topic, "--bootstrap-server", "localhost:9092" },
+                on_exit = function(j2)
+                  local lines = j2:result()
+                  vim.schedule(function()
+                    vim.cmd("new")
+                    vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
+                    vim.bo.filetype = "kafka"
+                  end)
+                end
+              }):start()
+            end)
+            return true
+          end,
+        }):find()
+      end)
+    end
+  }):start()
+end
+EOF
+
+command! KafkaTopics lua KafkaTopics()
+
+lua << EOF
+vim.cmd [[
+  autocmd BufRead,BufNewFile *.avsc set filetype=json
+]]
+EOF
+
+lua << EOF
+-- ~/.config/nvim/lua/plugins/csvview.lua
+
+local has_telescope, telescope = pcall(require, "telescope.builtin")
+
+require("csvview").setup({
+  parser = {
+    comments = { "#", "//" },
+    autodetect_separator = true,  -- автоопределение , ; \t
+  },
+  view = {
+    display_mode = "border",
+    header_lnum = 1,
+    min_column_width = 5,
+    max_column_width = 30,
+    spacing = 2,
+    sticky_header = { enabled = true, separator = "─" },
+    auto_align = true,
+    fill_char = "·",
+    truncate_long = true,
+    show_column_number = true,
+    show_row_number = true,
+  },
+})
+
+-- Автоматическое включение для CSV/TSV
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "csv", "tsv" },
+  callback = function() vim.cmd("CsvViewEnable") end,
+})
+
+-- 🎨 Подсветка
+vim.api.nvim_set_hl(0, "CsvViewHeaderLine", { link = "Title" })
+vim.api.nvim_set_hl(0, "CsvViewDelimiter", { link = "Comment" })
+vim.api.nvim_set_hl(0, "CsvViewStickyHeaderSeparator", { link = "CsvViewDelimiter" })
+vim.api.nvim_set_hl(0, "CsvViewCursorCell", { fg = "#ffffff", bg = "#d19a66", bold = true })
+
+
+local cols = {
+  { fg = "#d19a66" }, { fg = "#61afef" }, { fg = "#98c379" },
+  { fg = "#e06c75" }, { fg = "#c678dd" }, { fg = "#56b6c2" },
+  { fg = "#e5c07b" }, { fg = "#7fdbca" }, { fg = "#f78c6c" },
+}
+for i, spec in ipairs(cols) do
+  vim.api.nvim_set_hl(0, ("CsvViewCol%d"):format(i - 1), spec)
+end
+
+
+vim.keymap.set("n", "<leader>cv", "<cmd>CsvViewToggle<cr>", { desc = "Toggle CSV view" })
+vim.keymap.set("n", "<leader>cn", "<cmd>CsvViewNextColumn<cr>", { desc = "Next column" })
+vim.keymap.set("n", "<leader>cp", "<cmd>CsvViewPrevColumn<cr>", { desc = "Prev column" })
+
+-- 🌟 Telescope интеграция: быстрый выбор значений из текущей колонки
+if has_telescope then
+  vim.keymap.set("n", "<leader>cf", function()
+    local col = require("csvview.view").current_column()
+    if not col then
+      print("No current column")
+      return
+    end
+    local values = require("csvview.view").get_column_values(col)
+    telescope.quickfix({ results = values, prompt_title = "CSV Column Values" })
+  end, { desc = "Filter CSV column via Telescope" })
+end
+
 EOF

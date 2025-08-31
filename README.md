@@ -474,3 +474,42 @@ hello-world
 ---
 
 Хотите, чтобы следующий шаг (загрузка и открытие нового упражнения) происходил автоматически после `:ExercismSubmit`?
+
+
+
+ └> $ sudo su
+┌───(root@SkyNet)-[/etc/ansible]
+└─# nvim                
+┌───(root@SkyNet)-[/etc/ansible]
+└─# nvim
+!
+┌───(root@SkyNet)-[/etc/ansible]
+└─# nvim
+┌───(root@SkyNet)-[/etc/ansible]
+└─# exit      
+
+┌────(mehanic (84.146.19.253) [No SSH] [No VPN] [🔹 no_active_playbook] [ansible_core:2.18.5])────(/etc/ansible)
+ └> $ sudo nvim
+
+┌────(mehanic (84.146.19.253) [No SSH] [No VPN] [🔹 no_active_playbook] [ansible_core:2.18.5])────(/etc/ansible)
+ └> $ sudo su
+┌───(root@SkyNet)-[/etc/ansible]
+└─# touch zvim.sh           
+┌───(root@SkyNet)-[/etc/ansible]
+└─# sudo mkdir -p /root/.config          
+┌───(root@SkyNet)-[/etc/ansible]
+└─# cd       
+┌───(root@SkyNet)-[~]
+└─# cd .config   
+┌───(root@SkyNet)-[~/.config]
+└─# ls
+envman  ettercap_gtk  fish  go  google-chrome  gtk-3.0  helm  ibus  incus  k9s  libreoffice  mc  pulse  sniffnet  wireshark
+┌───(root@SkyNet)-[~/.config]
+└─#     
+┌───(root@SkyNet)-[~/.config]
+└─# ln -s /home/mehanic/.config/nvim /root/.config/nvim
+┌───(root@SkyNet)-[~/.config]
+└─# nvim                
+┌───(root@SkyNet)-[~/.config]
+└─# exit      
+
