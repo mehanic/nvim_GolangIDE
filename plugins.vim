@@ -991,38 +991,38 @@ require("luasnip.loaders.from_vscode").load({
   paths = { "/home/mehanic/.config/nvim/snippets/go.json" }
 })
 
-
+-- Загрузка сниппетов для Golang (golang_snippets)
 require("luasnip.loaders.from_lua").load({
   paths = vim.fn.expand("~/.config/nvim/snippets/golang_snippets"),
 })
 
-
+-- Загрузка сниппетов для Golang2
 require("luasnip.loaders.from_lua").load({
   paths = vim.fn.expand("~/.config/nvim/snippets/golang2_snippets"),
 })
 
-
+-- Загрузка сниппетов для Golang3
 require("luasnip.loaders.from_lua").load({
   paths = vim.fn.expand("~/.config/nvim/snippets/golang3_snippets"),
 })
 
 
-
+-- Загрузка сниппетов для Golang4
 require("luasnip.loaders.from_lua").load({
   paths = vim.fn.expand("~/.config/nvim/snippets/golang4_snippets"),
 })
 
-
+-- Загрузка сниппетов для Golang5
 require("luasnip.loaders.from_lua").load({
   paths = vim.fn.expand("~/.config/nvim/snippets/golang5_snippets"),
 })
 
-
+-- Загрузка сниппетов для Golang6
 require("luasnip.loaders.from_lua").load({
   paths = vim.fn.expand("~/.config/nvim/snippets/golang6_snippets"),
 })
 
-
+-- Загрузка сниппетов для Golang7
 require("luasnip.loaders.from_lua").load({
   paths = vim.fn.expand("~/.config/nvim/snippets/golang7_snippets"),
 })
@@ -1593,8 +1593,51 @@ elseif node.type == "directory" then
   end
 end
 
+-- Groovy files and directories
+if node.type == "file" and name:match("%.groovy$") then
+  text = " " .. name  -- можеш змінити іконку на будь-яку для Groovy
+  hl = "NeoTreeGroovy"
+elseif node.type == "directory" then
+  local scan = vim.loop.fs_scandir(path)
+  local has_groovy = false
+  if scan then
+    while true do
+      local fname = vim.loop.fs_scandir_next(scan)
+      if not fname then break end
+      if fname:match("%.groovy$") then
+        has_groovy = true
+        break
+      end
+    end
+  end
+  if has_groovy then
+    text = " " .. name
+    hl = "NeoTreeGroovy"
+  end
+end
 
-
+-- JMeter files and directories
+if node.type == "file" and name:match("%.jmx$") then
+  text = " " .. name  -- можна підібрати будь-яку іконку
+  hl = "NeoTreeJMeter"
+elseif node.type == "directory" then
+  local scan = vim.loop.fs_scandir(path)
+  local has_jmx = false
+  if scan then
+    while true do
+      local fname = vim.loop.fs_scandir_next(scan)
+      if not fname then break end
+      if fname:match("%.jmx$") then
+        has_jmx = true
+        break
+      end
+    end
+  end
+  if has_jmx then
+    text = " " .. name
+    hl = "NeoTreeJMeter"
+  end
+end
 
 -- Go templates
 if node.type == "file" and (
@@ -1668,6 +1711,7 @@ vim.cmd([[highlight NeoTreeVault guifg=#b5b319 gui=bold]])
 vim.cmd([[highlight NeoTreeBash guifg=#89e051 gui=bold]])
 vim.cmd([[highlight NeoTreeSystemd guifg=#268BD2 gui=bold]])
 vim.cmd([[highlight NeoTreeK8s guifg=#326CE5 gui=bold]])
+vim.cmd([[highlight NeoTreeGroovy guifg=#E69F56 gui=bold]])
 
 
 
@@ -5288,7 +5332,7 @@ vim.api.nvim_set_hl(0, "CsvViewDelimiter", { link = "Comment" })
 vim.api.nvim_set_hl(0, "CsvViewStickyHeaderSeparator", { link = "CsvViewDelimiter" })
 vim.api.nvim_set_hl(0, "CsvViewCursorCell", { fg = "#ffffff", bg = "#d19a66", bold = true })
 
-
+-- Радужные колонки
 local cols = {
   { fg = "#d19a66" }, { fg = "#61afef" }, { fg = "#98c379" },
   { fg = "#e06c75" }, { fg = "#c678dd" }, { fg = "#56b6c2" },
@@ -5298,7 +5342,7 @@ for i, spec in ipairs(cols) do
   vim.api.nvim_set_hl(0, ("CsvViewCol%d"):format(i - 1), spec)
 end
 
-
+-- ⌨️ Горячие клавиши
 vim.keymap.set("n", "<leader>cv", "<cmd>CsvViewToggle<cr>", { desc = "Toggle CSV view" })
 vim.keymap.set("n", "<leader>cn", "<cmd>CsvViewNextColumn<cr>", { desc = "Next column" })
 vim.keymap.set("n", "<leader>cp", "<cmd>CsvViewPrevColumn<cr>", { desc = "Prev column" })
