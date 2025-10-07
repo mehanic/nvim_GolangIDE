@@ -7,10 +7,6 @@
 -- }
 
 
-
-
-
-
 -- -- ~/.config/nvim/lua/snippets/go.lua
 local ls = require("luasnip")
 local s = ls.snippet
@@ -1068,8 +1064,12 @@ s({ trig = "func13", dscr = "Go struct + constructor with auto field mapping" },
   end, {1, 2}),
   t({ "", "}", "" }),
 
+
+
+
+
   -- constructor
-  t("func New"), f(function(args) return args[1][1] end, {1}),
+  t("func17"), f(function(args) return args[1][1] end, {1}),
   t("("), i(2, "name string, age int"), t(") *"), f(function(args) return args[1][1] end, {1}), t(" {"),
   t({ "", "    v := &" }), f(function(args) return args[1][1] end, {1}), t("{"),
   t({ "", "        " }),
@@ -1119,6 +1119,127 @@ s({ trig = "func16", dscr = "function with 2 return and main usage" }, {
   t({ "}", "", "func main() {" }),
   t({ "\tmessage, _ := enterInside(" }), i(2, "20"), t(")"),
   t({ "\tfmt.Println(message)", "}" }),
+}),
+
+s("func17", {
+  t("func "), i(1, "asyncOperation"), t("(callback func()) {"),
+  t({ "", "    // Simulate asynchronous operation" }),
+  t({ "", "    time.Sleep(" }), i(2, "2 * time.Second"), t(")"),
+  t({ "", "    // Call the callback function after the operation is done" }),
+  t({ "", "    callback()" }),
+  t({ "", "}" }),
+  t({ "", "", "func main() {", "    fmt.Println(\"Starting asynchronous operation\")" }),
+  t({ "", "    " }), f(function(args) return args[1][1] end, {1}), t("(func() {"),
+  t({ "", "        fmt.Println(\"Asynchronous operation completed\")" }),
+  t({ "", "    })" }),
+  t({ "", "    fmt.Println(\"Asynchronous operation initiated\")" }),
+  t({ "", "}" }),
+  i(0),
+}),
+
+s("func18", {
+  t("func "), i(1, "asyncOperation"), t("("),
+  i(2, "callback func()"), t(") {"),
+  t({ "", "    // Simulate asynchronous operation" }),
+  t({ "", "    time.Sleep(" }), i(3, "2 * time.Second"), t(")"),
+  t({ "", "    // Call the callback function after the operation is done" }),
+  t({ "", "    callback(" }), i(4), t(")"),
+  t({ "", "}" }),
+  t({ "", "", "func main() {", "    fmt.Println(\"Starting asynchronous operation\")" }),
+  t({ "", "    " }), f(function(args) return args[1][1] end, {1}), t("(func("),
+  i(5), t(") {"),
+  t({ "", "        fmt.Println(\"Asynchronous operation completed\")" }),
+  i(6),
+  t({ "", "    })" }),
+  t({ "", "    fmt.Println(\"Asynchronous operation initiated\")" }),
+  t({ "", "}" }),
+  i(0),
+}),
+
+
+s("func19", {
+  t("type Strategy func(int, int) int"),
+  t("// First strategy"),
+  t("func "), i(1, "add"), t("(a, b int) int {"),
+  t({"", "    return a + b"}),
+  t("}"),
+  t({"", ""}),
+  t("// Second strategy"),
+  t("func "), i(2, "subtract"), t("(a, b int) int {"),
+  t({"", "    return a - b"}),
+  t("}"),
+  t({"", ""}),
+  t("// Function that uses the strategy"),
+  t("func "), i(3, "executeStrategy"), t("(strategy Strategy, a, b int) int {"),
+  t({"", "    return strategy(a, b)"}),
+  t("}"),
+  t({"", ""}),
+  t("func main() {"),
+  t({"", "    // First calculation"}),
+  t("    "), i(4, "result1"), t(" := "), f(function(args) return args[3][1] end, {3}), t("("), i(5, "add"), t(", "), i(6, "10"), t(", "), i(7, "5"), t(")"),
+  t({"", "    fmt.Println(\"10 + 5 =\", "}), f(function(args) return args[4][1] end, {4}), t(")"),
+  t({"", ""}),
+  t({"", "    // Second calculation"}),
+  t("    "), i(8, "result2"), t(" := "), f(function(args) return args[3][1] end, {3}), t("("), i(9, "subtract"), t(", "), i(10, "10"), t(", "), i(11, "5"), t(")"),
+  t({"", "    fmt.Println(\"10 - 5 =\", "}), f(function(args) return args[8][1] end, {8}), t(")"),
+  t({"", ""}),
+  t({"", "    // Custom calculation"}),
+  t("    "), i(12, "result3"), t(" := "), f(function(args) return args[3][1] end, {3}), t("("), i(13, "multiply"), t(", "), i(14, "7"), t(", "), i(15, "3"), t(")"),
+  t({"", "    fmt.Println(\"7 * 3 =\", "}), f(function(args) return args[12][1] end, {12}), t(")"),
+  t({"", "}"}),
+  i(0),
+}),
+
+
+s("func20", {
+  t("// Interactive Filter & Map example in Go"),
+  t({"", ""}),
+  t("package main"),
+  t({"", ""}),
+  t("import \"fmt\""),
+  t({"", ""}),
+  t("// Define a filter function type"),
+  t("type FilterFunc func(int) bool"),
+  t({"", ""}),
+  t("// Define a map function type"),
+  t("type MapFunc func(int) int"),
+  t({"", ""}),
+  t("// Filter function"),
+  t("func filter(numbers []int, f FilterFunc) []int {"),
+  t({"", "    var result []int"}),
+  t({"", "    for _, num := range numbers {"}),
+  t({"", "        if f(num) {"}),
+  t({"", "            result = append(result, num)"}),
+  t({"", "        }"}),
+  t({"", "    }"}),
+  t({"", "    return result"}),
+  t("}"),
+  t({"", ""}),
+  t("// Map function"),
+  t("func mapFunc(numbers []int, f MapFunc) []int {"),
+  t({"", "    var result []int"}),
+  t({"", "    for _, num := range numbers {"}),
+  t({"", "        result = append(result, f(num))"}),
+  t({"", "    }"}),
+  t({"", "    return result"}),
+  t("}"),
+  t({"", ""}),
+  t("func main() {"),
+  t({"", "    numbers := []int{"}), i(1, "1, 2, 3, 4, 5, 6, 7, 8, 9, 10"), t("}"),
+  t({"", ""}),
+  t({"", "    // Filter even numbers"}),
+  t("    evenNumbers := filter(numbers, func(n int) bool {"),
+  t({"", "        return "}), i(2, "n%2==0"),
+  t({"", "    })"}),
+  t("    fmt.Println(\"Even numbers:\", evenNumbers)"),
+  t({"", ""}),
+  t({"", "    // Square each number"}),
+  t("    squaredNumbers := mapFunc(numbers, func(n int) int {"),
+  t({"", "        return "}), i(3, "n*n"),
+  t({"", "    })"}),
+  t("    fmt.Println(\"Squared numbers:\", squaredNumbers)"),
+  t({"", "}"}),
+  i(0),
 }),
 
 
@@ -1996,51 +2117,51 @@ s({ trig = "if8", dscr = "Check error and return if not nil." }, {
 -- -- }),
 
 
-  -- fmt.Println
- s({ trig = "print1", dscr = "Print a message using fmt.Println" }, {
-  t("fmt.Println(\""), i(1, "message"), t("\")"),
-}),
+--   -- fmt.Println
+--  s({ trig = "print1", dscr = "Print a message using fmt.Println" }, {
+--   t("fmt.Println(\""), i(1, "message"), t("\")"),
+-- }),
 
-  -- fmt.Printf
-  s({ trig = "print2", dscr = "Print formatted output using fmt.Printf" }, {
-  t("fmt.Printf(\""), i(1, "format"), t("\", "), i(2, "var"), t(")"),
-}),
+--   -- fmt.Printf
+--   s({ trig = "print2", dscr = "Print formatted output using fmt.Printf" }, {
+--   t("fmt.Printf(\""), i(1, "format"), t("\", "), i(2, "var"), t(")"),
+-- }),
 
-  -- log.Println
- s({ trig = "print3", dscr = "Log a message using log.Println" }, {
-  t("log.Println(\""), i(1, "message"), t("\")"),
-}),
+--   -- log.Println
+--  s({ trig = "print3", dscr = "Log a message using log.Println" }, {
+--   t("log.Println(\""), i(1, "message"), t("\")"),
+-- }),
 
-  -- log.Printf
- s({ trig = "print4", dscr = "Log a formatted message using log.Printf" }, {
-  t("log.Printf(\""), i(1, "format"), t("\", "), i(2, "var"), t(")"),
-}),
+--   -- log.Printf
+--  s({ trig = "print4", dscr = "Log a formatted message using log.Printf" }, {
+--   t("log.Printf(\""), i(1, "format"), t("\", "), i(2, "var"), t(")"),
+-- }),
  
 
-  -- t.Log
-s({ trig = "print5", dscr = "Test log a message using t.Log" }, {
-  t("t.Log(\""), i(1, "message"), t("\")"),
-}),
+--   -- t.Log
+-- s({ trig = "print5", dscr = "Test log a message using t.Log" }, {
+--   t("t.Log(\""), i(1, "message"), t("\")"),
+-- }),
 
-  -- t.Logf
- s({ trig = "print6", dscr = "Test log formatted output using t.Logf" }, {
-  t("t.Logf(\""), i(1, "format"), t("\", "), i(2, "var"), t(")"),
-}),
+--   -- t.Logf
+--  s({ trig = "print6", dscr = "Test log formatted output using t.Logf" }, {
+--   t("t.Logf(\""), i(1, "format"), t("\", "), i(2, "var"), t(")"),
+-- }),
 
-  -- t.Logf variable content
- s({ trig = "print7", dscr = "Test log detailed value using t.Logf and %#+v" }, {
-  t("t.Logf(\""), i(1, "var"), t(": %#+v\\n\", "), rep(1), t(")"),
-}),
+--   -- t.Logf variable content
+--  s({ trig = "print7", dscr = "Test log detailed value using t.Logf and %#+v" }, {
+--   t("t.Logf(\""), i(1, "var"), t(": %#+v\\n\", "), rep(1), t(")"),
+-- }),
 
- -- log variable content
-s({ trig = "print8", dscr = "Log detailed value using log.Printf and %#+v" }, {
-  t("log.Printf(\""), i(1, "var"), t(": %#+v\\n\", "), rep(1), t(")"),
-}),
+--  -- log variable content
+-- s({ trig = "print8", dscr = "Log detailed value using log.Printf and %#+v" }, {
+--   t("log.Printf(\""), i(1, "var"), t(": %#+v\\n\", "), rep(1), t(")"),
+-- }),
 
-  -- Logging Snippet
-s({ trig = "print9", dscr = "Print value using fmt.Printf with format string" }, {
-  t("fmt.Printf(\""), i(1, "%v\\n"), t("\", "), i(2, "val"), t(")"),
-}),
+--   -- Logging Snippet
+-- s({ trig = "print9", dscr = "Print value using fmt.Printf with format string" }, {
+--   t("fmt.Printf(\""), i(1, "%v\\n"), t("\", "), i(2, "val"), t(")"),
+-- }),
 
 
 

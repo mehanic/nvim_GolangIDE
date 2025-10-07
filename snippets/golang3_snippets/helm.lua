@@ -13,10 +13,105 @@ local t = ls.text_node
 local i = ls.insert_node
 local rep = require("luasnip.extras").rep
 local f = ls.function_node
+local fmt = require("luasnip.extras.fmt").fmt
+
 
 
 
 return {
+
+
+-- if
+s("helmgo-ifval", fmt([[
+{{- if .Values.{} }}
+  {}
+{{- end }}
+  ]], { i(1, "key"), i(0) })),
+
+  -- if/else
+  s("helmgo-ifel", fmt([[
+{{- if .Values.{} }}
+  {}
+{{- else }}
+  {}
+{{- end }}
+  ]], { i(1, "key"), i(2, "then"), i(0, "else") })),
+
+  -- range
+  s("helmgo-range", fmt([[
+{{- range .Values.{} }}
+  {}
+{{- end }}
+  ]], { i(1, "list"), i(0) })),
+
+  -- with
+  s("helmgo-with", fmt([[
+{{- with .Values.{} }}
+  {}
+{{- end }}
+  ]], { i(1, "block"), i(0) })),
+
+  -- with / else
+  s("helmgo-withelse", fmt([[
+{{- with .Values.{} }}
+  {}
+{{- else }}
+  {}
+{{- end }}
+  ]], { i(1, "block"), i(2, "else_block"), i(0) })),
+
+  -- define
+  s("helmgo-define", fmt([[
+{{- define "{}" }}
+  {}
+{{- end }}
+  ]], { i(1, "name"), i(0) })),
+
+  -- include
+  s("helmgo-include", fmt([[{{ include "{}" . }}]], { i(1, "template_name") })),
+
+  -- required
+  s("helmgo-required", fmt([[{{ required "{}" .Values.{} }}]], { i(1, "error_message"), i(0, "key") })),
+
+  -- tpl
+  s("helmgo-tpl", fmt([[{{ tpl .Values.{} . }}]], { i(1, "template") })),
+
+  -- comment
+  s("helmgo-comm", fmt([[{{/* {} */}}]], { i(0, "comment") })),
+
+  -- value shortcut
+  s("helmgo-val", fmt([[.Values.{}]], { i(0, "key") })),
+
+  -- quote value
+  s("helmgo-qval", fmt([[{{ quote .Values.{} }}]], { i(0, "key") })),
+
+  -- toYaml (з індентацією)
+  s("helmgo-toyaml", fmt([[
+{{- toYaml .Values.{} | nindent {} }}
+  ]], { i(1, "section"), i(0, "2") })),
+
+  -- .Files.Get
+  s("helmgo-filesget", fmt([[{{ .Files.Get "{}" }}]], { i(0, "path/to/file") })),
+
+  -- .Capabilities.KubeVersion
+  s("helmgo-kubeversion", fmt([[{{ .Capabilities.KubeVersion.Version }}]], {})),
+
+  -- .Chart
+  s("helmgo-chart", fmt([[{{ .Chart.{}}}]], { i(0, "Name") })),
+
+  -- dict
+  s("helmgo-dict", fmt([[{{ dict "{}" .Values.{} }}]], { i(1, "key"), i(0, "value") })),
+
+  -- include tpl with dict
+  s("helmgo-includetpl", fmt([[{{ include "{}" (dict "{}" .Values.{}) }}]], { i(1, "template_name"), i(2, "key"), i(0, "value") })),
+
+  -- define tpl helper
+  s("helmgo-template", fmt([[
+{{- define "{}" }}
+  {}
+{{- end }}
+  ]], { i(1, "template_name"), i(0) })),
+  
   
 s("helm-service-sample-spec-func", {
   t({
@@ -5055,56 +5150,6 @@ s("helm-livenessProbe", {
 --   }),
 --   i(0),
 -- })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
